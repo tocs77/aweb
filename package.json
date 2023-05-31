@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --env mode=production",
+    "build:dev": "webpack --env mode=development",
+    "start": "webpack serve --env port=3005"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +21,7 @@
     "html-webpack-plugin": "^5.5.1",
     "ts-loader": "^9.4.3",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "webpack-dev-server": "^4.15.0"
   }
 }

@@ -1,2 +1,3 @@
 import { fn } from './test';
-fn(5);
+console.log(fn(5));
+document.body.innerHTML = `<h1>Hello world!</h1>`;
