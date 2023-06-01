@@ -22,5 +22,14 @@ export const buildWebpackConfig = (options: BuildOptions): webpack.Configuration
     resolve: buildResolver(),
     devtool: isDev ? 'inline-source-map' : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        minSize: 30000,
+        minChunks: 1,
+        maxAsyncRequests: Infinity,
+        maxInitialRequests: Infinity,
+      },
+    },
   };
 };
