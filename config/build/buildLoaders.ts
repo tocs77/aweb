@@ -26,5 +26,15 @@ export const buildLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
     ],
   };
 
-  return [typeScriptLoader, cssLoader];
+  const svgLoader: webpack.RuleSetRule = {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  };
+
+  const assetsLoader: webpack.RuleSetRule = {
+    test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+    type: 'asset/resource',
+  };
+
+  return [typeScriptLoader, cssLoader, svgLoader, assetsLoader];
 };
