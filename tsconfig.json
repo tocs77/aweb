@@ -10,7 +10,8 @@
     "preserveConstEnums": true,
     "outDir": "dist",
     "sourceMap": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": { "*": ["./src/*"] }
   },
   "include": ["src/**/*"],
   "exclude": ["**/*.spec.ts"],
