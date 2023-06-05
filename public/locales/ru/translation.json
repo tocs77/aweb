@@ -1,5 +1,6 @@
 {
   "test": "Тест",
   "Change language": "Изменить язык",
-  "language": "Русский"
+  "language": "Русский",
+  "Toggle": "Переключить"
 }
