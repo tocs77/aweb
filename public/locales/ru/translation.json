@@ -2,5 +2,6 @@
   "test": "Тест",
   "Change language": "Изменить язык",
   "language": "Русский",
-  "Toggle": "Переключить"
+  "Toggle": "Переключить",
+  "Page not found": "Страница не найдена"
 }
