@@ -3,5 +3,7 @@
   "Change language": "Изменить язык",
   "language": "Русский",
   "Toggle": "Переключить",
-  "Page not found": "Страница не найдена"
+  "Page not found": "Страница не найдена",
+  "Something went wrong": "Произошла непредвиденная ошибка",
+  "Reload page": "Обновить страницу"
 }
