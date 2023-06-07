@@ -17,11 +17,11 @@ export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstan
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(options.isDev),
     }),
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
   ];
   if (options.isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(new ReactRefreshWebpackPlugin());
+    plugins.push(new BundleAnalyzerPlugin({ openAnalyzer: false }));
   }
 
   return plugins;
