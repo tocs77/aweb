@@ -1,4 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
 import { fireEvent, screen } from '@testing-library/react';
 import { Sidebar } from '../ui/Sidebar/Sidebar';
 import { renderWithTranslation } from 'shared/lib/tests/renderWithTranslation/renderWithTranslation';
