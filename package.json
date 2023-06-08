@@ -13,9 +13,12 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
-    "test:ui": "npm loki test",
-    "test:ui:ok": "npm loki approve",
-    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static"
+    "test:ui": "loki test --host 192.168.1.81",
+    "test:ui:ok": "loki approve",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
+    "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
+    "test:ui:json": "node scripts/generate-visual-json-report.js",
+    "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html"
   },
   "keywords": [],
   "author": "",
@@ -67,6 +70,7 @@
     "loki": "^0.32.0",
     "mini-css-extract-plugin": "^2.7.6",
     "react-refresh": "^0.14.0",
+    "reg-cli": "^0.17.7",
     "sass": "^1.62.1",
     "sass-loader": "^13.3.1",
     "storybook": "^7.0.18",

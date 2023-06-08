@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import classes from './Button.module.scss';
 import { PropsWithChildren } from 'react';
 
-export enum ThemeButton {
+export enum ButtonTheme {
   CLEAR = 'clear',
   OUTLINE = 'outline',
   BACKGROUND = 'background',
@@ -10,15 +10,27 @@ export enum ThemeButton {
   CLEAR_INVERTED = 'clearInverted',
 }
 
+export enum ButtonSize {
+  M = 'size_m',
+  L = 'size_l',
+  XL = 'size_xl',
+}
+
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  theme?: ThemeButton;
+  theme?: ButtonTheme;
+  square?: boolean;
+  size?: ButtonSize;
 }
 
 export const Button = (props: PropsWithChildren<ButtonProps>) => {
-  const { className, children, theme, ...otherProps } = props;
+  const mods: Record<string, boolean> = {
+    [classes.square]: props.square,
+  };
+
+  const { className, children, theme, size, ...otherProps } = props;
   return (
-    <button className={classNames(classes.Button, {}, [className, classes[theme]])} {...otherProps}>
+    <button className={classNames(classes.Button, mods, [className, classes[theme], classes[size]])} {...otherProps}>
       {children}
     </button>
   );
