@@ -24,11 +24,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = (props: PropsWithChildren<ButtonProps>) => {
+  const { className, children, theme, size, square, ...otherProps } = props;
   const mods: Record<string, boolean> = {
-    [classes.square]: props.square,
+    [classes.square]: square,
   };
-
-  const { className, children, theme, size, ...otherProps } = props;
   return (
     <button className={classNames(classes.Button, mods, [className, classes[theme], classes[size]])} {...otherProps}>
       {children}
