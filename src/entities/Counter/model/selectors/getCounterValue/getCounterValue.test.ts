@@ -1,4 +1,13 @@
-import { createSelector } from '@reduxjs/toolkit';
-import { getCounter } from '../getCounter/getCounter';
+import { getCounterValue } from './getCounterValue';
+import { StoreWithCounter } from '../../types/counterSchema';
 
-export const getCounterValue = createSelector(getCounter, (counter) => counter.value);
+describe('getCounter', () => {
+  it('should return counter value', () => {
+    const state: StoreWithCounter = {
+      counter: {
+        value: 10,
+      },
+    };
+    expect(getCounterValue(state)).toEqual(10);
+  });
+});
