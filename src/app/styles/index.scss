@@ -3,11 +3,21 @@
 @import './themes/normal';
 @import './themes/dark';
 
+@font-face {
+  font-family: 'Overpass';
+  src: local('OverpassMono-VariableFont_wght.ttf'),
+    url('../../shared/assets/fonts/OverpassMono-VariableFont_wght.ttf') format('truetype');
+}
+
+.app,
+.app_modal {
+  font: var(--font-m);
+  color: var(--primary-color);
+}
+
 .app {
   background: var(--bg-color);
   min-height: 100vh;
-  font: var(--font-m);
-  color: var(--primary-color);
 }
 
 .content-page {

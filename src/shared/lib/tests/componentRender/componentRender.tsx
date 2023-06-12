@@ -6,12 +6,12 @@ import i18n from 'shared/config/i18n/i18nForTest';
 
 export interface ComponentRenderOptions {
   route?: string;
-  initialState?: StateSchema;
+  initialState?: DeepPartial<StateSchema>;
 }
 export function componentRender(component: JSX.Element, options?: ComponentRenderOptions) {
   const route = options?.route ?? '/';
   return render(
-    <StoreProvider initialState={options?.initialState}>
+    <StoreProvider initialState={options?.initialState as StateSchema}>
       <MemoryRouter initialEntries={[route]}>
         <I18nextProvider i18n={i18n}>{component}</I18nextProvider>
       </MemoryRouter>
