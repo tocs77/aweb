@@ -10,7 +10,7 @@ interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, '
   autofocus?: boolean;
 }
 
-export const Input = memo((props: InputProps) => {
+export const Input = memo(function Inp(props: InputProps) {
   const { className, value, onChange, placeholder, autofocus, type = 'text', ...other } = props;
   const [focused, setFocused] = useState(other.autoFocus || false);
   const [caretPosition, setCaretPosition] = useState(0);
@@ -22,7 +22,7 @@ export const Input = memo((props: InputProps) => {
       setFocused(true);
       setCaretPosition(value.length);
     }
-  }, [autofocus, inputRef.current]);
+  }, [autofocus, value]);
 
   const onBlured = () => {
     setFocused(false);

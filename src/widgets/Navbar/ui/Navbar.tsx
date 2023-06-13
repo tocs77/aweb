@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import classes from './Navbar.module.scss';
 import { useTranslation } from 'react-i18next';
