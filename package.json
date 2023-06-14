@@ -15,7 +15,7 @@
     "storybook:build": "storybook build -c ./config/storybook",
     "test:ui": "loki test --host 192.168.1.81",
     "test:ui:ok": "loki approve",
-    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
+    "test:ui:ci": "loki --requireReference --trace-warnings --reactUri file:./storybook-static",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
