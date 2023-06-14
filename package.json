@@ -19,7 +19,8 @@
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
-    "server": "node ./json-server/index.js"
+    "server": "node ./json-server/index.js",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -87,7 +88,8 @@
     "typescript": "^5.0.4",
     "webpack": "^5.84.1",
     "webpack-bundle-analyzer": "^4.9.0",
-    "webpack-dev-server": "^4.15.0"
+    "webpack-dev-server": "^4.15.0",
+    "husky": "^8.0.0"
   },
   "loki": {
     "configurations": {

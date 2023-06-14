@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run build
+npm run check
+npm run check:style
+npm run test:unit
+npm run storybook:build
+npm run test:ui:ci
