@@ -1,4 +1,5 @@
 export const COUNTER_SLICE_NAME = 'counter' as const;
+
 export interface CounterSchema {
   value: number;
 }

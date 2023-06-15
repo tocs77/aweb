@@ -9,5 +9,7 @@
   "Reload page": "Обновить страницу",
   "Login": "Войти",
   "Enter user name": "Введите имя пользователя",
-  "Enter password": "Введите пароль"
+  "Enter password": "Введите пароль",
+  "Login Form": "Форма авторизации",
+  "Logout": "Выйти"
 }

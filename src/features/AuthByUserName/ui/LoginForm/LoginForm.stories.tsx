@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { LoginForm } from './LoginForm';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 
 const meta = {
@@ -8,6 +9,7 @@ const meta = {
   component: LoginForm,
   args: {},
   tags: ['autodocs'],
+  decorators: [StoreDecorator({ login: { username: '123', password: 'password' } })],
 } satisfies Meta<typeof LoginForm>;
 
 export default meta;
@@ -20,3 +22,13 @@ export const Dark: Story = {
   args: {},
 };
 Dark.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const WithError: Story = {
+  args: {},
+};
+WithError.decorators = [StoreDecorator({ login: { username: '123', password: 'password', error: 'Error' } })];
+
+export const Pending: Story = {
+  args: {},
+};
+Pending.decorators = [StoreDecorator({ login: { username: '123', password: 'password', isLoading: true } })];

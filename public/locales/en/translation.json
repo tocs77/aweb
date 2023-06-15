@@ -9,5 +9,7 @@
   "Reload page": "Reload page",
   "Login": "Login",
   "Enter user name": "Enter user name",
-  "Enter password": "Enter password"
+  "Enter password": "Enter password",
+  "Login Form": "Login Form",
+  "Logout": "Logout"
 }

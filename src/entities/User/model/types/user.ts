@@ -9,5 +9,5 @@ export interface UserSchema {
 }
 
 export interface StoreWithUser {
-  [USER_SLICE_NAME]: User;
+  [USER_SLICE_NAME]: UserSchema;
 }
