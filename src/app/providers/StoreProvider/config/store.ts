@@ -3,20 +3,27 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { StateSchema } from './StateSchema';
 import { counterReducer, COUNTER_SLICE_NAME } from 'entities/Counter';
 import { userReducer, USER_SLICE_NAME } from 'entities/User';
-import { LOGIN_SLICE_NAME, loginReducer } from 'features/AuthByUserName';
+import { createReducerManager } from './reducerManager';
 
-export const createReduxStore = (intialState?: StateSchema) => {
+export const createReduxStore = (intialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) => {
   const rootReducers: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
     [COUNTER_SLICE_NAME]: counterReducer,
     [USER_SLICE_NAME]: userReducer,
-    [LOGIN_SLICE_NAME]: loginReducer,
   };
 
-  return configureStore<StateSchema>({
-    reducer: rootReducers,
+  const reducerManager = createReducerManager(rootReducers);
+
+  const store = configureStore<StateSchema>({
+    reducer: reducerManager.reduce,
     devTools: __IS_DEV__,
     preloadedState: intialState,
   });
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  store.reducerManager = reducerManager;
+
+  return store;
 };
 
 type RootState = StateSchema;

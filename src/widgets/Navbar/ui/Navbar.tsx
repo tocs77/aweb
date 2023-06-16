@@ -26,7 +26,6 @@ export const Navbar = ({ className }: NavbarProps) => {
   if (authData) {
     return (
       <>
-        <LoginModal isOpen={isAuthModal} onClose={() => setIsAuthModal(false)} />
         <div className={classNames(classes.navbar, {}, [className])}>
           <Button theme={ButtonTheme.CLEAR_INVERTED} className={classes.links} onClick={onLogout}>
             {t('Logout')}
