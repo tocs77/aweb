@@ -13,7 +13,7 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "storybook": "storybook dev -p 6006 -c ./config/storybook",
     "storybook:build": "storybook build -c ./config/storybook",
-    "test:ui": "loki test --host 192.168.1.81",
+    "test:ui": "loki test",
     "test:ui:ok": "loki approve",
     "test:ui:ci": "loki --requireReference --trace-warnings --reactUri file:./storybook-static",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
