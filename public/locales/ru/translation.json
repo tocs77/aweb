@@ -11,5 +11,8 @@
   "Enter user name": "Введите имя пользователя",
   "Enter password": "Введите пароль",
   "Login Form": "Форма авторизации",
-  "Logout": "Выйти"
+  "Logout": "Выйти",
+  "About Page": "О сайте",
+  "Main Page": "Главная страница",
+  "Profile Page": "Профиль"
 }

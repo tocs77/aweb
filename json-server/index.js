@@ -9,6 +9,9 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
+const middlewares = jsonServer.defaults({ static: './public' });
+
+server.use(middlewares);
 
 // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
 server.use(async (req, res, next) => {

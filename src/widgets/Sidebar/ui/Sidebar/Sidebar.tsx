@@ -1,22 +1,18 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { memo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import classes from './Sidebar.module.scss';
 import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
 import { LangSwitcher } from 'shared/ui/LangSwitcher/ui/LangSwitcher';
 import { Button, ButtonTheme, ButtonSize } from 'shared/ui/Button';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import AboutIcon from 'shared/assets/icons/about-20-20.svg';
-import MainIcon from 'shared/assets/icons/main-20-20.svg';
+import { SidebarItemsList } from 'widgets/Sidebar/model/items';
+import { SidebarItem } from './SidebarItem/SidebarItem';
 
 interface SidebarProps {
   className?: string;
 }
 
-export const Sidebar = ({ className }: SidebarProps) => {
+const SidebarEl = ({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
-  const { t } = useTranslation();
   const onToggle = () => {
     setCollapsed((prev) => !prev);
   };
@@ -33,15 +29,9 @@ export const Sidebar = ({ className }: SidebarProps) => {
         {collapsed ? '>' : '<'}
       </Button>
       <div className={classes.items}>
-        <AppLink to={RoutePath.main} theme={AppLinkTheme.SECONDARY} className={classes.item}>
-          <MainIcon className={classes.icon} />
-          <span className={classes.link}> {t('Main Page', { ns: 'main' })}</span>
-        </AppLink>
-
-        <AppLink to={RoutePath.about} className={classes.item}>
-          <AboutIcon className={classes.icon} />
-          <span className={classes.link}> {t('About Page', { ns: 'about' })}</span>
-        </AppLink>
+        {SidebarItemsList.map((item) => (
+          <SidebarItem key={item.path} item={item} collapsed={collapsed} data-testid={item.path} />
+        ))}
       </div>
       <div className={classes.switchers}>
         <ThemeSwitcher />
@@ -50,3 +40,5 @@ export const Sidebar = ({ className }: SidebarProps) => {
     </div>
   );
 };
+
+export const Sidebar = memo(SidebarEl);

@@ -1,0 +1,32 @@
+export enum Currency {
+  'RUB' = 'RUB',
+  'USD' = 'USD',
+  'EUR' = 'EUR',
+}
+
+export enum Country {
+  'USA' = 'USA',
+  'Ukraine' = 'Ukraine',
+  'Russia' = 'Russia',
+  'Germany' = 'Germany',
+  'France' = 'France',
+  'China' = 'China',
+  'Italy' = 'Italy',
+  'Japan' = 'Japan',
+  'India' = 'India',
+  'Spain' = 'Spain',
+  'Brazil' = 'Brazil',
+  'Canada' = 'Canada',
+  'Australia' = 'Australia',
+  'Mexico' = 'Mexico',
+  'South Africa' = 'South Africa',
+  'Netherlands' = 'Netherlands',
+  'Poland' = 'Poland',
+  'Sweden' = 'Sweden',
+  'Turkey' = 'Turkey',
+  'Norway' = 'Norway',
+  'Switzerland' = 'Switzerland',
+  'Belgium' = 'Belgium',
+  'Denmark' = 'Denmark',
+  'Finland' = 'Finland',
+}

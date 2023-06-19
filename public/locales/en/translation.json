@@ -11,5 +11,8 @@
   "Enter user name": "Enter user name",
   "Enter password": "Enter password",
   "Login Form": "Login Form",
-  "Logout": "Logout"
+  "Logout": "Logout",
+  "Main Page": "Main Page",
+  "Profile Page": "Profile Page",
+  "About Page": "About Page"
 }

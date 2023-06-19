@@ -1,5 +1,5 @@
-import { AnyAction, configureStore, Dispatch, ReducersMapObject, ThunkDispatch } from '@reduxjs/toolkit';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import { StateSchema } from './StateSchema';
 import { counterReducer, COUNTER_SLICE_NAME } from 'entities/Counter';
 import { userReducer, USER_SLICE_NAME } from 'entities/User';
@@ -26,7 +26,7 @@ export const createReduxStore = (intialState?: StateSchema, asyncReducers?: Redu
   return store;
 };
 
-type RootState = StateSchema;
-type AppDispatch = ThunkDispatch<StateSchema, undefined, AnyAction> & Dispatch<AnyAction>;
-export const useAppDispatch: () => AppDispatch = useDispatch;
+export type RootState = StateSchema;
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];
+
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
