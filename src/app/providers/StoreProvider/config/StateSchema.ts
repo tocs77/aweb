@@ -3,6 +3,8 @@ import { CounterSchema, COUNTER_SLICE_NAME } from 'entities/Counter';
 import { UserSchema, USER_SLICE_NAME } from 'entities/User';
 import { LoginSchema, LOGIN_SLICE_NAME } from 'features/AuthByUserName';
 import { ProfileSchema, PROFILE_SLICE_NAME } from 'entities/Profile';
+import { AxiosInstance } from 'axios';
+import { NavigateFunction } from 'react-router-dom';
 
 export interface StateSchema {
   [COUNTER_SLICE_NAME]: CounterSchema;
@@ -23,4 +25,14 @@ export interface ReducerManager {
   reduce: (state: StateSchema, action: AnyAction) => StateSchema;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
+}
+
+export interface ThunkExtraArg {
+  api: AxiosInstance;
+  navigate: NavigateFunction;
+}
+
+export interface ThunkConfig<T> {
+  rejectValue: T;
+  extra: ThunkExtraArg;
 }

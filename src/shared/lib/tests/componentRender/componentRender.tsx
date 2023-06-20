@@ -11,10 +11,10 @@ export interface ComponentRenderOptions {
 export function componentRender(component: JSX.Element, options?: ComponentRenderOptions) {
   const route = options?.route ?? '/';
   return render(
-    <StoreProvider initialState={options?.initialState as StateSchema}>
-      <MemoryRouter initialEntries={[route]}>
+    <MemoryRouter initialEntries={[route]}>
+      <StoreProvider initialState={options?.initialState as StateSchema}>
         <I18nextProvider i18n={i18n}>{component}</I18nextProvider>
-      </MemoryRouter>
-    </StoreProvider>,
+      </StoreProvider>
+    </MemoryRouter>,
   );
 }
