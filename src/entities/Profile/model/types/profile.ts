@@ -19,3 +19,7 @@ export interface ProfileSchema {
   error?: string;
   readonly: boolean;
 }
+
+export interface StoreWithProfile {
+  [PROFILE_SLICE_NAME]: ProfileSchema;
+}

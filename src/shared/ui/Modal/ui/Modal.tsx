@@ -1,5 +1,5 @@
 import { PropsWithChildren, useState, useRef, useEffect, useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import classes from './Modal.module.scss';
 import { Portal } from 'shared/ui/Portal';
 import { useTheme } from 'app/providers/ThemeProvider';
@@ -18,13 +18,13 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
 
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     if (isOpen) setIsMounted(true);
   }, [isOpen]);
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [classes.opened]: isOpen,
     [classes.isClosing]: isClosing,
   };

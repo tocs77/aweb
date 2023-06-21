@@ -29,7 +29,7 @@ export interface ReducerManager {
 
 export interface ThunkExtraArg {
   api: AxiosInstance;
-  navigate: NavigateFunction;
+  navigate?: NavigateFunction;
 }
 
 export interface ThunkConfig<T> {

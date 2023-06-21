@@ -3,6 +3,7 @@ import { LOGIN_SLICE_NAME } from '../../types/loginSchema';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/consts/localstorage';
 import { ThunkConfig } from 'app/providers/StoreProvider';
+import axios from 'axios';
 
 interface LoginByUsernameProps {
   username: string;
@@ -19,11 +20,15 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
       }
       localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
       dispatch(userActions.setAuthData(response.data));
-      extra.navigate('/profile');
+      extra.navigate?.('/profile');
       return response.data;
     } catch (error) {
-      console.log('error', error.response.data);
-      return rejectWithValue(error.response.data.message);
+      if (axios.isAxiosError(error)) {
+        console.log('error', error?.response?.data);
+        return rejectWithValue(error?.response?.data.message);
+      } else {
+        return rejectWithValue('Unknown error in request login');
+      }
     }
   },
 );

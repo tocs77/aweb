@@ -6,9 +6,9 @@ interface PortalProps {
 }
 export const Portal = (props: PropsWithChildren<PortalProps>) => {
   const { children } = props;
-  let element: HTMLElement = props.element;
+  let element = props.element;
   if (!element) {
-    element = document.getElementById('app');
+    element = document.getElementById('app') as HTMLElement;
     if (!element) {
       element = document.body;
     }

@@ -5,8 +5,8 @@ interface ErrorBoundaryProps {
   children: React.ReactNode;
 }
 interface ErrorBoundaryState {
-  error: Error;
-  errorInfo: ErrorInfo;
+  error: Error | null;
+  errorInfo: ErrorInfo | null;
 }
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
