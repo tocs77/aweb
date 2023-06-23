@@ -18,5 +18,14 @@
   "Profile": "Profile",
   "Edit": "Edit",
   "Your name": "Your name",
-  "Your last name": "Your last name"
+  "Your last name": "Your last name",
+  "Error loading profile": "Error loading profile",
+  "Cancel": "Cancel",
+  "Save": "Save",
+  "Age": "Age",
+  "City": "City",
+  "User name": "User name",
+  "Avatar": "Avatar",
+  "Select currency": "Select currency",
+  "Select country": "Select country"
 }

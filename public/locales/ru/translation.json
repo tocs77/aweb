@@ -18,5 +18,14 @@
   "Профиль": "Profile",
   "Edit": "Редактировать",
   "Your name": "Ваше имя",
-  "Your last name": "Ваша фамилия"
+  "Your last name": "Ваша фамилия",
+  "Error loading profile": "Ошибка при загрузке профиля",
+  "Cancel": "Отменить",
+  "Save": "Сохранить",
+  "Age": "Врзраст",
+  "City": "Город",
+  "User name": "Имя",
+  "Avatar": "Аватар",
+  "Select currency": "Выберите валюту",
+  "Select country": "Выберите страну"
 }

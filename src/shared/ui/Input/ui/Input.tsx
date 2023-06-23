@@ -3,15 +3,16 @@ import { classNames } from 'shared/lib/classNames/classNames';
 
 import classes from './Input.module.scss';
 
-interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> {
+interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value' | 'readOnly'> {
   className?: string;
-  value: string;
+  value: string | number;
   onChange: (val: string) => void;
   autofocus?: boolean;
+  readOnly?: boolean;
 }
 
 export const Input = memo(function Inp(props: InputProps) {
-  const { className, value, onChange, placeholder, autofocus, type = 'text', ...other } = props;
+  const { className, value, onChange, placeholder, autofocus, type = 'text', readOnly, ...other } = props;
   const [focused, setFocused] = useState(other.autoFocus || false);
   const [caretPosition, setCaretPosition] = useState(0);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -20,7 +21,7 @@ export const Input = memo(function Inp(props: InputProps) {
     if (autofocus) {
       inputRef.current?.focus();
       setFocused(true);
-      setCaretPosition(value.length);
+      setCaretPosition(value.toString().length);
     }
   }, [autofocus, value]);
 
@@ -28,6 +29,7 @@ export const Input = memo(function Inp(props: InputProps) {
     setFocused(false);
   };
   const onFocus = () => {
+    if (readOnly) return;
     setFocused(true);
   };
 
@@ -42,7 +44,7 @@ export const Input = memo(function Inp(props: InputProps) {
   };
 
   return (
-    <div className={classNames(classes.InputWrapper, {}, [className])}>
+    <div className={classNames(classes.InputWrapper, { [classes.readonly]: readOnly }, [className])}>
       {placeholder && <div className={classes.placeholder}>{`${placeholder}>`}</div>}
       <div className={classes.caretWrapper}>
         <input
@@ -55,6 +57,7 @@ export const Input = memo(function Inp(props: InputProps) {
           onBlur={onBlured}
           onFocus={onFocus}
           onSelect={onSelectHandler}
+          readOnly={readOnly}
         />
         {focused && <span className={classes.caret} style={{ left: `${caretPosition * 9}px` }}></span>}
       </div>

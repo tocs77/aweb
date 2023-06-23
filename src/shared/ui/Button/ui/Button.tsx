@@ -5,6 +5,7 @@ import { PropsWithChildren } from 'react';
 export enum ButtonTheme {
   CLEAR = 'clear',
   OUTLINE = 'outline',
+  OUTLINE_WARNING = 'outline_warning',
   BACKGROUND = 'background',
   BACKGROUND_INVERTED = 'backgroundInverted',
   CLEAR_INVERTED = 'clearInverted',

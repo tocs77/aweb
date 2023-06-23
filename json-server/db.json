@@ -29,8 +29,8 @@
     "first": "Bob",
     "lastname": "Smith",
     "age": 34,
-    "currency": "USD",
-    "country": "Canada",
+    "currency": "EUR",
+    "country": "Turkey",
     "city": "Toronto",
     "username": "admin",
     "avatar": "http://localhost:3006/images/avatar2.png"
