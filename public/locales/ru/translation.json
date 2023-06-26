@@ -27,5 +27,9 @@
   "User name": "Имя",
   "Avatar": "Аватар",
   "Select currency": "Выберите валюту",
-  "Select country": "Выберите страну"
+  "Select country": "Выберите страну",
+  "INCORRECT_USER_DATA": "Неверные данные пользователя",
+  "INCORRECT_AGE": "Неверный возраст",
+  "INCORRECT_COUNTRY": "Неверная страна",
+  "NO_DATA": "Нет данных пользователя"
 }

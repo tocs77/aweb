@@ -28,10 +28,10 @@
   "profile": {
     "first": "Bob",
     "lastname": "Smith",
-    "age": 34,
+    "age": 33,
     "currency": "EUR",
     "country": "Turkey",
-    "city": "Toronto",
+    "city": "",
     "username": "admin",
     "avatar": "http://localhost:3006/images/avatar2.png"
   }

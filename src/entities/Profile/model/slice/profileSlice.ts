@@ -42,6 +42,7 @@ export const profileSlice = createSlice({
     builder.addCase(updateProfileData.pending, (state) => {
       state.isLoading = true;
       state.error = undefined;
+      state.validateErrors = undefined;
     });
     builder.addCase(updateProfileData.fulfilled, (state, action) => {
       state.data = action.payload;
@@ -51,7 +52,11 @@ export const profileSlice = createSlice({
     });
     builder.addCase(updateProfileData.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload;
+      if (typeof action.payload === 'string') {
+        state.error = action.payload;
+        return;
+      }
+      state.validateErrors = action.payload;
     });
   },
 });

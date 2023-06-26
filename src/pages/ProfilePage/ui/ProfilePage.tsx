@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
   PROFILE_SLICE_NAME,
   ProfileCard,
@@ -9,10 +10,11 @@ import {
   getProfileIsLoading,
   profileActions,
   getProfileReadOnly,
+  getProfileValidateErrors,
 } from 'entities/Profile';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-
+import { Text, TextTheme } from 'shared/ui/Text';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
@@ -25,8 +27,11 @@ const ProfilePage = () => {
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
   const readOnly = useSelector(getProfileReadOnly);
+  const profileValidateErrors = useSelector(getProfileValidateErrors);
+  const { t } = useTranslation();
 
   useEffect(() => {
+    if (__PROJECT__ === 'storybook') return;
     dispatch(profileActions.fetchProfileData());
   }, [dispatch]);
 
@@ -89,6 +94,8 @@ const ProfilePage = () => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <ProfilePageHeader />
+      {profileValidateErrors?.length &&
+        profileValidateErrors.map((error) => <Text text={t(error)} key={error} theme={TextTheme.ERROR} />)}
       <ProfileCard
         profile={profile}
         isLoading={isLoading}
