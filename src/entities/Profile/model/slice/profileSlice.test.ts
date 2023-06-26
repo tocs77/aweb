@@ -62,6 +62,6 @@ describe('Profile slice tests', () => {
       validateErrors: [ValidateProfileError.INCORRECT_AGE],
     };
     const updatedState = profileReducer(state as ProfileSchema, updateProfileData.fulfilled(profile, ''));
-    expect(updatedState).toEqual({ data: profile, form: profile, isLoading: false, validateErrors: undefined });
+    expect(updatedState).toEqual({ data: profile, form: profile, isLoading: false, validateErrors: undefined, readonly: true });
   });
 });
