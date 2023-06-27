@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
-    "start": "webpack serve --env port=3005",
+    "start:devserver": "webpack serve --env port=3005",
+    "start": "concurrently \"npm run start:devserver\" \"npm run server\"",
     "check": "eslint . --ext .ts --ext .tsx",
     "check:fix": "eslint . --ext .ts --ext .tsx --fix",
     "check:style": "stylelint **/*.scss",
@@ -32,6 +33,7 @@
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
     "axios": "^1.4.0",
+    "concurrently": "^8.2.0",
     "i18next": "^22.5.0",
     "i18next-browser-languagedetector": "^7.0.2",
     "i18next-http-backend": "^2.2.1",

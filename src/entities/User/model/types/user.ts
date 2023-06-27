@@ -6,6 +6,7 @@ export interface User {
 
 export interface UserSchema {
   authData?: User;
+  _inited: boolean;
 }
 
 export interface StoreWithUser {
