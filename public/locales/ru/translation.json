@@ -31,5 +31,8 @@
   "INCORRECT_USER_DATA": "Неверные данные пользователя",
   "INCORRECT_AGE": "Неверный возраст",
   "INCORRECT_COUNTRY": "Неверная страна",
-  "NO_DATA": "Нет данных пользователя"
+  "NO_DATA": "Нет данных пользователя",
+  "Articles Page": "Статьи",
+  "Article not found": "Статья не найдена",
+  "Error loading article": "Ошибка при загрузке статьи"
 }

@@ -1,9 +1,6 @@
-.title {
-  font: var(--font-l);
-}
+$title-scale: 1.5;
 
 .text {
-  font: var(--font-m);
   color: var(--secondary-color);
 }
 
@@ -37,4 +34,28 @@
 
 .center {
   text-align: center;
+}
+
+.size_m {
+  font: var(--font-m);
+
+  .title {
+    font-size: calc(var(--font-size-m) * $title-scale);
+  }
+}
+
+.size_l {
+  font: var(--font-l);
+
+  .title {
+    font-size: calc(var(--font-size-l) * $title-scale);
+  }
+}
+
+.size_xl {
+  font: var(--font-xl);
+
+  .title {
+    font-size: calc(var(--font-size-xl) * $title-scale);
+  }
 }

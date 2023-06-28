@@ -16,6 +16,6 @@ export const Avatar = (props: AvatarProps) => {
       width: `${size}px`,
       height: `${size}px`,
     };
-  }, []);
+  }, [size]);
   return <img src={src} alt={alt || 'avatar'} style={styles} className={classNames(classes.Avatar, {}, [className])}></img>;
 };

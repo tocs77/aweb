@@ -7,7 +7,7 @@ import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 export const RequireAuth = ({ children }: PropsWithChildren): JSX.Element => {
   const auth = useSelector(getAuthData);
   const location = useLocation();
-  console.log('Auth required', auth);
+
   if (!auth) {
     return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
   }
