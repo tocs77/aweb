@@ -34,5 +34,7 @@
   "NO_DATA": "No user data",
   "Articles Page": "Articles Page",
   "Article not found": "Article not found",
-  "Error loading article": "Error loading article"
+  "Error loading article": "Error loading article",
+  "Comments": "Comments",
+  "No comments yet": "No comments yet"
 }

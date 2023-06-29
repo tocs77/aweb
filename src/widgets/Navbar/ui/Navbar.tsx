@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { LoginModal } from 'features/AuthByUserName';
 import { getAuthData } from 'entities/User';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from 'entities/User';
 
 interface NavbarProps {

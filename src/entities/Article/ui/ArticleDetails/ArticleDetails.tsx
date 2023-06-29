@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -7,7 +7,7 @@ import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { ARTICLE_DETAILS_SLICE_NAME } from '../../model/types/articleDetailsSchema';
 import classes from './ArticleDetails.module.scss';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text';
 import { getArticleDetailsData, getError, getIsLoading } from '../../model/selectors/articleDetails';
 import { Skeleton } from 'shared/ui/Skeleton';
@@ -20,6 +20,7 @@ import { ArticleBlock, ArticleBlockType } from '../../model/types/Article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 
 interface ArticleDetailsProps {
   className?: string;
@@ -38,10 +39,7 @@ const ArticleDetailsEl = (props: ArticleDetailsProps) => {
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
 
-  useEffect(() => {
-    if (__PROJECT__ === 'storybook') return;
-    dispatch(fetchArticleById(id));
-  }, [dispatch, id]);
+  useInitialEffect(() => dispatch(fetchArticleById(id)));
 
   const renderBlock = useCallback((block: ArticleBlock) => {
     switch (block.type) {

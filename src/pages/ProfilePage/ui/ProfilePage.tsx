@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import {
@@ -13,11 +13,12 @@ import {
   getProfileValidateErrors,
 } from 'entities/Profile';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 
 const reducers: ReducersList = { [PROFILE_SLICE_NAME]: profileReducer };
 
@@ -30,10 +31,7 @@ const ProfilePage = () => {
   const profileValidateErrors = useSelector(getProfileValidateErrors);
   const { t } = useTranslation();
 
-  useEffect(() => {
-    if (__PROJECT__ === 'storybook') return;
-    dispatch(profileActions.fetchProfileData());
-  }, [dispatch]);
+  useInitialEffect(() => dispatch(profileActions.fetchProfileData()));
 
   const onChangeFirstName = useCallback(
     (value: string) => {

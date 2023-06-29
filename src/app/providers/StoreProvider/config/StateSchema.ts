@@ -4,8 +4,10 @@ import { UserSchema, USER_SLICE_NAME } from 'entities/User';
 import { LoginSchema, LOGIN_SLICE_NAME } from 'features/AuthByUserName';
 import { ProfileSchema, PROFILE_SLICE_NAME } from 'entities/Profile';
 import { ARTICLE_DETAILS_SLICE_NAME, ArticleDetailsSchema } from 'entities/Article';
+
 import { AxiosInstance } from 'axios';
 import { NavigateFunction } from 'react-router-dom';
+import { ARTICLE_DETAILS_COMMENT_SLICE_NAME, ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
 
 export interface StateSchema {
   [COUNTER_SLICE_NAME]: CounterSchema;
@@ -14,6 +16,7 @@ export interface StateSchema {
   [LOGIN_SLICE_NAME]?: LoginSchema;
   [PROFILE_SLICE_NAME]?: ProfileSchema;
   [ARTICLE_DETAILS_SLICE_NAME]?: ArticleDetailsSchema;
+  [ARTICLE_DETAILS_COMMENT_SLICE_NAME]?: ArticleDetailsCommentSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

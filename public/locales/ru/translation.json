@@ -34,5 +34,7 @@
   "NO_DATA": "Нет данных пользователя",
   "Articles Page": "Статьи",
   "Article not found": "Статья не найдена",
-  "Error loading article": "Ошибка при загрузке статьи"
+  "Error loading article": "Ошибка при загрузке статьи",
+  "Comments": "Комментарии",
+  "No comments yet": "Комментариев нет"
 }

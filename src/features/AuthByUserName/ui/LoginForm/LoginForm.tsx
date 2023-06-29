@@ -12,7 +12,7 @@ import { getUsername } from '../../model/selectors/getUsername/getUsername';
 import { getIsLoading } from '../../model/selectors/getIsLoading/getIsLoading';
 import { getError } from '../../model/selectors/getError/getError';
 import { loginByUsername } from '../../model/services/loginByUserName/loginByUserName';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { LOGIN_SLICE_NAME } from 'features/AuthByUserName/model/types/loginSchema';
 

@@ -6,7 +6,7 @@ import classes from './ProfilePageHeader.module.scss';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Text } from 'shared/ui/Text';
 import { getProfileReadOnly, profileActions } from 'entities/Profile';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 interface ProfilePageHeaderProps {
   className?: string;
