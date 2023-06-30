@@ -4,6 +4,7 @@ import { Currency } from 'entities/Currency';
 export const PROFILE_SLICE_NAME = 'profile' as const;
 
 export interface Profile {
+  id: string;
   first: string;
   lastname: string;
   age: number;

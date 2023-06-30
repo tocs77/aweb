@@ -19,7 +19,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -106,6 +108,36 @@
       "text": "some comment from another user",
       "articleId": "1",
       "userId": "2"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "yyyy",
+      "id": "VGQv6n3"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "eeeeee",
+      "id": "z55DmFi"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "eee",
+      "id": "zvkacDd"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "mmmmmm",
+      "id": "VPLDP92"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "cmnc",
+      "id": "OThbqTN"
     }
   ],
   "users": [
@@ -124,14 +156,28 @@
       "avatar": "http://localhost:3006/images/avatar3.png"
     }
   ],
-  "profile": {
-    "first": "Bob",
-    "lastname": "Smith",
-    "age": 33,
-    "currency": "EUR",
-    "country": "Turkey",
-    "city": "",
-    "username": "admin",
-    "avatar": "http://localhost:3006/images/avatar2.png"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Admin",
+      "lastname": "Smith",
+      "age": 33,
+      "currency": "RUB",
+      "country": "Turkey",
+      "city": "",
+      "username": "admin",
+      "avatar": "http://localhost:3006/images/avatar2.png"
+    },
+    {
+      "id": "2",
+      "first": "User",
+      "lastname": "Smith",
+      "age": 33,
+      "currency": "EUR",
+      "country": "Turkey",
+      "city": "",
+      "username": "user",
+      "avatar": "http://localhost:3006/images/avatar3.png"
+    }
+  ]
 }

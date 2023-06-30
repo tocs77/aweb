@@ -4,7 +4,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Comment } from '../../model/types/comment';
 import { CommentCard } from '../CommentCard/CommentCard';
 import { Text } from 'shared/ui/Text';
-import { Loader } from 'shared/ui/Loader';
 import classes from './CommentList.module.scss';
 
 interface CommentListProps {
@@ -18,11 +17,16 @@ const CommentListEl = (props: CommentListProps) => {
   const { t } = useTranslation();
 
   let content: JSX.Element | JSX.Element[];
-
-  if (!comments || !comments.length) {
+  if (isLoading) {
+    content = (
+      <>
+        <CommentCard isLoading={isLoading} className={classes.comment} />
+        <CommentCard isLoading={isLoading} className={classes.comment} />
+        <CommentCard isLoading={isLoading} className={classes.comment} />
+      </>
+    );
+  } else if (!comments || !comments.length) {
     content = <Text text={t('No comments yet')} />;
-  } else if (isLoading) {
-    content = <Loader />;
   } else {
     content = comments.map((comment) => <CommentCard key={comment.id} comment={comment} className={classes.comment} />);
   }

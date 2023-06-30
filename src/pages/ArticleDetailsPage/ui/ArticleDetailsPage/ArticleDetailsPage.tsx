@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ArticleDetails } from 'entities/Article';
 import { CommentList } from 'entities/Comment';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import classes from './ArticleDetailsPage.module.scss';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextTheme } from 'shared/ui/Text';
@@ -13,6 +13,8 @@ import { articleDetailsCommentReducer, getArticleComments } from '../../model/sl
 import { getArticleCommentsIsLoading, getArticleCommentsError } from '../../model/selectors/comments';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { AddCommentForm } from 'features/AddCommentForm';
+import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
 
 const ArticleDetailsPage = () => {
   const { t } = useTranslation();
@@ -24,7 +26,16 @@ const ArticleDetailsPage = () => {
   const error = useSelector(getArticleCommentsError);
 
   useInitialEffect(() => dispatch(fetchCommentsByArticleId(id)));
+
+  const onSendComment = useCallback(
+    (text: string) => {
+      dispatch(addCommentForArticle(text));
+    },
+    [dispatch],
+  );
   if (!id) return <div>{t('Article not found')}</div>;
+
+  console.log('Article comments', comments);
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
@@ -32,6 +43,7 @@ const ArticleDetailsPage = () => {
         <ArticleDetails id={id} />
         {error && <Text title={'Error'} text={error} theme={TextTheme.ERROR} />}
         <Text title={t('Comments')} className={classes.comment_title} />
+        <AddCommentForm onSendComment={onSendComment} />
         <CommentList comments={comments} isLoading={isLoading} />
       </div>
     </DynamicModuleLoader>

@@ -5,6 +5,7 @@ import { Country } from 'entities/Country';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 
 const profile: Profile = {
+  id: '1',
   first: 'Bob',
   lastname: 'Smith',
   age: 33,

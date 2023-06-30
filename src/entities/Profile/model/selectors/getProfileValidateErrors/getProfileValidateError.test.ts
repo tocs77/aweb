@@ -5,6 +5,7 @@ import { Country } from 'entities/Country';
 ('../../types/profile');
 
 const profile: Profile = {
+  id: '1',
   first: 'Bob',
   lastname: 'Smith',
   age: 33,

@@ -11,6 +11,7 @@ const meta = {
   component: ProfileCard,
   args: {
     profile: {
+      id: '1',
       first: 'Bob',
       lastname: 'Smith',
       age: 33,

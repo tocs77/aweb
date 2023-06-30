@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 import {
   PROFILE_SLICE_NAME,
   ProfileCard,
@@ -12,6 +13,7 @@ import {
   getProfileReadOnly,
   getProfileValidateErrors,
 } from 'entities/Profile';
+import { getAuthData } from 'entities/User';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextTheme } from 'shared/ui/Text';
@@ -30,8 +32,11 @@ const ProfilePage = () => {
   const readOnly = useSelector(getProfileReadOnly);
   const profileValidateErrors = useSelector(getProfileValidateErrors);
   const { t } = useTranslation();
+  const { id } = useParams<{ id: string }>();
 
-  useInitialEffect(() => dispatch(profileActions.fetchProfileData()));
+  const authId = useSelector(getAuthData)?.id;
+
+  useInitialEffect(() => dispatch(profileActions.fetchProfileData(id || authId || '')));
 
   const onChangeFirstName = useCallback(
     (value: string) => {

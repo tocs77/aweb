@@ -34,7 +34,10 @@
   "NO_DATA": "Нет данных пользователя",
   "Articles Page": "Статьи",
   "Article not found": "Статья не найдена",
+  "Profile not found": "Профиль не найден",
   "Error loading article": "Ошибка при загрузке статьи",
   "Comments": "Комментарии",
-  "No comments yet": "Комментариев нет"
+  "No comments yet": "Комментариев нет",
+  "Enter comment": "Введите комментарий",
+  "Add comment": "Длбавить уомментарий"
 }

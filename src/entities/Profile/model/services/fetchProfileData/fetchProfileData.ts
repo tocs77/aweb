@@ -3,11 +3,11 @@ import { PROFILE_SLICE_NAME, Profile } from '../../types/profile';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import axios from 'axios';
 
-export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<string>>(
   `${PROFILE_SLICE_NAME}/fetchProfileData`,
-  async (_, { extra, rejectWithValue }) => {
+  async (id: string, { extra, rejectWithValue }) => {
     try {
-      const response = await extra.api.get<Profile>('/profile');
+      const response = await extra.api.get<Profile>(`/profile/${id}`);
       console.log('Fwtch profile data', response.data);
       if (!response.data) {
         return rejectWithValue('Wrong fetching profile');

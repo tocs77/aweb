@@ -10,6 +10,7 @@ import { ProfileSchema, ValidateProfileError } from 'entities/Profile/model/type
 
 const baseProfile: ProfileSchema = {
   form: {
+    id: '1',
     first: 'Bob',
     lastname: 'Smith',
     age: 33,
