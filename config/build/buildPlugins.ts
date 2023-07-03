@@ -20,6 +20,7 @@ export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstan
       __PROJECT__: JSON.stringify(options.project),
     }),
   ];
+
   if (options.isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(new ReactRefreshWebpackPlugin());
