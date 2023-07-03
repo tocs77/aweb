@@ -1,12 +1,20 @@
-import { memo } from 'react';
-import { Article, ArticleList, ArticleView } from 'entities/Article';
+import type { Meta, StoryObj } from '@storybook/react';
+import { ArticleList } from './ArticleList';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+
+import { Article, ArticleView } from 'entities/Article';
+
+import src from 'shared/assets/test/avatar.png';
+import plan2 from 'shared/assets/test/plan2.jpg';
+import logo from 'shared/assets/test/tdms_logo.png';
+import earth from 'shared/assets/test/earth.jpg';
 
 const article: Article = {
   id: '1',
   title: 'Javascript news',
   subtitle: 'Что нового в JS за 2022 год?',
-  img: 'http://localhost:3006/images/plan2.jpg',
-  user: { id: '1', username: 'admin', avatar: 'http://localhost:3006/images/avatar2.png' },
+  img: plan2,
+  user: { id: '1', username: 'admin', avatar: src },
   views: 1022,
   createdAt: '26.02.2022',
   type: ['IT', 'Sciense', 'dddddddddd', 'dddddddddddddd'],
@@ -38,7 +46,7 @@ const article: Article = {
     {
       id: '2',
       type: 'IMAGE',
-      src: 'http://localhost:3006/images/tdms_logo.png',
+      src: logo,
       title: 'Рисунок 1 - скриншот сайта',
     },
     {
@@ -59,7 +67,7 @@ const article: Article = {
     {
       id: '8',
       type: 'IMAGE',
-      src: 'http://localhost:3006/images/earth.jpg',
+      src: earth,
       title: 'Рисунок 1 - скриншот сайта',
     },
     {
@@ -72,18 +80,32 @@ const article: Article = {
     },
   ],
 } as Article;
+const meta = {
+  title: 'entities/ArticleList',
+  component: ArticleList,
+  args: {
+    articles: new Array(16).fill(0).map((_, index) => {
+      return { ...article, id: String(index) };
+    }),
+    isLoading: false,
+  },
+  tags: ['autodocs'],
+  decorators: [StoreDecorator({})],
+} satisfies Meta<typeof ArticleList>;
 
-const ArticlesPage = () => {
-  return (
-    <div>
-      <ArticleList
-        view={ArticleView.LIST}
-        articles={new Array(16).fill(0).map((_, index) => {
-          return { ...article, id: String(index) };
-        })}
-      />
-    </div>
-  );
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const List: Story = {
+  args: { view: ArticleView.LIST },
+};
+export const Grid: Story = {
+  args: { view: ArticleView.GRID },
 };
 
-export default memo(ArticlesPage);
+export const ListLoading: Story = {
+  args: { view: ArticleView.LIST, isLoading: true },
+};
+export const GridLoading: Story = {
+  args: { view: ArticleView.GRID, isLoading: true },
+};
