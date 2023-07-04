@@ -5,6 +5,7 @@ import { LoginSchema, LOGIN_SLICE_NAME } from 'features/AuthByUserName';
 import { ProfileSchema, PROFILE_SLICE_NAME } from 'entities/Profile';
 import { ARTICLE_DETAILS_SLICE_NAME, ArticleDetailsSchema } from 'entities/Article';
 import { ADD_COMMENT_FORM_SLICE_NAME, AddCommentFormSchema } from 'features/AddCommentForm';
+import { ARTICLES_PAGE_SLICE_NAME, ArticlesPageSchema } from 'pages/ArticlesPage';
 
 import { AxiosInstance } from 'axios';
 import { NavigateFunction } from 'react-router-dom';
@@ -19,6 +20,7 @@ export interface StateSchema {
   [ARTICLE_DETAILS_SLICE_NAME]?: ArticleDetailsSchema;
   [ARTICLE_DETAILS_COMMENT_SLICE_NAME]?: ArticleDetailsCommentSchema;
   [ADD_COMMENT_FORM_SLICE_NAME]?: AddCommentFormSchema;
+  [ARTICLES_PAGE_SLICE_NAME]?: ArticlesPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

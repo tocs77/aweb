@@ -13,7 +13,7 @@ interface ArticleListProps {
 }
 
 const ArticleListEl = (props: ArticleListProps) => {
-  const { className, articles, isLoading = true, view = ArticleView.GRID } = props;
+  const { className, articles, isLoading = false, view = ArticleView.GRID } = props;
 
   const renderArticle = (article: Article) => {
     return <ArticleListItem key={article.id} article={article} view={view} />;
