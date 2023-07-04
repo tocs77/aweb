@@ -10,7 +10,9 @@ import { Text, TextTheme, TextAlign } from 'shared/ui/Text';
 import { ARTICLES_PAGE_SLICE_NAME } from '../../model/types/articlesPageSchema';
 import { articlesPageReducer, getArticles, articlesPageActions } from '../../model/slices/articlesPageSlice';
 import { fetchArticlesList } from '../../model/sevices/fetchArticlesList/fetchArticlesList';
+import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/sevices/fetchNextArticlesPage/fetchNextArticlesPage';
 import { getArticlesIsLoading, getArticlesError, getArticlesView } from '../../model/selectors/ariclesPageSelectors';
+import { Page } from 'shared/ui/Page';
 
 const reducers: ReducersList = { [ARTICLES_PAGE_SLICE_NAME]: articlesPageReducer };
 
@@ -22,8 +24,8 @@ const ArticlesPage = () => {
   const view = useSelector(getArticlesView);
 
   useInitialEffect(() => {
-    dispatch(fetchArticlesList());
     dispatch(articlesPageActions.initState());
+    dispatch(fetchArticlesList({ page: 1 }));
   });
 
   const onChangeView = useCallback(
@@ -33,13 +35,17 @@ const ArticlesPage = () => {
     [dispatch],
   );
 
+  const onLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage());
+  }, [dispatch]);
+
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div>
+      <Page onScrollEnd={onLoadNextPart}>
         {error && <Text title='Error in artilces' text={error} theme={TextTheme.ERROR} align={TextAlign.CENTER} />}
         <ArticleViewSelector view={view} onViewClick={onChangeView} />
         <ArticleList isLoading={isLoading} view={view} articles={articles} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

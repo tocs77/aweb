@@ -21,7 +21,7 @@ const SidebarEl = ({ className }: SidebarProps) => {
   const sidebarItemsList = useSelector(getSidebarItems);
 
   return (
-    <div className={classNames(classes.Sidebar, { [classes.collapsed]: collapsed }, [className])} data-testid='sidebar'>
+    <menu className={classNames(classes.Sidebar, { [classes.collapsed]: collapsed }, [className])} data-testid='sidebar'>
       <Button
         theme={ButtonTheme.BACKGROUND_INVERTED}
         onClick={onToggle}
@@ -40,7 +40,7 @@ const SidebarEl = ({ className }: SidebarProps) => {
         <ThemeSwitcher />
         <LangSwitcher className={classes.lang} short={collapsed} />
       </div>
-    </div>
+    </menu>
   );
 };
 

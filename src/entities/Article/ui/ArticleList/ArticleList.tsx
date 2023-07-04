@@ -19,19 +19,15 @@ const ArticleListEl = (props: ArticleListProps) => {
     return <ArticleListItem key={article.id} article={article} view={view} />;
   };
 
-  if (isLoading) {
-    return (
-      <div className={classNames(classes.ArticleList, {}, [className])}>
-        {new Array(view === ArticleView.GRID ? 9 : 3).fill(0).map((_, index) => (
-          <ArticleListItemSkeleton view={view} key={index} />
-        ))}
-      </div>
-    );
-  }
+  const loadingSkeleton = isLoading
+    ? new Array(view === ArticleView.GRID ? 9 : 3).fill(0).map((_, index) => <ArticleListItemSkeleton view={view} key={index} />)
+    : null;
 
   return (
     <div className={classNames(classes.ArticleList, {}, [className])}>
       {articles.length ? articles.map((article) => renderArticle(article)) : null}
+
+      {loadingSkeleton}
     </div>
   );
 };

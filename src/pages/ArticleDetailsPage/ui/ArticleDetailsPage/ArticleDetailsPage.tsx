@@ -19,6 +19,7 @@ import { getArticleCommentsIsLoading, getArticleCommentsError } from '../../mode
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import classes from './ArticleDetailsPage.module.scss';
+import { Page } from 'shared/ui/Page';
 
 const ArticleDetailsPage = () => {
   const { t } = useTranslation();
@@ -47,14 +48,14 @@ const ArticleDetailsPage = () => {
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
-      <div>
+      <Page>
         <Button onClick={onBackToList}>{t('Back')}</Button>
         <ArticleDetails id={id} />
         {error && <Text title={'Error'} text={error} theme={TextTheme.ERROR} />}
         <Text title={t('Comments')} className={classes.comment_title} />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList comments={comments} isLoading={isLoading} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

@@ -25,24 +25,22 @@ const NavbarEl = ({ className }: NavbarProps) => {
 
   if (authData) {
     return (
-      <>
-        <div className={classNames(classes.navbar, {}, [className])}>
-          <Button theme={ButtonTheme.CLEAR_INVERTED} className={classes.links} onClick={onLogout}>
-            {t('Logout')}
-          </Button>
-        </div>
-      </>
+      <nav className={classNames(classes.navbar, {}, [className])}>
+        <Button theme={ButtonTheme.CLEAR_INVERTED} className={classes.links} onClick={onLogout}>
+          {t('Logout')}
+        </Button>
+      </nav>
     );
   }
 
   return (
     <>
       <LoginModal isOpen={isAuthModal} onClose={() => setIsAuthModal(false)} />
-      <div className={classNames(classes.navbar, {}, [className])}>
+      <nav className={classNames(classes.navbar, {}, [className])}>
         <Button theme={ButtonTheme.CLEAR_INVERTED} className={classes.links} onClick={() => setIsAuthModal(true)}>
           {t('Login')}
         </Button>
-      </div>
+      </nav>
     </>
   );
 };

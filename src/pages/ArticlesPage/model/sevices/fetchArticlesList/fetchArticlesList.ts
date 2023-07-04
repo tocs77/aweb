@@ -1,14 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Article } from 'entities/Article';
-import { ARTICLES_PAGE_SLICE_NAME } from '../../types/articlesPageSchema';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import axios from 'axios';
 
-export const fetchArticlesList = createAsyncThunk<Article[], void, ThunkConfig<string>>(
+import { Article } from 'entities/Article';
+
+import { ARTICLES_PAGE_SLICE_NAME, StoreWithArticlesPage } from '../../types/articlesPageSchema';
+import { getArticlesLimit } from '../../selectors/ariclesPageSelectors';
+
+interface FetchArticlesListProps {
+  page?: number;
+}
+
+export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListProps, ThunkConfig<string>>(
   `${ARTICLES_PAGE_SLICE_NAME}/fetchArticlesList`,
-  async (_, { extra, rejectWithValue }) => {
+  async (props, { extra, rejectWithValue, getState }) => {
+    const { page = 1 } = props;
+    const limit = getArticlesLimit(getState() as StoreWithArticlesPage);
     try {
-      const response = await extra.api.get<Article[]>('/articles', { params: { _expand: 'user' } });
+      const response = await extra.api.get<Article[]>('/articles', { params: { _expand: 'user', _limit: limit, _page: page } });
       if (!response.data) {
         return rejectWithValue('Error fetching articles');
       }
