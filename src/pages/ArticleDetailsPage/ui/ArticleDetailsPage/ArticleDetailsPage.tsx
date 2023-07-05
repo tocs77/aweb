@@ -19,7 +19,7 @@ import { getArticleCommentsIsLoading, getArticleCommentsError } from '../../mode
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import classes from './ArticleDetailsPage.module.scss';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 
 const ArticleDetailsPage = () => {
   const { t } = useTranslation();

@@ -6,13 +6,13 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Text, TextTheme, TextAlign } from 'shared/ui/Text';
+import { Page } from 'widgets/Page';
 
 import { ARTICLES_PAGE_SLICE_NAME } from '../../model/types/articlesPageSchema';
 import { articlesPageReducer, getArticles, articlesPageActions } from '../../model/slices/articlesPageSlice';
-import { fetchArticlesList } from '../../model/sevices/fetchArticlesList/fetchArticlesList';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/sevices/fetchNextArticlesPage/fetchNextArticlesPage';
 import { getArticlesIsLoading, getArticlesError, getArticlesView } from '../../model/selectors/ariclesPageSelectors';
-import { Page } from 'shared/ui/Page';
+import { initArticlesPage } from '../../model/sevices/initArticlesPage/initArticlesPage';
 
 const reducers: ReducersList = { [ARTICLES_PAGE_SLICE_NAME]: articlesPageReducer };
 
@@ -24,8 +24,7 @@ const ArticlesPage = () => {
   const view = useSelector(getArticlesView);
 
   useInitialEffect(() => {
-    dispatch(articlesPageActions.initState());
-    dispatch(fetchArticlesList({ page: 1 }));
+    dispatch(initArticlesPage);
   });
 
   const onChangeView = useCallback(
@@ -40,8 +39,8 @@ const ArticlesPage = () => {
   }, [dispatch]);
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
-      <Page onScrollEnd={onLoadNextPart}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
+      <Page onScrollEnd={onLoadNextPart} name='articles-page'>
         {error && <Text title='Error in artilces' text={error} theme={TextTheme.ERROR} align={TextAlign.CENTER} />}
         <ArticleViewSelector view={view} onViewClick={onChangeView} />
         <ArticleList isLoading={isLoading} view={view} articles={articles} />

@@ -5,24 +5,20 @@ import { counterReducer, COUNTER_SLICE_NAME } from 'entities/Counter';
 import { userReducer, USER_SLICE_NAME } from 'entities/User';
 import { createReducerManager } from './reducerManager';
 import { $api } from 'shared/api/api';
-import { NavigateFunction } from 'react-router-dom';
+import { SCROLL_KEEP_SLICE_NAME, scrollKeepReducer } from 'features/ScrollKeep';
 
-export const createReduxStore = (
-  intialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>,
-  navigate?: NavigateFunction,
-) => {
+export const createReduxStore = (intialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) => {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     [COUNTER_SLICE_NAME]: counterReducer,
     [USER_SLICE_NAME]: userReducer,
+    [SCROLL_KEEP_SLICE_NAME]: scrollKeepReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
 
   const extraArgument: ThunkExtraArg = {
     api: $api,
-    navigate,
   };
 
   const store = configureStore({

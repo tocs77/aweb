@@ -7,3 +7,4 @@ export const getArticlesView = (state: StoreWithArticlesPage) => state[ARTICLES_
 export const getArticlesLimit = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.limit || 4;
 export const getArticlesPage = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.page || 1;
 export const getArticlesPageHasMore = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.hasMore;
+export const getArticlesPageInited = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?._inited;

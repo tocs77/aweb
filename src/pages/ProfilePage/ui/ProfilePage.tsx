@@ -21,7 +21,7 @@ import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 
 const reducers: ReducersList = { [PROFILE_SLICE_NAME]: profileReducer };
 

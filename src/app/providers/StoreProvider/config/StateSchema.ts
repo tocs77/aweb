@@ -8,12 +8,13 @@ import { ADD_COMMENT_FORM_SLICE_NAME, AddCommentFormSchema } from 'features/AddC
 import { ARTICLES_PAGE_SLICE_NAME, ArticlesPageSchema } from 'pages/ArticlesPage';
 
 import { AxiosInstance } from 'axios';
-import { NavigateFunction } from 'react-router-dom';
 import { ARTICLE_DETAILS_COMMENT_SLICE_NAME, ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
+import { SCROLL_KEEP_SLICE_NAME, ScrollKeepSchema } from 'features/ScrollKeep';
 
 export interface StateSchema {
   [COUNTER_SLICE_NAME]: CounterSchema;
   [USER_SLICE_NAME]: UserSchema;
+  [SCROLL_KEEP_SLICE_NAME]: ScrollKeepSchema;
   // Async reducers
   [LOGIN_SLICE_NAME]?: LoginSchema;
   [PROFILE_SLICE_NAME]?: ProfileSchema;
@@ -29,16 +30,19 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
   reducerManager: ReducerManager;
 }
 
+export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
+
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
   reduce: (state: StateSchema, action: AnyAction) => StateSchema;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
+
+  getMountedReducers: () => MountedReducers;
 }
 
 export interface ThunkExtraArg {
   api: AxiosInstance;
-  navigate?: NavigateFunction;
 }
 
 export interface ThunkConfig<T> {
