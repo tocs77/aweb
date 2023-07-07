@@ -12,7 +12,7 @@ interface CountrySelectProps {
 }
 
 const CountrySelectEl = (props: CountrySelectProps) => {
-  const { className, value, onChange, readOnly } = props;
+  const { className, value = Country.Australia, onChange, readOnly } = props;
   const { t } = useTranslation();
 
   const options = useMemo<SelectOption[]>(() => {

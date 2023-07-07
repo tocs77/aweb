@@ -41,5 +41,15 @@
   "Enter comment": "Enter comment",
   "Add comment": "Add comment",
   "Read more": "Read more",
-  "Back": "Back"
+  "Back": "Back",
+  "Sort by": "Sort by",
+  "Search": "Search",
+  "Order": "Order",
+  "By": "By",
+  "ascending": "ascending",
+  "descending": "descending",
+  "Title": "Title",
+  "Creation date": "Creation date",
+  "Views": "Views",
+  "No artilces": "No artilces"
 }

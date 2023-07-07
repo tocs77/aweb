@@ -1,21 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Select } from './Select';
+import { Tabs } from './Tabs';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 
 const meta = {
-  title: 'shared/Select',
-  component: Select,
+  title: 'shared/Tabs',
+  component: Tabs,
   args: {
-    label: 'Select',
-    value: '1',
-    options: [
-      { value: '1', content: 'Label 1' },
-      { value: '2', content: 'Label 2' },
+    tabs: [
+      { value: 'Tab 1', content: 'Tab 1' },
+      { value: 'Tab 2', content: 'Tab 2' },
+      { value: 'Tab 3', content: 'Tab 3' },
     ],
+    onTabClick: (val: string) => console.log(val),
+    value: 'Tab 2',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Select>;
+} satisfies Meta<typeof Tabs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

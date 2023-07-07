@@ -12,7 +12,7 @@ interface CurrencySelectProps {
 }
 
 const CurrencySelectEl = (props: CurrencySelectProps) => {
-  const { className, value, onChange, readOnly } = props;
+  const { className, value = Currency.RUB, onChange, readOnly } = props;
   const { t } = useTranslation();
 
   const options = useMemo<SelectOption[]>(() => {

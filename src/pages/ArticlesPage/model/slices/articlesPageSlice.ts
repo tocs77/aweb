@@ -3,6 +3,8 @@ import { ARTICLES_PAGE_SLICE_NAME, ArticlesPageSchema, StoreWithArticlesPage } f
 import { Article, ArticleView } from 'entities/Article';
 import { fetchArticlesList } from '../sevices/fetchArticlesList/fetchArticlesList';
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/consts/localstorage';
+import { ArticleSortField, ArticleType } from 'entities/Article/model/types/Article';
+import { SortOrder } from 'shared/types';
 
 const articlesAdapter = createEntityAdapter<Article>({ selectId: (article) => article.id });
 
@@ -14,6 +16,10 @@ const initialState: ArticlesPageSchema = {
   page: 1,
   limit: 4,
   hasMore: true,
+  sort: ArticleSortField.CREATED,
+  order: 'asc',
+  search: '',
+  type: ArticleType.ALL,
   _inited: false,
 };
 
@@ -38,16 +44,29 @@ export const articlesPageSlice = createSlice({
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
     },
+    setOrder: (state, action: PayloadAction<SortOrder>) => {
+      state.order = action.payload;
+    },
+    setSort: (state, action: PayloadAction<ArticleSortField>) => {
+      state.sort = action.payload;
+    },
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload;
+    },
+    setType: (state, action: PayloadAction<ArticleType>) => {
+      state.type = action.payload;
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchArticlesList.pending, (state) => {
+    builder.addCase(fetchArticlesList.pending, (state, action) => {
       state.isLoading = true;
       state.error = undefined;
+      if (action.meta.arg.replace) articlesAdapter.removeAll(state);
     });
     builder.addCase(fetchArticlesList.fulfilled, (state, action) => {
       state.isLoading = false;
-      articlesAdapter.addMany(state, action.payload);
-      state.hasMore = action.payload.length > 0;
+      action.meta.arg.replace ? articlesAdapter.setAll(state, action.payload) : articlesAdapter.addMany(state, action.payload);
+      state.hasMore = action.payload.length >= state.limit;
     });
     builder.addCase(fetchArticlesList.rejected, (state, action) => {
       state.isLoading = false;

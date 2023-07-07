@@ -14,11 +14,11 @@
   "articles": [
     {
       "id": "1",
-      "title": "Javascript news",
+      "title": "Javascript newddds",
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
+      "views": 142,
       "createdAt": "26.02.2022",
       "type": ["IT"],
       "blocks": [
@@ -84,11 +84,11 @@
     },
     {
       "id": "2",
-      "title": "Javascript news",
+      "title": "33avascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
+      "views": 22,
       "createdAt": "26.02.2022",
       "type": ["IT"],
       "blocks": [
@@ -154,11 +154,11 @@
     },
     {
       "id": "3",
-      "title": "Javascript news",
+      "title": "Javascrggipt news",
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
+      "views": 1542,
       "createdAt": "26.02.2022",
       "type": ["IT"],
       "blocks": [
@@ -224,12 +224,12 @@
     },
     {
       "id": "4",
-      "title": "Javascript news",
+      "title": "Java444script news",
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 17822,
+      "createdAt": "16.02.2022",
       "type": ["IT"],
       "blocks": [
         {
@@ -298,8 +298,8 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 5422,
+      "createdAt": "26.02.2021",
       "type": ["IT"],
       "blocks": [
         {
@@ -368,7 +368,7 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
+      "views": 55,
       "createdAt": "26.02.2022",
       "type": ["IT"],
       "blocks": [
@@ -438,8 +438,8 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 347,
+      "createdAt": "26.07.2022",
       "type": ["IT"],
       "blocks": [
         {
@@ -508,8 +508,8 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 1122,
+      "createdAt": "20.02.2022",
       "type": ["IT"],
       "blocks": [
         {
@@ -578,8 +578,8 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 1522,
+      "createdAt": "17.04.2020",
       "type": ["IT"],
       "blocks": [
         {
@@ -648,9 +648,9 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
+      "views": 162,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": ["BUSINESS"],
       "blocks": [
         {
           "id": "1",
@@ -718,9 +718,9 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "userId": "1",
       "img": "http://localhost:3006/images/plan2.jpg",
-      "views": 1022,
+      "views": 1662,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": ["IT", "CULTURE"],
       "blocks": [
         {
           "id": "1",

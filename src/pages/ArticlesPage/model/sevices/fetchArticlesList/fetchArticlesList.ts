@@ -5,19 +5,46 @@ import axios from 'axios';
 import { Article } from 'entities/Article';
 
 import { ARTICLES_PAGE_SLICE_NAME, StoreWithArticlesPage } from '../../types/articlesPageSchema';
-import { getArticlesLimit } from '../../selectors/ariclesPageSelectors';
+import {
+  getArticlesLimit,
+  getArticlesPageSearch,
+  getArticlesPageSortField,
+  getArticlesPageSortOrder,
+  getArticlesPageType,
+} from '../../selectors/ariclesPageSelectors';
+import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
+import { ArticleType } from 'entities/Article/model/types/Article';
 
 interface FetchArticlesListProps {
   page?: number;
+  replace?: boolean;
 }
 
 export const fetchArticlesList = createAsyncThunk<Article[], FetchArticlesListProps, ThunkConfig<string>>(
   `${ARTICLES_PAGE_SLICE_NAME}/fetchArticlesList`,
   async (props, { extra, rejectWithValue, getState }) => {
     const { page = 1 } = props;
-    const limit = getArticlesLimit(getState() as StoreWithArticlesPage);
+    const state = getState() as StoreWithArticlesPage;
+    const limit = getArticlesLimit(state);
+    const order = getArticlesPageSortOrder(state);
+    const sort = getArticlesPageSortField(state);
+    const search = getArticlesPageSearch(state);
+    const type = getArticlesPageType(state);
+    console.log('TTT', type);
+
     try {
-      const response = await extra.api.get<Article[]>('/articles', { params: { _expand: 'user', _limit: limit, _page: page } });
+      addQueryParams({ sort, order, search });
+      const response = await extra.api.get<Article[]>('/articles', {
+        params: {
+          _expand: 'user',
+          _order: order,
+          _limit: limit,
+          _sort: sort,
+          _page: page,
+          q: search,
+          type: type === ArticleType.ALL ? undefined : type,
+        },
+      });
       if (!response.data) {
         return rejectWithValue('Error fetching articles');
       }

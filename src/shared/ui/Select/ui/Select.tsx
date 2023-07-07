@@ -2,8 +2,8 @@ import { memo, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import classes from './Select.module.scss';
 
-export interface SelectOption {
-  value: string;
+export interface SelectOption<T = string> {
+  value: T;
   content: string;
 }
 
@@ -11,7 +11,7 @@ interface SelectProps<T = string> {
   className?: string;
   label?: string;
   options: SelectOption[];
-  value?: string;
+  value: T;
   onChange: (value: T) => void;
   readOnly?: boolean;
 }
@@ -37,7 +37,7 @@ export const SelectEl = <T,>(props: SelectProps<T>) => {
   return (
     <div className={classNames(classes.Wrapper, {}, [className])}>
       {label && <span className={classes.label}>{`${label}>`}</span>}
-      <select className={classes.select} value={value} onChange={changeHandler} disabled={readOnly}>
+      <select className={classes.select} value={value as string} onChange={changeHandler} disabled={readOnly}>
         {optionsList}
       </select>
     </div>
