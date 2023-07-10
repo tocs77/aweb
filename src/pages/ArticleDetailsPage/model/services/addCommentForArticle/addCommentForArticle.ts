@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ARTICLE_DETAILS_COMMENT_SLICE_NAME } from '../../types/ArticleDetailsCommentSchema';
+import { ARTICLE_DETAILS_COMMENT_SLICE_NAME } from '../../types/articleDetailsCommentSchema';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import axios from 'axios';
 import { getAuthData } from 'entities/User';

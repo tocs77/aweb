@@ -6,8 +6,8 @@ import { PROFILE_SLICE_NAME, profileReducer } from 'entities/Profile';
 import { ADD_COMMENT_FORM_SLICE_NAME, addCommentFormReducer } from 'features/AddCommentForm';
 import { LOGIN_SLICE_NAME } from 'features/AuthByUserName';
 import { loginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
-import { ARTICLE_DETAILS_COMMENT_SLICE_NAME } from 'pages/ArticleDetailsPage';
-import { articleDetailsCommentReducer } from 'pages/ArticleDetailsPage/model/slice/ArticleDetailsCommentSlice';
+import { ARTICLE_DETAILS_PAGE_SLICE_NAME } from 'pages/ArticleDetailsPage';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slice';
 import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 const defaultAsyncReducers: ReducersList = {
@@ -15,7 +15,7 @@ const defaultAsyncReducers: ReducersList = {
   [PROFILE_SLICE_NAME]: profileReducer,
   [ARTICLE_DETAILS_SLICE_NAME]: articleDetailsReducer,
   [ADD_COMMENT_FORM_SLICE_NAME]: addCommentFormReducer,
-  [ARTICLE_DETAILS_COMMENT_SLICE_NAME]: articleDetailsCommentReducer,
+  [ARTICLE_DETAILS_PAGE_SLICE_NAME]: articleDetailsPageReducer,
 };
 
 export const StoreDecorator = (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) => {

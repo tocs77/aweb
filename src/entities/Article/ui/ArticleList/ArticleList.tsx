@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 
@@ -14,14 +14,15 @@ interface ArticleListProps {
   articles: Article[];
   isLoading?: boolean;
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 const ArticleListEl = (props: ArticleListProps) => {
-  const { className, articles, isLoading = false, view = ArticleView.GRID } = props;
+  const { className, articles, isLoading = false, view = ArticleView.GRID, target } = props;
   const { t } = useTranslation();
 
   const renderArticle = (article: Article) => {
-    return <ArticleListItem key={article.id} article={article} view={view} />;
+    return <ArticleListItem key={article.id} article={article} view={view} target={target} />;
   };
 
   const loadingSkeleton = isLoading

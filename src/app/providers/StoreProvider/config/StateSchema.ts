@@ -8,7 +8,7 @@ import { ADD_COMMENT_FORM_SLICE_NAME, AddCommentFormSchema } from 'features/AddC
 import { ARTICLES_PAGE_SLICE_NAME, ArticlesPageSchema } from 'pages/ArticlesPage';
 
 import { AxiosInstance } from 'axios';
-import { ARTICLE_DETAILS_COMMENT_SLICE_NAME, ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
+import { ArticleDetailsPageSchema, ARTICLE_DETAILS_PAGE_SLICE_NAME } from 'pages/ArticleDetailsPage';
 import { SCROLL_KEEP_SLICE_NAME, ScrollKeepSchema } from 'features/ScrollKeep';
 
 export interface StateSchema {
@@ -19,9 +19,9 @@ export interface StateSchema {
   [LOGIN_SLICE_NAME]?: LoginSchema;
   [PROFILE_SLICE_NAME]?: ProfileSchema;
   [ARTICLE_DETAILS_SLICE_NAME]?: ArticleDetailsSchema;
-  [ARTICLE_DETAILS_COMMENT_SLICE_NAME]?: ArticleDetailsCommentSchema;
   [ADD_COMMENT_FORM_SLICE_NAME]?: AddCommentFormSchema;
   [ARTICLES_PAGE_SLICE_NAME]?: ArticlesPageSchema;
+  [ARTICLE_DETAILS_PAGE_SLICE_NAME]?: ArticleDetailsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

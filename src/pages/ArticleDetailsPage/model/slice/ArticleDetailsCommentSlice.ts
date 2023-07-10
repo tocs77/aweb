@@ -1,19 +1,16 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import {
-  ARTICLE_DETAILS_COMMENT_SLICE_NAME,
-  ArticleDetailsCommentSchema,
-  StoreWithArticleDetailsComment,
-} from '../types/ArticleDetailsCommentSchema';
+import { ARTICLE_DETAILS_COMMENT_SLICE_NAME, ArticleDetailsCommentSchema } from '../types/articleDetailsCommentSchema';
 import { Comment } from 'entities/Comment';
 import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../services/addCommentForArticle/addCommentForArticle';
+import { ARTICLE_DETAILS_PAGE_SLICE_NAME, StoreWithArticlesDetailsPage } from '../types';
 
 const commentsAdapter = createEntityAdapter<Comment>({
   selectId: (comment) => comment.id,
 });
 
-export const getArticleComments = commentsAdapter.getSelectors<StoreWithArticleDetailsComment>(
-  (state) => state[ARTICLE_DETAILS_COMMENT_SLICE_NAME] || commentsAdapter.getInitialState(),
+export const getArticleComments = commentsAdapter.getSelectors<StoreWithArticlesDetailsPage>(
+  (state) => state?.[ARTICLE_DETAILS_PAGE_SLICE_NAME]?.[ARTICLE_DETAILS_COMMENT_SLICE_NAME] || commentsAdapter.getInitialState(),
 );
 
 const initialState: ArticleDetailsCommentSchema = {
