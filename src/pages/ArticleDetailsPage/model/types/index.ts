@@ -1,4 +1,4 @@
-import { ARTICLE_DETAILS_COMMENT_SLICE_NAME, ArticleDetailsCommentSchema } from './articleDetailsCommentSchema';
+import { ARTICLE_DETAILS_COMMENT_SLICE_NAME, ArticleDetailsCommentSchema } from './articleDetailsCommentsSchema';
 import {
   ARTICLE_DETAILS_RECOMMENDATIONS_SLICE_NAME,
   ArticleDetailsRecommendationsSchema,

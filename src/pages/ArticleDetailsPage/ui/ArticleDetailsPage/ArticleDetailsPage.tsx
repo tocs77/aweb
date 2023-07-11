@@ -23,7 +23,7 @@ import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByAr
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import classes from './ArticleDetailsPage.module.scss';
 import { fetchArticleRecommendations } from '../../model/services/fecthArticleRecommendations/fetchArticleRecommendations';
-import { getArticleComments } from '../../model/slice/articleDetailsCommentSlice';
+import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 
 const initialReducers: ReducersList = {
   [ARTICLE_DETAILS_PAGE_SLICE_NAME]: articleDetailsPageReducer,

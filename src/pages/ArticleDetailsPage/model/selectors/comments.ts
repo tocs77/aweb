@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { ARTICLE_DETAILS_COMMENT_SLICE_NAME } from '../types/articleDetailsCommentSchema';
+import { ARTICLE_DETAILS_COMMENT_SLICE_NAME } from '../types/articleDetailsCommentsSchema';
 import { getArticlesDetailsPageStore } from './index';
 
 export const getArticleCommentsError = createSelector(
