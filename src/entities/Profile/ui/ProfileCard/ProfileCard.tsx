@@ -11,6 +11,7 @@ import { CountrySelect } from 'entities/Country';
 
 import classes from './ProfileCard.module.scss';
 import { Profile } from '../../model/types/profile';
+import { HStack, VStack } from 'shared/ui/Stack';
 
 interface ProfileCardProps {
   className?: string;
@@ -56,67 +57,65 @@ const ProfileCardEl = function Inp(props: ProfileCardProps) {
 
   if (error) {
     return (
-      <div className={classNames(classes.ProfileCard, {}, [className, classes.error])}>
+      <HStack className={classNames(classes.ProfileCard, {}, [className])} max gap='8'>
         <Text theme={TextTheme.ERROR} align={TextAlign.CENTER} title={t('Error loading profile')} text={error} />
-      </div>
+      </HStack>
     );
   }
 
   if (!profile) return null;
   return (
-    <div className={classNames(classes.ProfileCard, { [classes.editing]: !readOnly }, [className])}>
-      <div className={classes.data}>
-        {profile.avatar && (
-          <div className={classes.avatar}>
-            <Avatar src={profile.avatar} size={60} />
-          </div>
-        )}
-        <Input
-          value={profile.first || ''}
-          placeholder={t('Your name')}
-          className={classes.input}
-          onChange={onChangeFirstName}
-          readOnly={readOnly}
-        />
-        <Input
-          value={profile.lastname || ''}
-          placeholder={t('Your last name')}
-          className={classes.input}
-          onChange={onChangeLastName}
-          readOnly={readOnly}
-        />
-        <Input
-          value={profile.age || 0}
-          placeholder={t('Age')}
-          className={classes.input}
-          onChange={onChangeAge}
-          readOnly={readOnly}
-        />
-        <Input
-          value={profile.city || ''}
-          placeholder={t('City')}
-          className={classes.input}
-          onChange={onChangeCity}
-          readOnly={readOnly}
-        />
-        <Input
-          value={profile.username || ''}
-          placeholder={t('User name')}
-          className={classes.input}
-          onChange={onChangeUsername}
-          readOnly={readOnly}
-        />
-        <Input
-          value={profile.avatar || ''}
-          placeholder={t('Avatar')}
-          className={classes.input}
-          onChange={onChangeAvatar}
-          readOnly={readOnly}
-        />
-        <CurrencySelect onChange={onChangeCurrency} value={profile.currency} readOnly={readOnly} className={classes.input} />
-        <CountrySelect onChange={onChangeCountry} value={profile.country} readOnly={readOnly} className={classes.input} />
-      </div>
-    </div>
+    <VStack className={classNames(classes.ProfileCard, { [classes.editing]: !readOnly }, [className])} max gap='8'>
+      {profile.avatar && (
+        <div className={classes.avatar}>
+          <Avatar src={profile.avatar} size={60} />
+        </div>
+      )}
+      <Input
+        value={profile.first || ''}
+        placeholder={t('Your name')}
+        className={classes.input}
+        onChange={onChangeFirstName}
+        readOnly={readOnly}
+      />
+      <Input
+        value={profile.lastname || ''}
+        placeholder={t('Your last name')}
+        className={classes.input}
+        onChange={onChangeLastName}
+        readOnly={readOnly}
+      />
+      <Input
+        value={profile.age || 0}
+        placeholder={t('Age')}
+        className={classes.input}
+        onChange={onChangeAge}
+        readOnly={readOnly}
+      />
+      <Input
+        value={profile.city || ''}
+        placeholder={t('City')}
+        className={classes.input}
+        onChange={onChangeCity}
+        readOnly={readOnly}
+      />
+      <Input
+        value={profile.username || ''}
+        placeholder={t('User name')}
+        className={classes.input}
+        onChange={onChangeUsername}
+        readOnly={readOnly}
+      />
+      <Input
+        value={profile.avatar || ''}
+        placeholder={t('Avatar')}
+        className={classes.input}
+        onChange={onChangeAvatar}
+        readOnly={readOnly}
+      />
+      <CurrencySelect onChange={onChangeCurrency} value={profile.currency} readOnly={readOnly} className={classes.input} />
+      <CountrySelect onChange={onChangeCountry} value={profile.country} readOnly={readOnly} className={classes.input} />
+    </VStack>
   );
 };
 

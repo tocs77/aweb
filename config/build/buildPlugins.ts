@@ -1,6 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import webpack from 'webpack';
@@ -20,6 +21,19 @@ export const buildPlugins = (options: BuildOptions): webpack.WebpackPluginInstan
       __PROJECT__: JSON.stringify(options.project),
     }),
   ];
+
+  if (!options.isDev) {
+    plugins.push(
+      new CopyPlugin({
+        patterns: [
+          {
+            from: options.paths.locales,
+            to: options.paths.buildLocales,
+          },
+        ],
+      }),
+    );
+  }
 
   if (options.isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin());

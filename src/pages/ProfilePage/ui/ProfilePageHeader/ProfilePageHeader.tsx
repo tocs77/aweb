@@ -2,12 +2,12 @@ import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import classes from './ProfilePageHeader.module.scss';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Text } from 'shared/ui/Text';
 import { getProfile, getProfileReadOnly, profileActions } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getAuthData } from 'entities/User';
+import { HStack } from 'shared/ui/Stack';
 
 interface ProfilePageHeaderProps {
   className?: string;
@@ -36,28 +36,28 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
   }, [dispatch]);
 
   return (
-    <div className={classNames(classes.ProfilePageHeader, {}, [className])}>
-      <div className={classes.header}>
-        <Text title={t('Profile')} />
-        {canEdit && (
-          <div className={classes.editButtons}>
-            {readOnly ? (
-              <Button theme={ButtonTheme.OUTLINE} className={classes.editBtn} onClick={onEdit}>
-                {t('Edit')}
-              </Button>
-            ) : (
-              <>
-                <Button theme={ButtonTheme.OUTLINE_WARNING} className={classes.editBtn} onClick={onCancelEdit}>
+    <HStack justify='between' max className={classNames('', {}, [className])}>
+      <Text title={t('Profile')} />
+      {canEdit && (
+        <>
+          {readOnly ? (
+            <Button theme={ButtonTheme.OUTLINE} onClick={onEdit}>
+              {t('Edit')}
+            </Button>
+          ) : (
+            <>
+              <HStack gap='8'>
+                <Button theme={ButtonTheme.OUTLINE_WARNING} onClick={onCancelEdit}>
                   {t('Cancel')}
                 </Button>
-                <Button theme={ButtonTheme.OUTLINE} className={classes.saveBtn} onClick={onSave}>
+                <Button theme={ButtonTheme.OUTLINE} onClick={onSave}>
                   {t('Save')}
                 </Button>
-              </>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
+              </HStack>
+            </>
+          )}
+        </>
+      )}
+    </HStack>
   );
 };
