@@ -7,6 +7,8 @@ type FlexAlign = 'start' | 'center' | 'end';
 type FlexDirection = 'row' | 'column';
 type FlexGap = '4' | '8' | '16' | '32';
 
+type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+
 const jusifyClasses: Record<FlexJustify, string> = {
   start: classes.justifyStart,
   center: classes.justifyCenter,
@@ -40,7 +42,8 @@ export type FlexProps = PropsWithChildren<{
   direction?: FlexDirection;
   gap?: FlexGap;
   max?: boolean;
-}>;
+}> &
+  DivProps;
 
 export const Flex = (props: FlexProps) => {
   const { className, children, justify = 'start', align = 'center', direction = 'row', gap, max } = props;

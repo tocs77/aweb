@@ -1,7 +1,7 @@
 import { useMemo, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Select, SelectOption } from 'shared/ui/Select';
+import { ListBox, ListBoxItem } from 'shared/ui/ListBox';
 import { Country } from '../../model/types/country';
 
 interface CountrySelectProps {
@@ -15,8 +15,8 @@ const CountrySelectEl = (props: CountrySelectProps) => {
   const { className, value = Country.Australia, onChange, readOnly } = props;
   const { t } = useTranslation();
 
-  const options = useMemo<SelectOption[]>(() => {
-    const opts: SelectOption[] = [];
+  const options = useMemo<ListBoxItem[]>(() => {
+    const opts: ListBoxItem[] = [];
     for (const country of Object.entries(Country)) {
       opts.push({ value: country[0], content: country[1] });
     }
@@ -24,13 +24,15 @@ const CountrySelectEl = (props: CountrySelectProps) => {
   }, []);
 
   return (
-    <Select<Country>
+    <ListBox<Country>
       className={classNames('', {}, [className])}
       onChange={onChange}
+      defaultValue={t('Select country')}
       label={t('Select country')}
-      options={options}
+      items={options}
       value={value}
-      readOnly={readOnly}
+      readonly={readOnly}
+      direction='top'
     />
   );
 };
