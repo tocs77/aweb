@@ -12,6 +12,7 @@
 
 .label {
   margin-right: 4px;
+  white-space: nowrap;
 }
 
 .options {
@@ -25,12 +26,27 @@
   overflow-y: auto;
 }
 
-.top {
+.top-left {
   bottom: 100%;
+  right: 0;
+}
+
+.top-right {
+  bottom: 100%;
+  left: 0;
+}
+
+.bottom-left {
+  right: 0;
+}
+
+.bottom-right {
+  left: 0;
 }
 
 .item {
   padding: 10px 20px;
+  white-space: nowrap;
 }
 
 .selected {

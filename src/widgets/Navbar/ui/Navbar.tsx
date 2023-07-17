@@ -9,10 +9,12 @@ import { getAuthData } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from 'entities/User';
 import { Text, TextTheme } from 'shared/ui/Text';
-
-import classes from './Navbar.module.scss';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Dropdown } from 'shared/ui/Dropdown';
+import { Avatar } from 'shared/ui/Avatar';
+
+import classes from './Navbar.module.scss';
 
 interface NavbarProps {
   className?: string;
@@ -35,9 +37,14 @@ const NavbarEl = ({ className }: NavbarProps) => {
         <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY} className={classes.createBtn}>
           {t('Create article')}
         </AppLink>
-        <Button theme={ButtonTheme.CLEAR_INVERTED} className={classes.links} onClick={onLogout}>
-          {t('Logout')}
-        </Button>
+        <Dropdown
+          className={classes.dropdown}
+          title={<Avatar size={30} src={authData.avatar || ''} />}
+          items={[
+            { content: t('User profile'), href: `${RoutePath.profile}${authData.id}` },
+            { content: t('Logout'), onClick: onLogout },
+          ]}
+        />
       </nav>
     );
   }

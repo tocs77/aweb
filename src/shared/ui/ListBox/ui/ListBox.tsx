@@ -1,11 +1,12 @@
 import { Fragment, memo, useMemo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Listbox as HListBox } from '@headlessui/react';
-import classes from './ListBox.module.scss';
+
+import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button';
 import { HStack } from 'shared/ui/Stack';
+import { DropDownDirection } from 'shared/types';
 
-type DropDownDirection = 'top' | 'bottom';
+import classes from './ListBox.module.scss';
 
 export interface ListBoxItem<T = string> {
   value: T;
@@ -25,7 +26,7 @@ interface ListBoxProps<T = string> {
 }
 
 export const ListBoxEl = <T,>(props: ListBoxProps<T>) => {
-  const { className, items, value, defaultValue, onChange, readonly, direction = 'bottom', label } = props;
+  const { className, items, value, defaultValue, onChange, readonly, direction = 'bottom-right', label } = props;
 
   const optionsList = useMemo(
     () =>
@@ -55,7 +56,7 @@ export const ListBoxEl = <T,>(props: ListBoxProps<T>) => {
         onChange={onChange}
         value={value}
         disabled={readonly}>
-        <HListBox.Button className={classes.trigger}>
+        <HListBox.Button as='div' className={classes.trigger}>
           <Button disabled={readonly}>{(value as string) ?? defaultValue}</Button>
         </HListBox.Button>
         <HListBox.Options className={classNames(classes.options, {}, [classes[direction]])}>{optionsList}</HListBox.Options>

@@ -32,7 +32,7 @@ const CountrySelectEl = (props: CountrySelectProps) => {
       items={options}
       value={value}
       readonly={readOnly}
-      direction='top'
+      direction='top-right'
     />
   );
 };
