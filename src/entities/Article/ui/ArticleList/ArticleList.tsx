@@ -41,7 +41,7 @@ const ArticleListEl = (props: ArticleListProps) => {
     rowIndex: number;
     style: React.CSSProperties;
   }) => {
-    const article = articles[columnIndex * 3 + rowIndex];
+    const article = articles[columnIndex + rowIndex * 3];
     if (!article) return <div key={`${columnIndex}${rowIndex}`} style={style}></div>;
     return (
       <div key={article.id} style={style}>
@@ -64,9 +64,8 @@ const ArticleListEl = (props: ArticleListProps) => {
 
   return (
     <div className={classNames(classes.ArticleList, {}, [className])}>
-      {/* {articles.length ? articles.map((article) => renderArticle(article)) : null} */}
       {articles.length ? (
-        <AutoSizer>
+        <AutoSizer defaultHeight={100} defaultWidth={300} className={classes.autosizer}>
           {({ height, width }: { height: number; width: number }) => {
             return view === ArticleView.GRID ? (
               <Grid
@@ -74,8 +73,8 @@ const ArticleListEl = (props: ArticleListProps) => {
                 columnWidth={230}
                 height={height}
                 rowCount={Math.floor(articles.length / 3)}
-                rowHeight={415}
-                width={width}>
+                rowHeight={230}
+                width={700}>
                 {renderArticleCell}
               </Grid>
             ) : (

@@ -890,8 +890,8 @@
       "first": "Admin",
       "lastname": "Smith",
       "age": 33,
-      "currency": "EUR",
-      "country": "Turkey",
+      "currency": "RUB",
+      "country": "Sweden",
       "city": "",
       "username": "admin",
       "avatar": "http://localhost:3006/images/avatar2.png"

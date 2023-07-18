@@ -6,6 +6,7 @@ import { userReducer, USER_SLICE_NAME } from 'entities/User';
 import { createReducerManager } from './reducerManager';
 import { $api } from 'shared/api/api';
 import { SCROLL_KEEP_SLICE_NAME, scrollKeepReducer } from 'features/ScrollKeep';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export const createReduxStore = (intialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) => {
   const rootReducers: ReducersMapObject<StateSchema> = {
@@ -13,6 +14,7 @@ export const createReduxStore = (intialState?: StateSchema, asyncReducers?: Redu
     [COUNTER_SLICE_NAME]: counterReducer,
     [USER_SLICE_NAME]: userReducer,
     [SCROLL_KEEP_SLICE_NAME]: scrollKeepReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
@@ -30,7 +32,7 @@ export const createReduxStore = (intialState?: StateSchema, asyncReducers?: Redu
         thunk: {
           extraArgument,
         },
-      }),
+      }).concat(rtkApi.middleware),
   });
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

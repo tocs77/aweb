@@ -6,9 +6,9 @@ import { Theme } from 'app/providers/ThemeProvider';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import src from 'shared/assets/test/avatar.png';
-import { ProfileSchema, ValidateProfileError } from 'entities/Profile/model/types/profile';
+import { ProfileCardSchema, ValidateProfileError } from 'features/EditableProfileCard/models/types/editableProfileCardSchema';
 
-const baseProfile: ProfileSchema = {
+const baseProfile: ProfileCardSchema = {
   form: {
     id: '1',
     first: 'Bob',
