@@ -99,9 +99,11 @@ export const EditableProfileCard = (props: EditableProfileCardProps) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       {profileValidateErrors?.length &&
-        profileValidateErrors.map((error) => <Text text={t(error)} key={error} theme={TextTheme.ERROR} />)}
+        profileValidateErrors.map((error) => (
+          <Text text={t(error)} key={error} theme={TextTheme.ERROR} data-testid='EditableProfileCard.Error' />
+        ))}
       <VStack gap='16' max>
-        <EditableProfileCardHeader />{' '}
+        <EditableProfileCardHeader />
         <ProfileCard
           profile={profile}
           isLoading={isLoading}

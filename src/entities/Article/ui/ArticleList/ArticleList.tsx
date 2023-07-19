@@ -18,10 +18,11 @@ interface ArticleListProps {
   isLoading?: boolean;
   view?: ArticleView;
   target?: HTMLAttributeAnchorTarget;
+  virtualized?: boolean;
 }
 
 const ArticleListEl = (props: ArticleListProps) => {
-  const { className, articles, isLoading = false, view = ArticleView.GRID, target } = props;
+  const { className, articles, isLoading = false, view = ArticleView.GRID, target, virtualized = true } = props;
   const { t } = useTranslation();
 
   const renderArticleRow = ({ index, style }: { index: number; style: React.CSSProperties }) => {
@@ -62,30 +63,36 @@ const ArticleListEl = (props: ArticleListProps) => {
     );
   }
 
+  let list: JSX.Element | JSX.Element[] | null = null;
+  if (virtualized && articles.length) {
+    list = (
+      <AutoSizer defaultHeight={100} defaultWidth={300} className={classes.autosizer}>
+        {({ height, width }: { height: number; width: number }) => {
+          return view === ArticleView.GRID ? (
+            <Grid
+              columnCount={3}
+              columnWidth={230}
+              height={height}
+              rowCount={Math.floor(articles.length / 3)}
+              rowHeight={230}
+              width={700}>
+              {renderArticleCell}
+            </Grid>
+          ) : (
+            <List height={height} itemCount={articles.length} itemSize={500} width={width}>
+              {renderArticleRow}
+            </List>
+          );
+        }}
+      </AutoSizer>
+    );
+  } else {
+    list = articles.map((article) => <ArticleListItem article={article} view={view} target={target} key={article.id} />);
+  }
+
   return (
     <div className={classNames(classes.ArticleList, {}, [className])}>
-      {articles.length ? (
-        <AutoSizer defaultHeight={100} defaultWidth={300} className={classes.autosizer}>
-          {({ height, width }: { height: number; width: number }) => {
-            return view === ArticleView.GRID ? (
-              <Grid
-                columnCount={3}
-                columnWidth={230}
-                height={height}
-                rowCount={Math.floor(articles.length / 3)}
-                rowHeight={230}
-                width={700}>
-                {renderArticleCell}
-              </Grid>
-            ) : (
-              <List height={height} itemCount={articles.length} itemSize={500} width={width}>
-                {renderArticleRow}
-              </List>
-            );
-          }}
-        </AutoSizer>
-      ) : null}
-
+      {list}
       {loadingSkeleton}
     </div>
   );
