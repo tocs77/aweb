@@ -5,8 +5,8 @@ import { PageLoader } from 'widgets/PageLoader';
 import { RequireAuth } from './RequireAuth';
 
 const AppRouterEl = () => {
-  const renderWithWrapper = useCallback(({ path, element, authOnly }: AppRouteProps) => {
-    return <Route key={path} path={path} element={authOnly ? <RequireAuth>{element}</RequireAuth> : element} />;
+  const renderWithWrapper = useCallback(({ path, element, authOnly, roles }: AppRouteProps) => {
+    return <Route key={path} path={path} element={authOnly ? <RequireAuth roles={roles}>{element}</RequireAuth> : element} />;
   }, []);
 
   return (

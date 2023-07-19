@@ -10,6 +10,7 @@ import { AppLink } from 'shared/ui/AppLink';
 export interface DropdownItem {
   content: string;
   disabled?: boolean;
+  hidden?: boolean;
   onClick?: () => void;
   href?: string;
 }
@@ -28,6 +29,7 @@ export const Dropdown = (props: DropdownProps) => {
       <Menu.Button className={classes.btn}>{title}</Menu.Button>
       <Menu.Items className={classNames(classes.menu, {}, [classes[direction]])}>
         {items.map((item) => {
+          if (item.hidden) return null;
           const content = ({ active }: { active: boolean }) => (
             <li className={classNames(classes.item, { [classes.active]: active }, [])} onClick={item.onClick}>
               {item.content}

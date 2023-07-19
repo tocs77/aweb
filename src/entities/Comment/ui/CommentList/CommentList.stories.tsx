@@ -16,6 +16,7 @@ const comments: Comment[] = [
       id: '1',
       username: 'Admin',
       avatar: src,
+      roles: ['ADMIN'],
     },
   },
   {
@@ -25,6 +26,7 @@ const comments: Comment[] = [
       id: '1',
       username: 'User',
       avatar: src2,
+      roles: ['ADMIN'],
     },
   },
 ];

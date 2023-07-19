@@ -14,6 +14,7 @@ const comment: Comment = {
     id: '1',
     username: 'Admin',
     avatar: src,
+    roles: ['USER'],
   },
 };
 

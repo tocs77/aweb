@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { LoginModal } from 'features/AuthByUserName';
-import { getAuthData } from 'entities/User';
+import { getAuthData, isUserAdmin, isUserManager } from 'entities/User';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from 'entities/User';
 import { Text, TextTheme } from 'shared/ui/Text';
@@ -25,6 +25,10 @@ const NavbarEl = ({ className }: NavbarProps) => {
   const { t } = useTranslation();
   const authData = useSelector(getAuthData);
   const dispatch = useAppDispatch();
+  const isAdmin = useSelector(isUserAdmin);
+  const isManager = useSelector(isUserManager);
+
+  const isAdminPanelAvailable = isAdmin || isManager;
 
   const onLogout = () => {
     dispatch(userActions.logout());
@@ -41,6 +45,7 @@ const NavbarEl = ({ className }: NavbarProps) => {
           className={classes.dropdown}
           title={<Avatar size={30} src={authData.avatar || ''} />}
           items={[
+            { content: t('Admin Panel'), href: `${RoutePath.admin_panel}`, hidden: !isAdminPanelAvailable },
             { content: t('User profile'), href: `${RoutePath.profile}${authData.id}` },
             { content: t('Logout'), onClick: onLogout },
           ]}
