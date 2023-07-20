@@ -29,6 +29,12 @@ const meta = {
   component: ProfilePage,
   args: {},
   tags: ['autodocs'],
+  parameters: {
+    reactRouter: {
+      routePath: '/profile/:id',
+      routeParams: { id: '1' },
+    },
+  },
   decorators: [
     StoreDecorator({
       profile: baseProfile,

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
@@ -13,6 +13,7 @@ import { getArticleCommentsIsLoading, getArticleCommentsError } from '../../mode
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
+import { Loader } from 'shared/ui/Loader';
 
 interface ArticleDetailsCommentsProps {
   className?: string;
@@ -42,7 +43,9 @@ export const ArticleDetailsComments = (props: ArticleDetailsCommentsProps) => {
     <div className={classNames('', {}, [className])}>
       {error && <Text title={'Error'} text={error} theme={TextTheme.ERROR} />}
       <Text title={t('Comments')} size={TextSize.L} />
-      <AddCommentForm onSendComment={onSendComment} />
+      <Suspense fallback={<Loader />}>
+        <AddCommentForm onSendComment={onSendComment} />
+      </Suspense>
       <CommentList comments={comments} isLoading={commentsIsLoading} />
     </div>
   );

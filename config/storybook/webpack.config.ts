@@ -8,6 +8,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
     build: '',
     html: '',
     entry: '',
+    buildLocales: '',
+    locales: '',
     src: path.resolve(__dirname, '..', '..', 'src'),
   };
   config?.resolve?.modules?.push(paths.src);
@@ -29,7 +31,11 @@ export default ({ config }: { config: webpack.Configuration }) => {
   });
   config?.module?.rules?.push(buildCssLoader(true));
   config?.plugins?.push(
-    new webpack.DefinePlugin({ __IS_DEV__: true, __API__: JSON.stringify(''), __PROJECT__: JSON.stringify('storybook') }),
+    new webpack.DefinePlugin({
+      __IS_DEV__: true,
+      __API__: JSON.stringify('http://testapi.org/'),
+      __PROJECT__: JSON.stringify('storybook'),
+    }),
   );
 
   return config;
