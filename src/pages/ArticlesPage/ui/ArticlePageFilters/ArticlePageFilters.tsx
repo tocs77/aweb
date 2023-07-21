@@ -7,7 +7,7 @@ import { Card } from 'shared/ui/Card/ui/Card';
 import { Input } from 'shared/ui/Input';
 import { ArticleSortField, ArticleView, ArticleViewSelector, ArticleTypeTabs } from 'entities/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ArticleSortSelector } from 'entities/Article';
+import { ArticleSortSelector, ArticleType } from 'entities/Article';
 import { SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 
@@ -21,7 +21,6 @@ import {
   getArticlesPageType,
 } from '../../model/selectors/ariclesPageSelectors';
 import { fetchArticlesList } from '../../model/sevices/fetchArticlesList/fetchArticlesList';
-import { ArticleType } from 'entities/Article/model/types/Article';
 
 interface ArticlePageFilerProps {
   className?: string;

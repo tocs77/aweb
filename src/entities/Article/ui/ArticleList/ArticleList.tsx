@@ -7,7 +7,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 
 import { Text, TextSize } from 'shared/ui/Text';
 
-import { Article, ArticleView } from '../../model/types/Article';
+import { Article } from '../../model/types/Article';
+import { ArticleView } from '../../model/consts/consts';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItem.Skeleton';
 import classes from './ArticleList.module.scss';

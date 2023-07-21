@@ -3,8 +3,10 @@ import { ArticleDetails } from './ArticleDetails';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { ArticleType } from 'entities/Article';
+import { ArticleBlockType } from 'entities/Article/model/consts/consts';
+
 import { ARTICLE_DETAILS_SLICE_NAME } from '../../model/types/articleDetailsSchema';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/Article';
 
 import plan2 from 'shared/assets/test/plan2.jpg';
 import logo from 'shared/assets/test/tdms_logo.png';

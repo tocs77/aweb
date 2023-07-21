@@ -1,6 +1,6 @@
 import { updateProfileData } from './updateProfileData';
 import { Profile } from 'entities/Profile';
-import { ValidateProfileError } from '../../types/editableProfileCardSchema';
+import { ValidateProfileError } from '../../consts/consts';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunc/TestAsyncThuns';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';

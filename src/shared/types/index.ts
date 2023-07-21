@@ -1,2 +1,2 @@
 export type SortOrder = 'asc' | 'desc';
-export { DropDownDirection } from './ui';
+export type { DropDownDirection } from './ui';
