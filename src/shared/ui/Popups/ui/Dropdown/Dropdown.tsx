@@ -4,6 +4,7 @@ import { Menu } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import classes from './Dropdown.module.scss';
+import popupCls from '../../styles/popup.module.scss';
 import { DropDownDirection } from 'shared/types';
 import { AppLink } from 'shared/ui/AppLink';
 
@@ -29,11 +30,10 @@ export const Dropdown = (props: DropdownProps) => {
     const dropdownItems: JSX.Element[] = [];
 
     for (const item of items) {
-      console.log(item);
       if (item.hidden) continue;
 
       const content = ({ active }: { active: boolean }) => (
-        <div className={classNames(classes.item, { [classes.active]: active }, [])} onClick={item.onClick}>
+        <div className={classNames(classes.item, { [popupCls.active]: active }, [])} onClick={item.onClick}>
           {item.content}
         </div>
       );
@@ -54,9 +54,9 @@ export const Dropdown = (props: DropdownProps) => {
   }, [items]);
 
   return (
-    <Menu as='div' className={classNames(classes.Dropdown, {}, [className])}>
+    <Menu as='div' className={classNames(popupCls.popup, {}, [className])}>
       <Menu.Button className={classes.btn}>{title}</Menu.Button>
-      <Menu.Items className={classNames(classes.menu, {}, [classes[direction]])}>{dropdownItems}</Menu.Items>
+      <Menu.Items className={classNames(classes.menu, {}, [popupCls[direction]])}>{dropdownItems}</Menu.Items>
     </Menu>
   );
 };

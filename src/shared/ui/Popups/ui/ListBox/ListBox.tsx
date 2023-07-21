@@ -7,6 +7,7 @@ import { HStack } from 'shared/ui/Stack';
 import { DropDownDirection } from 'shared/types';
 
 import classes from './ListBox.module.scss';
+import popupCls from '../../styles/popup.module.scss';
 
 export interface ListBoxItem<T = string> {
   value: T;
@@ -36,7 +37,7 @@ export const ListBoxEl = <T,>(props: ListBoxProps<T>) => {
             <li
               className={classNames(
                 classes.item,
-                { [classes.active]: active, [classes.selected]: selected, [classes.disabled]: option.disabled },
+                { [popupCls.active]: active, [classes.selected]: selected, [popupCls.disabled]: option.disabled },
                 [],
               )}>
               {option.content}
@@ -52,14 +53,14 @@ export const ListBoxEl = <T,>(props: ListBoxProps<T>) => {
       {label && <span className={classes.label}>{label}</span>}{' '}
       <HListBox
         as='div'
-        className={classNames(classes.ListBox, {}, [className])}
+        className={classNames(popupCls.popup, {}, [className])}
         onChange={onChange}
         value={value}
         disabled={readonly}>
         <HListBox.Button as='div' className={classes.trigger}>
           <Button disabled={readonly}>{(value as string) ?? defaultValue}</Button>
         </HListBox.Button>
-        <HListBox.Options className={classNames(classes.options, {}, [classes[direction]])}>{optionsList}</HListBox.Options>
+        <HListBox.Options className={classNames(classes.options, {}, [popupCls[direction]])}>{optionsList}</HListBox.Options>
       </HListBox>
     </HStack>
   );

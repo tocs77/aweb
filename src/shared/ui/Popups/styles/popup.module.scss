@@ -1,0 +1,29 @@
+.popup {
+  position: relative;
+}
+
+.active {
+  background-color: var(--inverted-primary-color);
+}
+
+.top-left {
+  bottom: 100%;
+  right: 0;
+}
+
+.top-right {
+  bottom: 100%;
+  left: 0;
+}
+
+.bottom-left {
+  right: 0;
+}
+
+.bottom-right {
+  left: 0;
+}
+
+.disabled {
+  opacity: 0.7;
+}

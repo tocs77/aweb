@@ -11,10 +11,13 @@ import { userActions } from 'entities/User';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Dropdown } from 'shared/ui/Dropdown';
+import { Dropdown } from 'shared/ui/Popups';
 import { Avatar } from 'shared/ui/Avatar';
+import { Icon } from 'shared/ui/Icon';
+import NotificationIcon from 'shared/assets/icons/notification-20-20.svg';
 
 import classes from './Navbar.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface NavbarProps {
   className?: string;
@@ -41,15 +44,19 @@ const NavbarEl = ({ className }: NavbarProps) => {
         <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY} className={classes.createBtn}>
           {t('Create article')}
         </AppLink>
-        <Dropdown
-          className={classes.dropdown}
-          title={<Avatar size={30} src={authData.avatar || ''} />}
-          items={[
-            { content: t('Admin Panel'), href: `${RoutePath.admin_panel}`, hidden: !isAdminPanelAvailable },
-            { content: t('User profile'), href: `${RoutePath.profile}${authData.id}` },
-            { content: t('Logout'), onClick: onLogout },
-          ]}
-        />
+        <HStack gap='16' className={classes.actions}>
+          <Button theme={ButtonTheme.CLEAR_INVERTED}>
+            <Icon Svg={NotificationIcon} inverted />
+          </Button>
+          <Dropdown
+            title={<Avatar size={30} src={authData.avatar || ''} />}
+            items={[
+              { content: t('Admin Panel'), href: `${RoutePath.admin_panel}`, hidden: !isAdminPanelAvailable },
+              { content: t('User profile'), href: `${RoutePath.profile}${authData.id}` },
+              { content: t('Logout'), onClick: onLogout },
+            ]}
+          />
+        </HStack>
       </nav>
     );
   }
