@@ -27,3 +27,12 @@
 .disabled {
   opacity: 0.7;
 }
+
+.btn {
+  background: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}

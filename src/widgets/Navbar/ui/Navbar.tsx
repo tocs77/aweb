@@ -18,6 +18,8 @@ import NotificationIcon from 'shared/assets/icons/notification-20-20.svg';
 
 import classes from './Navbar.module.scss';
 import { HStack } from 'shared/ui/Stack';
+import { Popover } from 'shared/ui/Popups';
+import { NotificationList } from 'entities/Notification';
 
 interface NavbarProps {
   className?: string;
@@ -45,9 +47,16 @@ const NavbarEl = ({ className }: NavbarProps) => {
           {t('Create article')}
         </AppLink>
         <HStack gap='16' className={classes.actions}>
-          <Button theme={ButtonTheme.CLEAR_INVERTED}>
-            <Icon Svg={NotificationIcon} inverted />
-          </Button>
+          <Popover
+            direction='bottom-left'
+            label={
+              <Button theme={ButtonTheme.CLEAR_INVERTED}>
+                <Icon Svg={NotificationIcon} inverted />
+              </Button>
+            }>
+            <NotificationList className={classes.notifications} />
+          </Popover>
+
           <Dropdown
             title={<Avatar size={30} src={authData.avatar || ''} />}
             items={[

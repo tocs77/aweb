@@ -55,7 +55,7 @@ export const Dropdown = (props: DropdownProps) => {
 
   return (
     <Menu as='div' className={classNames(popupCls.popup, {}, [className])}>
-      <Menu.Button className={classes.btn}>{title}</Menu.Button>
+      <Menu.Button className={popupCls.btn}>{title}</Menu.Button>
       <Menu.Items className={classNames(classes.menu, {}, [popupCls[direction]])}>{dropdownItems}</Menu.Items>
     </Menu>
   );

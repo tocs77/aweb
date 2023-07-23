@@ -11,32 +11,19 @@ import popupCls from '../../styles/popup.module.scss';
 interface PopoverProps {
   className?: string;
   direction?: DropDownDirection;
-  label: string;
+  label: JSX.Element | string;
 }
 
 export const Popover = (props: PropsWithChildren<PopoverProps>) => {
-  const { className, children, direction = 'bottom-right', label } = props;
+  const { className, children, direction = 'bottom-left', label } = props;
+
+  console.log('direction', direction);
 
   return (
     <HPopover as='div' className={classNames(popupCls.popup, {}, [className])}>
-      <HPopover.Button>{label}</HPopover.Button>
-      {children}
-      <HPopover.Panel className={classNames(classes.options, {}, [popupCls[direction]])}></HPopover.Panel>
+      <HPopover.Button className={popupCls.btn}>{label}</HPopover.Button>
+
+      <HPopover.Panel className={classNames(classes.panel, {}, [popupCls[direction]])}> {children}</HPopover.Panel>
     </HPopover>
   );
 };
-
-// <HStack gap='4'>
-// {label && <span className={classes.label}>{label}</span>}{' '}
-// <HPopover
-//   as='div'
-//   className={classNames(popupCls.popup, {}, [className])}
-//   onChange={onChange}
-//   value={value}
-//   disabled={readonly}>
-//   <HPopover.Button as='div' className={classes.trigger}>
-//     <Button disabled={readonly}>{(value as string) ?? defaultValue}</Button>
-//   </HPopover.Button>
-//   <HPopover.Options className={classNames(classes.options, {}, [popupCls[direction]])}>{optionsList}</HPopover.Options>
-// </HPopover>
-// </HStack>
