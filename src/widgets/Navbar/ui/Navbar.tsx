@@ -33,7 +33,6 @@ const NavbarEl = ({ className }: NavbarProps) => {
         </AppLink>
         <HStack gap='16' className={classes.actions}>
           <NotificationButton />
-
           <AvatarDropDown />
         </HStack>
       </nav>

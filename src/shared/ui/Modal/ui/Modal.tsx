@@ -3,6 +3,7 @@ import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import classes from './Modal.module.scss';
 import { Portal } from 'shared/ui/Portal';
 import { useTheme } from 'app/providers/ThemeProvider';
+import { Overlay } from 'shared/ui/Overlay';
 
 interface ModalProps {
   className?: string;
@@ -67,11 +68,8 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   return (
     <Portal>
       <div className={classNames(classes.Modal, mods, [className, theme, 'app_modal'])}>
-        <div className={classes.overlay} onClick={closeHandler}>
-          <div className={classes.content} onClick={(e) => e.stopPropagation()}>
-            {children}
-          </div>
-        </div>
+        <Overlay onClick={closeHandler} />
+        <div className={classes.content}>{children}</div>
       </div>
     </Portal>
   );

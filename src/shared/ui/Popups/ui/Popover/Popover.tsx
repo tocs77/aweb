@@ -17,8 +17,6 @@ interface PopoverProps {
 export const Popover = (props: PropsWithChildren<PopoverProps>) => {
   const { className, children, direction = 'bottom-left', label } = props;
 
-  console.log('direction', direction);
-
   return (
     <HPopover as='div' className={classNames(popupCls.popup, {}, [className])}>
       <HPopover.Button className={popupCls.btn}>{label}</HPopover.Button>
