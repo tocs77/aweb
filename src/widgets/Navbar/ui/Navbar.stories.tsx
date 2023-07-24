@@ -4,6 +4,8 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 
+import avatar from 'shared/assets/test/avatar.png';
+
 const meta = {
   title: 'widgets/Navbar',
   component: Navbar,
@@ -25,9 +27,9 @@ Dark.decorators = [ThemeDecorator(Theme.DARK)];
 export const LightLogged: Story = {
   args: {},
 };
-LightLogged.decorators = [StoreDecorator({ user: { authData: {} } })];
+LightLogged.decorators = [StoreDecorator({ user: { authData: { avatar } } })];
 
 export const DarkLogged: Story = {
   args: {},
 };
-DarkLogged.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({ user: { authData: {} } })];
+DarkLogged.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({ user: { authData: { avatar } } })];

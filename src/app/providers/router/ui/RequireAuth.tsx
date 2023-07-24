@@ -19,8 +19,6 @@ export const RequireAuth = ({ children, roles }: PropsWithChildren<RequireAuthPr
     return roles.some((role) => userRoles.includes(role));
   }, [roles, userRoles]);
 
-  console.log(userRoles, hasRequiredRoles, roles);
-
   if (!auth) {
     return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
   }

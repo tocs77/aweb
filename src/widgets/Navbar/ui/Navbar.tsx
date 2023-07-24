@@ -5,21 +5,15 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { LoginModal } from 'features/AuthByUserName';
-import { getAuthData, isUserAdmin, isUserManager } from 'entities/User';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { userActions } from 'entities/User';
+import { getAuthData } from 'entities/User';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Dropdown } from 'shared/ui/Popups';
-import { Avatar } from 'shared/ui/Avatar';
-import { Icon } from 'shared/ui/Icon';
-import NotificationIcon from 'shared/assets/icons/notification-20-20.svg';
+import { HStack } from 'shared/ui/Stack';
+import { NotificationButton } from 'features/notificationButton';
+import { AvatarDropDown } from 'features/AvatarDropDown';
 
 import classes from './Navbar.module.scss';
-import { HStack } from 'shared/ui/Stack';
-import { Popover } from 'shared/ui/Popups';
-import { NotificationList } from 'entities/Notification';
 
 interface NavbarProps {
   className?: string;
@@ -29,15 +23,6 @@ const NavbarEl = ({ className }: NavbarProps) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
   const { t } = useTranslation();
   const authData = useSelector(getAuthData);
-  const dispatch = useAppDispatch();
-  const isAdmin = useSelector(isUserAdmin);
-  const isManager = useSelector(isUserManager);
-
-  const isAdminPanelAvailable = isAdmin || isManager;
-
-  const onLogout = () => {
-    dispatch(userActions.logout());
-  };
 
   if (authData) {
     return (
@@ -47,24 +32,9 @@ const NavbarEl = ({ className }: NavbarProps) => {
           {t('Create article')}
         </AppLink>
         <HStack gap='16' className={classes.actions}>
-          <Popover
-            direction='bottom-left'
-            label={
-              <Button theme={ButtonTheme.CLEAR_INVERTED}>
-                <Icon Svg={NotificationIcon} inverted />
-              </Button>
-            }>
-            <NotificationList className={classes.notifications} />
-          </Popover>
+          <NotificationButton />
 
-          <Dropdown
-            title={<Avatar size={30} src={authData.avatar || ''} />}
-            items={[
-              { content: t('Admin Panel'), href: `${RoutePath.admin_panel}`, hidden: !isAdminPanelAvailable },
-              { content: t('User profile'), href: `${RoutePath.profile}${authData.id}` },
-              { content: t('Logout'), onClick: onLogout },
-            ]}
-          />
+          <AvatarDropDown />
         </HStack>
       </nav>
     );
