@@ -1,14 +1,16 @@
-import { PropsWithChildren, useState, useRef, useEffect, useCallback } from 'react';
+import { PropsWithChildren } from 'react';
+
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import classes from './Modal.module.scss';
 import { Portal } from 'shared/ui/Portal';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { Overlay } from 'shared/ui/Overlay';
+import { useModal } from 'shared/lib/hooks/useModal/useModal';
 
 interface ModalProps {
   className?: string;
   isOpen: boolean;
-  onClose?: () => void;
+  onClose: () => void;
   lazy?: boolean;
 }
 
@@ -16,50 +18,12 @@ const ANIMATION_DELAY = 250;
 export const Modal = (props: PropsWithChildren<ModalProps>) => {
   const { className, children, isOpen, lazy, onClose } = props;
   const { theme } = useTheme();
-
-  const [isClosing, setIsClosing] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout>();
-
-  useEffect(() => {
-    if (isOpen) setIsMounted(true);
-  }, [isOpen]);
+  const { close, isClosing, isMounted } = useModal({ isOpened: isOpen, onClose, animationDelay: ANIMATION_DELAY });
 
   const mods: Mods = {
     [classes.opened]: isOpen,
     [classes.isClosing]: isClosing,
   };
-
-  const closeHandler = useCallback(() => {
-    setIsClosing(true);
-    timerRef.current = setTimeout(() => {
-      onClose?.();
-      setIsClosing(false);
-    }, ANIMATION_DELAY);
-  }, [onClose]);
-
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        closeHandler();
-      }
-    },
-    [closeHandler],
-  );
-
-  useEffect(() => {
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('keydown', onKeyDown);
-      return;
-    }
-    window.removeEventListener('keydown', onKeyDown);
-  }, [isOpen, onKeyDown]);
 
   if (lazy && !isMounted) {
     return null;
@@ -68,7 +32,7 @@ export const Modal = (props: PropsWithChildren<ModalProps>) => {
   return (
     <Portal>
       <div className={classNames(classes.Modal, mods, [className, theme, 'app_modal'])}>
-        <Overlay onClick={closeHandler} />
+        <Overlay onClick={close} />
         <div className={classes.content}>{children}</div>
       </div>
     </Portal>
