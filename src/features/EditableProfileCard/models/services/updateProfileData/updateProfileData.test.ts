@@ -1,9 +1,9 @@
 import { updateProfileData } from './updateProfileData';
-import { Profile } from 'entities/Profile';
+import { Profile } from '@/entities/Profile';
 import { ValidateProfileError } from '../../consts/consts';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunc/TestAsyncThuns';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunc/TestAsyncThuns';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 
 const profile: Profile = {
   id: '1',

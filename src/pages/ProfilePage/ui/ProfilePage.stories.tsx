@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ProfilePage from './ProfilePage';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
-import src from 'shared/assets/test/avatar.png';
-import { ProfileCardSchema } from 'features/EditableProfileCard';
-import { ValidateProfileError } from 'features/EditableProfileCard/models/consts/consts';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
+import src from '@/shared/assets/test/avatar.png';
+import { ProfileCardSchema } from '@/features/EditableProfileCard';
+import { ValidateProfileError } from '@/features/EditableProfileCard/models/consts/consts';
 
 const baseProfile: ProfileCardSchema = {
   form: {

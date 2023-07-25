@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ArticleListItem } from './ArticleListItem';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
-import { Article, ArticleView } from 'entities/Article';
+import { Article, ArticleView } from '@/entities/Article';
 
-import src from 'shared/assets/test/avatar.png';
-import plan2 from 'shared/assets/test/plan2.jpg';
-import logo from 'shared/assets/test/tdms_logo.png';
-import earth from 'shared/assets/test/earth.jpg';
+import src from '@/shared/assets/test/avatar.png';
+import plan2 from '@/shared/assets/test/plan2.jpg';
+import logo from '@/shared/assets/test/tdms_logo.png';
+import earth from '@/shared/assets/test/earth.jpg';
 
 const article: Article = {
   id: '1',

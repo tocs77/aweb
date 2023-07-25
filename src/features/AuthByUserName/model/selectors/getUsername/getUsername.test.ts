@@ -1,4 +1,4 @@
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { getUsername } from './getUsername';
 import { LOGIN_SLICE_NAME, StoreWithLogin } from '../../types/loginSchema';
 

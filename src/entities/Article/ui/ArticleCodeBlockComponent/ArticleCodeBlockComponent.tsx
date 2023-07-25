@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 import classes from './ArticleCodeBlockComponent.module.scss';
-import { ArticleCodeBlock } from 'entities/Article/model/types/Article';
-import { Code } from 'shared/ui/Code/ui/Code';
+import { ArticleCodeBlock } from '@/entities/Article/model/types/Article';
+import { Code } from '@/shared/ui/Code/ui/Code';
 
 interface ArticleCodeBlockComponentProps {
   className?: string;

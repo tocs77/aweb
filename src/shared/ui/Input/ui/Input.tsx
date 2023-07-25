@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 import classes from './Input.module.scss';
 

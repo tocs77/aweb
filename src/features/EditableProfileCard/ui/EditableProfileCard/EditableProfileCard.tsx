@@ -2,14 +2,14 @@ import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { ProfileCard } from 'entities/Profile';
-import { getAuthData } from 'entities/User';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextTheme } from 'shared/ui/Text';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { ProfileCard } from '@/entities/Profile';
+import { getAuthData } from '@/entities/User';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
 import { getProfileForm } from '../../models/selectors/getProfileForm/getProfileForm';
 import { getProfileError } from '../../models/selectors/getProfileError/getProfileError';
@@ -20,7 +20,7 @@ import { getProfileValidateErrors } from '../../models/selectors/getProfileValid
 import { PROFILE_CARD_SLICE_NAME } from '../../models/types/editableProfileCardSchema';
 import { profileCardReducer } from '../../models/slice/profileCardSlice';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
-import { VStack } from 'shared/ui/Stack';
+import { VStack } from '@/shared/ui/Stack';
 const reducers: ReducersList = { [PROFILE_CARD_SLICE_NAME]: profileCardReducer };
 
 interface EditableProfileCardProps {

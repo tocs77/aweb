@@ -1,7 +1,7 @@
 import { screen, fireEvent } from '@testing-library/react';
 
+import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import { Counter } from './Counter';
-import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 import { COUNTER_SLICE_NAME } from '../model/types/counterSchema';
 
 describe('Counter', () => {

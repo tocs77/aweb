@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { ThunkConfig } from 'app/providers/StoreProvider';
-import { Article } from 'entities/Article';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
+import { Article } from '@/entities/Article';
 
 import { ARTICLE_DETAILS_RECOMMENDATIONS_SLICE_NAME } from '../../types/articleDetailsRecommendationsSchema';
 

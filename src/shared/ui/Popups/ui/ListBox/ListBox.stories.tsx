@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ListBox, ListBoxItem } from './ListBox';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { CenterDecorator } from 'shared/config/storybook/CenterDecorator/CenterDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { CenterDecorator } from '@/shared/config/storybook/CenterDecorator/CenterDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
 
 const items: ListBoxItem<string>[] = [
   { value: 'value1', content: 'Label 1' },

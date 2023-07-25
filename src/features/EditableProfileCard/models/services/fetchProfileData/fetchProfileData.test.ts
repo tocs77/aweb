@@ -1,8 +1,8 @@
 import { fetchProfileData } from './fetchProfileData';
 import { Profile } from '../../../../../entities/Profile/model/types/profile';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunc/TestAsyncThuns';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunc/TestAsyncThuns';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 
 const profile: Profile = {
   id: '1',

@@ -1,12 +1,12 @@
 import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
-import { counterReducer, COUNTER_SLICE_NAME } from 'entities/Counter';
-import { userReducer, USER_SLICE_NAME } from 'entities/User';
+import { counterReducer, COUNTER_SLICE_NAME } from '@/entities/Counter';
+import { userReducer, USER_SLICE_NAME } from '@/entities/User';
 import { createReducerManager } from './reducerManager';
-import { $api } from 'shared/api/api';
-import { SCROLL_KEEP_SLICE_NAME, scrollKeepReducer } from 'features/ScrollKeep';
-import { rtkApi } from 'shared/api/rtkApi';
+import { $api } from '@/shared/api/api';
+import { SCROLL_KEEP_SLICE_NAME, scrollKeepReducer } from '@/features/ScrollKeep';
+import { rtkApi } from '@/shared/api/rtkApi';
 
 export const createReduxStore = (intialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) => {
   const rootReducers: ReducersMapObject<StateSchema> = {

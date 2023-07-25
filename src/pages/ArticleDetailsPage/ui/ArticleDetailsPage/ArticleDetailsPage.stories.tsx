@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ArticleDetailsPage from './ArticleDetailsPage';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { ArticleType } from 'entities/Article';
-import { ArticleBlockType } from 'entities/Article/model/consts/consts';
-import plan2 from 'shared/assets/test/plan2.jpg';
-import logo from 'shared/assets/test/tdms_logo.png';
-import earth from 'shared/assets/test/earth.jpg';
-import { ARTICLE_DETAILS_SLICE_NAME } from 'entities/Article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { ArticleType } from '@/entities/Article';
+import { ArticleBlockType } from '@/entities/Article/model/consts/consts';
+import plan2 from '@/shared/assets/test/plan2.jpg';
+import logo from '@/shared/assets/test/tdms_logo.png';
+import earth from '@/shared/assets/test/earth.jpg';
+import { ARTICLE_DETAILS_SLICE_NAME } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 const meta = {
   title: 'pages/ArticleDetailsPage',

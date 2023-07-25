@@ -2,14 +2,14 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Card } from 'shared/ui/Card/ui/Card';
-import { Input } from 'shared/ui/Input';
-import { ArticleSortField, ArticleView, ArticleViewSelector, ArticleTypeTabs } from 'entities/Article';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ArticleSortSelector, ArticleType } from 'entities/Article';
-import { SortOrder } from 'shared/types';
-import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Card } from '@/shared/ui/Card/ui/Card';
+import { Input } from '@/shared/ui/Input';
+import { ArticleSortField, ArticleView, ArticleViewSelector, ArticleTypeTabs } from '@/entities/Article';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ArticleSortSelector, ArticleType } from '@/entities/Article';
+import { SortOrder } from '@/shared/types';
+import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 
 import classes from './ArticlePageFilters.module.scss';
 import { articlesPageActions } from '../../model/slices/articlesPageSlice';

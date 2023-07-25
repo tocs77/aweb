@@ -1,14 +1,14 @@
 /* eslint-disable i18next/no-literal-string */
 import type { Meta, StoryObj } from '@storybook/react';
 import { EditableProfileCard } from './EditableProfileCard';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ProfileCardSchema } from '../../models/types/editableProfileCardSchema';
 
-import src from 'shared/assets/test/avatar.png';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import src from '@/shared/assets/test/avatar.png';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 
 const baseProfile: ProfileCardSchema = {
   form: {

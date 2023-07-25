@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
-import { Article } from 'entities/Article';
+import { Article } from '@/entities/Article';
 
 import { ARTICLE_DETAILS_PAGE_SLICE_NAME, StoreWithArticlesDetailsPage } from '../types';
 

@@ -1,5 +1,5 @@
 import { EntityState } from '@reduxjs/toolkit';
-import { Article } from 'entities/Article';
+import { Article } from '@/entities/Article';
 
 export const ARTICLE_DETAILS_RECOMMENDATIONS_SLICE_NAME = 'articleDetailsRecommedations' as const;
 

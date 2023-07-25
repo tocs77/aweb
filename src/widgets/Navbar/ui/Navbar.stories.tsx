@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Navbar } from './Navbar';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { Notification } from 'entities/Notification/model/types/notification';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { Notification } from '@/entities/Notification/model/types/notification';
 
-import avatar from 'shared/assets/test/avatar.png';
+import avatar from '@/shared/assets/test/avatar.png';
 
 const notifications: Notification[] = [
   {

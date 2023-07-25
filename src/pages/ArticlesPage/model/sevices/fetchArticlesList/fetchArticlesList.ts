@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import axios from 'axios';
 
-import { Article, ArticleType } from 'entities/Article';
+import { Article, ArticleType } from '@/entities/Article';
 
 import { ARTICLES_PAGE_SLICE_NAME, StoreWithArticlesPage } from '../../types/articlesPageSchema';
 import {
@@ -12,7 +12,7 @@ import {
   getArticlesPageSortOrder,
   getArticlesPageType,
 } from '../../selectors/ariclesPageSelectors';
-import { addQueryParams } from 'shared/lib/url/addQueryParams/addQueryParams';
+import { addQueryParams } from '@/shared/lib/url/addQueryParams/addQueryParams';
 
 interface FetchArticlesListProps {
   page?: number;

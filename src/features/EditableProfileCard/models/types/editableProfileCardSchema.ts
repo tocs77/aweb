@@ -1,4 +1,4 @@
-import { Profile } from 'entities/Profile';
+import { Profile } from '@/entities/Profile';
 import { ValidateProfileError } from '../consts/consts';
 
 export const PROFILE_CARD_SLICE_NAME = 'profile' as const;

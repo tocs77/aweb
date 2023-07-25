@@ -1,5 +1,5 @@
 import axios, { AxiosStatic } from 'axios';
-import { StateSchema } from 'app/providers/StoreProvider';
+import { StateSchema } from '@/app/providers/StoreProvider';
 import { Dispatch, AsyncThunkAction } from '@reduxjs/toolkit';
 import { NavigateFunction } from 'react-router-dom';
 

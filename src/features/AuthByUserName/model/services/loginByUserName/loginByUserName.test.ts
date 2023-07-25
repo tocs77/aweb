@@ -1,6 +1,6 @@
 import { loginByUsername } from './loginByUserName';
-import { UserRole, userActions } from 'entities/User';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunc/TestAsyncThuns';
+import { UserRole, userActions } from '@/entities/User';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunc/TestAsyncThuns';
 
 describe('LognByUserNAme async action', () => {
   it('should dispatch user data', async () => {

@@ -1,8 +1,8 @@
 import { getProfileForm } from './getProfileForm';
-import { Profile } from 'entities/Profile';
+import { Profile } from '@/entities/Profile';
 import { ProfileCardSchema, StoreWithProfile, PROFILE_CARD_SLICE_NAME } from '../../types/editableProfileCardSchema';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 ('../../types/profile');
 
 const profile: Profile = {

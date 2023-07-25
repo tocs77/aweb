@@ -1,12 +1,12 @@
 import { Fragment, useMemo } from 'react';
 import { Menu } from '@headlessui/react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 import classes from './Dropdown.module.scss';
 import popupCls from '../../styles/popup.module.scss';
-import { DropDownDirection } from 'shared/types';
-import { AppLink } from 'shared/ui/AppLink';
+import { DropDownDirection } from '@/shared/types';
+import { AppLink } from '@/shared/ui/AppLink';
 
 export interface DropdownItem {
   content: string;

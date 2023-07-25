@@ -1,10 +1,10 @@
 import { Fragment, memo, useMemo } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Button } from 'shared/ui/Button';
-import { HStack } from 'shared/ui/Stack';
-import { DropDownDirection } from 'shared/types';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button } from '@/shared/ui/Button';
+import { HStack } from '@/shared/ui/Stack';
+import { DropDownDirection } from '@/shared/types';
 
 import classes from './ListBox.module.scss';
 import popupCls from '../../styles/popup.module.scss';

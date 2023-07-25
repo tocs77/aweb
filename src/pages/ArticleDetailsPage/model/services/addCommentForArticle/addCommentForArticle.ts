@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ARTICLE_DETAILS_COMMENT_SLICE_NAME } from '../../types/articleDetailsCommentsSchema';
-import { ThunkConfig } from 'app/providers/StoreProvider';
+import { ThunkConfig } from '@/app/providers/StoreProvider';
 import axios from 'axios';
-import { getAuthData } from 'entities/User';
-import { Comment } from 'entities/Comment';
-import { getArticleDetailsData, StoreWithArticleDetails } from 'entities/Article/';
+import { getAuthData } from '@/entities/User';
+import { Comment } from '@/entities/Comment';
+import { getArticleDetailsData, StoreWithArticleDetails } from '@/entities/Article/';
 import { fetchCommentsByArticleId } from '../fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 export const addCommentForArticle = createAsyncThunk<Comment, string, ThunkConfig<string>>(

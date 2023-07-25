@@ -1,6 +1,6 @@
-import { ArticleView } from 'entities/Article';
+import { ArticleView } from '@/entities/Article';
 import { ARTICLES_PAGE_SLICE_NAME, StoreWithArticlesPage } from '../types/articlesPageSchema';
-import { ArticleType } from 'entities/Article/model/consts/consts';
+import { ArticleType } from '@/entities/Article/model/consts/consts';
 
 export const getArticlesIsLoading = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.isLoading;
 export const getArticlesError = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.error;

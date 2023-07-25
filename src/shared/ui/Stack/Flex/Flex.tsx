@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import classes from './Flex.module.scss';
 
 type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
