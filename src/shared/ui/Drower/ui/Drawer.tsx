@@ -6,7 +6,7 @@ import { Portal } from '@/shared/ui/Portal';
 import { useTheme } from '@/app/providers/ThemeProvider';
 
 import classes from './Drawer.module.scss';
-import { useAnimationLibs } from '@/shared/lib/components/AnimationsProvider';
+import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationsProvider';
 
 interface DrawerProps {
   className?: string;
@@ -63,8 +63,6 @@ export const DrawerContent = memo((props: PropsWithChildren<DrawerProps>) => {
     },
   );
 
-  console.log('is opened drawer', isOpened);
-
   if (!isOpened) {
     return null;
   }
@@ -83,8 +81,16 @@ export const DrawerContent = memo((props: PropsWithChildren<DrawerProps>) => {
   );
 });
 
-export const Drawer = memo((props: PropsWithChildren<DrawerProps>) => {
+const DrawerAsync = (props: PropsWithChildren<DrawerProps>) => {
   const { isLoaded } = useAnimationLibs();
   if (!isLoaded) return null;
   return <DrawerContent {...props} />;
-});
+};
+
+export const Drawer = (props: PropsWithChildren<DrawerProps>) => {
+  return (
+    <AnimationProvider>
+      <DrawerAsync {...props} />
+    </AnimationProvider>
+  );
+};

@@ -9,7 +9,6 @@ import { Drawer } from '@/shared/ui/Drower';
 import NotificationIcon from '@/shared/assets/icons/notification-20-20.svg';
 
 import classes from './NotificationButton.module.scss';
-import { AnimationProvider } from '@/shared/lib/components/AnimationsProvider';
 
 interface NotificationButtonProps {
   className?: string;
@@ -38,11 +37,10 @@ export const NotificationButton = (props: NotificationButtonProps) => {
       </BrowserView>
       <MobileView>
         {trigger}
-        <AnimationProvider>
-          <Drawer isOpened={isOpened} onClose={() => setIsOpened(false)}>
-            <NotificationList />
-          </Drawer>
-        </AnimationProvider>
+
+        <Drawer isOpened={isOpened} onClose={() => setIsOpened(false)}>
+          <NotificationList />
+        </Drawer>
       </MobileView>
     </div>
   );
