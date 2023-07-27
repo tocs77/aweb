@@ -19,7 +19,9 @@ export const Popover = (props: PropsWithChildren<PopoverProps>) => {
 
   return (
     <HPopover as='div' className={classNames(popupCls.popup, {}, [className])}>
-      <HPopover.Button className={popupCls.btn}>{label}</HPopover.Button>
+      <HPopover.Button as='div' className={popupCls.btn}>
+        {label}
+      </HPopover.Button>
 
       <HPopover.Panel className={classNames(classes.panel, {}, [popupCls[direction]])}> {children}</HPopover.Panel>
     </HPopover>
