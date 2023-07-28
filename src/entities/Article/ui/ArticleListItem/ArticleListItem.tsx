@@ -12,7 +12,7 @@ import { Button } from '@/shared/ui/Button';
 import { Article, ArticleTextBlock } from '../../model/types/Article';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/consts/router';
 import { AppLink } from '@/shared/ui/AppLink';
 
 interface ArticleListItemProps {

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/consts/router';
 import { Button } from '@/shared/ui/Button';
 import classes from './ArticleDetailsPageHeader.module.scss';
 import { canEditArticle } from '../../model/selectors/article';
