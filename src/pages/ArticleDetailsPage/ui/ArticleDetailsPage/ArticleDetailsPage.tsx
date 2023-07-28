@@ -14,6 +14,7 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import { ArtilceDetailPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
+import { ArticleRating } from '@/features/ArticleRating';
 
 const initialReducers: ReducersList = {
   [ARTICLE_DETAILS_PAGE_SLICE_NAME]: articleDetailsPageReducer,
@@ -30,6 +31,7 @@ const ArticleDetailsPage = () => {
       <Page>
         <ArtilceDetailPageHeader />
         <ArticleDetails id={id} />
+        <ArticleRating articleId={id} />
         <ArticleRecommendationsList />
         <ArticleDetailsComments id={id} />
       </Page>

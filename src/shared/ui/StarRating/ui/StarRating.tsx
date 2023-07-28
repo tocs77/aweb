@@ -4,7 +4,7 @@ import { Icon } from '@/shared/ui/Icon';
 import StarIcon from '@/shared/assets/icons/star.svg';
 
 import classes from './StarRating.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface StarRatingProps {
   className?: string;
@@ -19,6 +19,11 @@ export const StarRating = (props: StarRatingProps) => {
   const { className, onSelect, selectedStars = 0, size = 30 } = props;
   const [currentRating, setCurrentRating] = useState(0);
   const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
+
+  useEffect(() => {
+    if (selectedStars) setIsSelected(true);
+    setCurrentRating(selectedStars);
+  }, [selectedStars]);
 
   const onHover = (rating: number) => () => {
     if (isSelected) return;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BrowserView, MobileView } from 'react-device-detect';
 
@@ -19,17 +19,22 @@ interface RatingCardProps {
   hasFeedback?: boolean;
   onCancel: (rating: number) => void;
   onAccept: (rating: number, feedback?: string) => void;
+  rating?: number;
 }
 
 export const RatingCard = (props: RatingCardProps) => {
-  const { className, title, feedbackTitle, hasFeedback, onCancel, onAccept } = props;
+  const { className, title, feedbackTitle, hasFeedback, onCancel, onAccept, rating = 0 } = props;
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [feedback, setFeedback] = useState('');
-  const [rating, setRating] = useState(0);
+  const [rate, setRate] = useState(props.rating || 0);
+
+  useEffect(() => {
+    setRate(rating);
+  }, [rating]);
 
   const onSelectRating = (rating: number) => {
-    setRating(rating);
+    setRate(rating);
 
     if (hasFeedback) {
       setIsModalOpen(true);
@@ -40,11 +45,11 @@ export const RatingCard = (props: RatingCardProps) => {
 
   const acceptHandler = () => {
     setIsModalOpen(false);
-    onAccept(rating, feedback);
+    onAccept(rate, feedback);
   };
 
   const cancelHandler = () => {
-    onCancel(rating);
+    onCancel(rate);
     setIsModalOpen(false);
   };
 
@@ -54,12 +59,13 @@ export const RatingCard = (props: RatingCardProps) => {
       <Input placeholder={t('Your feedback')} value={feedback} onChange={setFeedback} />
     </>
   );
+  const titleText = rate === 0 ? title : t('Thanks for your feedback');
 
   return (
     <Card className={classNames('', {}, [className])}>
       <VStack align='center' gap='8'>
-        <Text title={title} />
-        <StarRating onSelect={onSelectRating} />
+        <Text title={titleText} />
+        <StarRating onSelect={onSelectRating} selectedStars={rate} />
         <BrowserView>
           <Modal isOpen={isModalOpen} onClose={cancelHandler} lazy>
             <VStack max align='center' gap='32'>
