@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
+import { Theme } from '@/shared/consts/theme';
 
 const meta = {
-  title: 'shared/ThemeSwitcher',
+  title: 'feature/ThemeSwitcher',
   component: ThemeSwitcher,
 
   tags: ['autodocs'],

@@ -3,7 +3,7 @@ import { PropsWithChildren, memo, useCallback, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Overlay } from '@/shared/ui/Overlay';
 import { Portal } from '@/shared/ui/Portal';
-import { useTheme } from '@/app/providers/ThemeProvider';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 import classes from './Drawer.module.scss';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationsProvider';
