@@ -4,7 +4,7 @@ import { ArticleViewSelector } from './ArticleViewSelector';
 import { ArticleView } from '@/entities/Article';
 
 const meta = {
-  title: 'entities/ArticleViewSelector',
+  title: 'features/ArticleViewSelector',
   component: ArticleViewSelector,
   args: {
     onViewClick: () => {

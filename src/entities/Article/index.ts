@@ -5,6 +5,3 @@ export type { ArticleDetailsSchema, StoreWithArticleDetails } from './model/type
 export { ARTICLE_DETAILS_SLICE_NAME } from './model/types/articleDetailsSchema';
 export { getArticleDetailsData } from './model/selectors/articleDetails';
 export { ArticleList } from './ui/ArticleList/ArticleList';
-export { ArticleViewSelector } from './ui/ArtilceViewSelector/ArticleViewSelector';
-export { ArticleSortSelector } from './ui/ArticleSortSelector/ui/ArticleSortSelector';
-export { ArticleTypeTabs } from './ui/ArticleTypeTabs/ArticleTypeTabs';

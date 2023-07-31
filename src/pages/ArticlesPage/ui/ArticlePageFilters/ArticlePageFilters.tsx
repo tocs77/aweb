@@ -5,9 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/Card/ui/Card';
 import { Input } from '@/shared/ui/Input';
-import { ArticleSortField, ArticleView, ArticleViewSelector, ArticleTypeTabs } from '@/entities/Article';
+import { ArticleSortField, ArticleView } from '@/entities/Article';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ArticleSortSelector, ArticleType } from '@/entities/Article';
+import { ArticleType } from '@/entities/Article';
+import { ArticleSortSelector } from '@/features/ArticleSortSelector';
+import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
+import { ArticleViewSelector } from '@/features/ArtilceViewSelector';
 import { SortOrder } from '@/shared/types';
 import { useDebounce } from '@/shared/lib/hooks/useDebounce/useDebounce';
 

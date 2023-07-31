@@ -7,7 +7,7 @@ const meta = {
   title: 'shared/Modal',
   component: Modal,
   args: {
-    children: 'Super modal',
+    children: <h2>{'Super modal'}</h2>,
     isOpen: true,
   },
   tags: ['autodocs'],
