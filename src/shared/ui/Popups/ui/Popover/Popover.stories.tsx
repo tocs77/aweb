@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Popover } from './Popover';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { CenterDecorator } from '@/shared/config/storybook/CenterDecorator/CenterDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
+import { Theme } from '@/shared/consts/theme';
 
 const meta = {
   title: 'shared/Popover',

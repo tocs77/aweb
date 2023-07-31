@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { CommentList } from './CommentList';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
+import { Theme } from '@/shared/consts/theme';
 import { Comment } from '@/entities/Comment';
 
 import src from '@/shared/assets/test/avatar.png';

@@ -4,7 +4,7 @@ import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator
 import { SuspenseDecorator } from '../../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import { withRouter } from 'storybook-addon-react-router-v6';
 
-import { Theme } from '../../src/app/providers/ThemeProvider';
+import { Theme } from '../../src/shared/consts/theme';
 
 const preview: Preview = {
   parameters: {
@@ -15,7 +15,9 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    layout: 'fullscreen',
   },
+
   decorators: [StyleDecorator, ThemeDecorator(Theme.LIGHT), withRouter, SuspenseDecorator],
 };
 

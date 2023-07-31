@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import ArticleDetailsPage from './ArticleDetailsPage';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from '@/app/providers/ThemeProvider';
+import { Theme } from '@/shared/consts/theme';
 import { ArticleType } from '@/entities/Article';
 import { ArticleBlockType } from '@/entities/Article/model/consts/consts';
 import plan2 from '@/shared/assets/test/plan2.jpg';
