@@ -8,7 +8,7 @@ import { LoginModal } from '@/features/AuthByUserName';
 import { getAuthData } from '@/entities/User';
 import { Text, TextTheme } from '@/shared/ui/Text';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
-import { RoutePath } from '@/shared/consts/router';
+import { getRouteArticleCreate } from '@/shared/consts/router';
 import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropDown } from '@/features/AvatarDropDown';
@@ -28,7 +28,7 @@ const NavbarEl = ({ className }: NavbarProps) => {
     return (
       <nav className={classNames(classes.navbar, {}, [className])}>
         <Text className={classes.appName} title={t('Zeitung')} theme={TextTheme.INVERTED} />
-        <AppLink to={RoutePath.article_create} theme={AppLinkTheme.SECONDARY} className={classes.createBtn}>
+        <AppLink to={getRouteArticleCreate()} theme={AppLinkTheme.SECONDARY} className={classes.createBtn}>
           {t('Create article')}
         </AppLink>
         <HStack gap='16' className={classes.actions}>

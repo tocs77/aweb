@@ -8,7 +8,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { userActions, isUserAdmin, isUserManager, getAuthData } from '@/entities/User';
 
 import { useSelector } from 'react-redux';
-import { RoutePath } from '@/shared/consts/router';
+import { getRouteAdminPanel, getRouteProfile } from '@/shared/consts/router';
 
 interface AvatarDropDownProps {
   className?: string;
@@ -34,8 +34,8 @@ export const AvatarDropDown = (props: AvatarDropDownProps) => {
       className={classNames('', {}, [className])}
       title={<Avatar size={30} src={authData.avatar || ''} />}
       items={[
-        { content: t('Admin Panel'), href: `${RoutePath.admin_panel}`, hidden: !isAdminPanelAvailable },
-        { content: t('User profile'), href: `${RoutePath.profile}${authData.id}` },
+        { content: t('Admin Panel'), href: getRouteAdminPanel(), hidden: !isAdminPanelAvailable },
+        { content: t('User profile'), href: getRouteProfile(authData.id) },
         { content: t('Logout'), onClick: onLogout },
       ]}
     />

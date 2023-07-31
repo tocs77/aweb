@@ -16,6 +16,14 @@ const preview: Preview = {
       },
     },
     layout: 'fullscreen',
+    themes: {
+      default: 'light',
+      list: [
+        { name: 'light', class: Theme.DARK, color: '#ffffff' },
+        { name: 'dark', class: Theme.LIGHT, color: '#000000' },
+        { name: 'orange', class: Theme.ORANGE, color: '#ffb005' },
+      ],
+    },
   },
 
   decorators: [StyleDecorator, ThemeDecorator(Theme.LIGHT), withRouter, SuspenseDecorator],

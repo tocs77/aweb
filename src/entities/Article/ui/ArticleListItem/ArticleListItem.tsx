@@ -12,7 +12,7 @@ import { Button } from '@/shared/ui/Button';
 import { Article, ArticleTextBlock } from '../../model/types/Article';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { RoutePath } from '@/shared/consts/router';
+import { getRouteArticleDetails } from '@/shared/consts/router';
 import { AppLink } from '@/shared/ui/AppLink';
 
 interface ArticleListItemProps {
@@ -49,7 +49,7 @@ const ArticleListItemEl = (props: ArticleListItemProps) => {
           <img src={article.img} className={classes.img} alt='article logo' />
           {textBlock && <ArticleTextBlockComponent block={textBlock} className={classes.textBlock} />}
           <div className={classes.footer}>
-            <AppLink to={`${RoutePath.article_details}${article.id}`} target={target}>
+            <AppLink to={getRouteArticleDetails(article.id)} target={target}>
               <Button>{t('Read more')}</Button>
             </AppLink>
 
@@ -63,7 +63,7 @@ const ArticleListItemEl = (props: ArticleListItemProps) => {
   return (
     <AppLink
       target={target}
-      to={`${RoutePath.article_details}${article.id}`}
+      to={getRouteArticleDetails(article.id)}
       className={classNames(classes.ArticleListItem, {}, [className, classes[view]])}>
       <Card className={classes.card}>
         <div className={classes.imageWrapper}>

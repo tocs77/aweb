@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { RoutePath } from '@/shared/consts/router';
+import { getRouteArticleEdit, getRouteArticles } from '@/shared/consts/router';
 import { Button } from '@/shared/ui/Button';
 import classes from './ArticleDetailsPageHeader.module.scss';
 import { canEditArticle } from '../../model/selectors/article';
@@ -20,11 +20,15 @@ const ArtilceDetailPageHeaderEl = ({ className }: ArtilceDetailPageHeaderProps) 
   const canEdit = useSelector(canEditArticle);
 
   const onBackToList = useCallback(() => {
-    navigate(RoutePath.articles);
+    navigate(getRouteArticles());
   }, [navigate]);
 
   const onEditArticle = useCallback(() => {
-    navigate(`${RoutePath.articles}/${id}/edit`);
+    if (!id) {
+      console.log('No id to edit');
+      return;
+    }
+    navigate(getRouteArticleEdit(id));
   }, [id, navigate]);
 
   return (
