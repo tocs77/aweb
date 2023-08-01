@@ -19,3 +19,7 @@ export const AvatarDefault: Story = {
 export const AvatarBig: Story = {
   args: { size: 100 },
 };
+
+export const AvatarError: Story = {
+  args: { src: '' },
+};

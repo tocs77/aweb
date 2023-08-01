@@ -32,7 +32,7 @@ export const AvatarDropDown = (props: AvatarDropDownProps) => {
   return (
     <Dropdown
       className={classNames('', {}, [className])}
-      title={<Avatar size={30} src={authData.avatar || ''} />}
+      title={<Avatar size={30} src={authData.avatar || ''} fallBackInverted={true} />}
       items={[
         { content: t('Admin Panel'), href: getRouteAdminPanel(), hidden: !isAdminPanelAvailable },
         { content: t('User profile'), href: getRouteProfile(authData.id) },

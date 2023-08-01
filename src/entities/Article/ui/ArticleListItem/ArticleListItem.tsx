@@ -14,6 +14,8 @@ import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { getRouteArticleDetails } from '@/shared/consts/router';
 import { AppLink } from '@/shared/ui/AppLink';
+import { AppImage } from '@/shared/ui/AppImage';
+import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleListItemProps {
   className?: string;
@@ -46,7 +48,7 @@ const ArticleListItemEl = (props: ArticleListItemProps) => {
           </div>
           <Text text={article.title} className={classes.title} />
           {types}
-          <img src={article.img} className={classes.img} alt='article logo' />
+          <AppImage src={article.img} className={classes.img} alt='article logo' fallback={<Skeleton width={50} height={50} />} />
           {textBlock && <ArticleTextBlockComponent block={textBlock} className={classes.textBlock} />}
           <div className={classes.footer}>
             <AppLink to={getRouteArticleDetails(article.id)} target={target}>
@@ -67,7 +69,7 @@ const ArticleListItemEl = (props: ArticleListItemProps) => {
       className={classNames(classes.ArticleListItem, {}, [className, classes[view]])}>
       <Card className={classes.card}>
         <div className={classes.imageWrapper}>
-          <img src={article.img} className={classes.img} alt='article logo' />
+          <AppImage src={article.img} className={classes.img} alt='article logo' fallback={<Skeleton width={50} height={50} />} />
           <Text text={article.createdAt} className={classes.date} />
         </div>
         <div className={classes.infoWrapper}>
