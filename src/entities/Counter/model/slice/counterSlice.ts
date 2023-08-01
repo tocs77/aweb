@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
 import { CounterSchema, COUNTER_SLICE_NAME } from '../types/counterSchema';
+import { buildSlice } from '@/shared/lib/store/buildSlice';
 
 const initialState: CounterSchema = {
   value: 0,
 };
 
-export const counterSlice = createSlice({
+export const counterSlice = buildSlice({
   name: COUNTER_SLICE_NAME,
   initialState,
   reducers: {
@@ -20,3 +20,4 @@ export const counterSlice = createSlice({
 
 export const { actions: counterActions } = counterSlice;
 export const { reducer: counterReducer } = counterSlice;
+export const { useActions: useCounterActions } = counterSlice;
