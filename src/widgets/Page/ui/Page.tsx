@@ -1,4 +1,5 @@
 import { MutableRefObject, PropsWithChildren, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
@@ -6,11 +7,11 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { scrollKeepActions, getScrollByPath, StoreWithScrollKeep } from '@/features/ScrollKeep';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
+import { TestProps } from '@/shared/types';
 
 import classes from './Page.module.scss';
-import { useSelector } from 'react-redux';
 
-interface PageProps {
+interface PageProps extends TestProps {
   className?: string;
   onScrollEnd?: () => void;
   name?: string;
@@ -36,7 +37,11 @@ export const Page = (props: PropsWithChildren<PageProps>) => {
   }, 500);
 
   return (
-    <section className={classNames(classes.Page, {}, [className])} ref={wrapperRef} onScroll={name ? onScroll : undefined}>
+    <section
+      className={classNames(classes.Page, {}, [className])}
+      ref={wrapperRef}
+      onScroll={name ? onScroll : undefined}
+      data-testid={props['data-testid'] || 'Page'}>
       {children}
       <div ref={triggerRef} id='anchor' style={{ height: '20px' }} />
     </section>

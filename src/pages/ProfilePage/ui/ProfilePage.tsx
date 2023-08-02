@@ -4,6 +4,6 @@ import { EditableProfileCard } from '@/features/EditableProfileCard';
 
 const ProfilePage = () => {
   const { id } = useParams<{ id: string }>();
-  return <Page>{id && <EditableProfileCard id={id} />}</Page>;
+  return <Page data-testid='profile-page'>{id && <EditableProfileCard id={id} />}</Page>;
 };
 export default ProfilePage;
