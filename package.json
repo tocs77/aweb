@@ -21,6 +21,7 @@
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
+    "test:e2e": "cypress open",
     "server": "node ./json-server/index.js",
     "prepare": "husky install",
     "imports": "ts-node scripts/updateimports.ts"
@@ -89,6 +90,7 @@
     "circular-dependency-plugin": "^5.2.2",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
+    "cypress": "^12.17.3",
     "eslint": "^8.42.0",
     "eslint-plugin-i18next": "^6.0.1",
     "eslint-plugin-react": "^7.32.2",

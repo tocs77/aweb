@@ -34,7 +34,7 @@ const ArticlesPage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-      <Page onScrollEnd={onLoadNextPart} name='articles-page'>
+      <Page onScrollEnd={onLoadNextPart} name='articles-page' data-testid='articles-page'>
         {error && <Text title='Error in artilces' text={error} theme={TextTheme.ERROR} align={TextAlign.CENTER} />}
         <ArticlePageFiler />
         <ArticleInfiniteList />
