@@ -92,7 +92,7 @@ const ArticleListEl = (props: ArticleListProps) => {
   }
 
   return (
-    <div className={classNames(classes.ArticleList, {}, [className])}>
+    <div className={classNames(classes.ArticleList, {}, [className])} data-testid='articles-list'>
       {list}
       {loadingSkeleton}
     </div>

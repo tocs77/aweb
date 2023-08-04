@@ -49,7 +49,7 @@ const ProfileCardEl = function Inp(props: ProfileCardProps) {
 
   if (isLoading) {
     return (
-      <div className={classNames(classes.ProfileCard, {}, [className, classes.loading])}>
+      <div className={classNames(classes.ProfileCard, {}, [className, classes.loading])} data-testid='profile-card'>
         <Loader />
       </div>
     );

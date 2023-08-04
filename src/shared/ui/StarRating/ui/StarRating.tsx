@@ -57,6 +57,8 @@ export const StarRating = (props: StarRatingProps) => {
           )}
           width={size}
           height={size}
+          data-testid='RatingStar'
+          data-rating={currentRating >= starNumber ? 'rating-selected' : ''}
         />
       ))}
     </div>

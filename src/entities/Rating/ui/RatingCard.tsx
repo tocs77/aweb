@@ -63,7 +63,7 @@ export const RatingCard = (props: RatingCardProps) => {
 
   return (
     <Card className={classNames('', {}, [className])}>
-      <VStack align='center' gap='8'>
+      <VStack align='center' gap='8' data-testid='RatingCard'>
         <Text title={titleText} />
         <StarRating onSelect={onSelectRating} selectedStars={rate} />
         <BrowserView>
@@ -71,10 +71,10 @@ export const RatingCard = (props: RatingCardProps) => {
             <VStack max align='center' gap='32'>
               {modalContent}
               <HStack max gap='8' align='end' justify='end'>
-                <Button theme={ButtonTheme.OUTLINE_WARNING} onClick={cancelHandler}>
+                <Button theme={ButtonTheme.OUTLINE_WARNING} onClick={cancelHandler} data-testid='RatingCard.CancelBtn'>
                   {t('Cancel')}
                 </Button>
-                <Button theme={ButtonTheme.OUTLINE} onClick={acceptHandler}>
+                <Button theme={ButtonTheme.OUTLINE} onClick={acceptHandler} data-testid='RatingCard.SendBtn'>
                   {t('Send')}
                 </Button>
               </HStack>
@@ -85,7 +85,11 @@ export const RatingCard = (props: RatingCardProps) => {
           <Drawer isOpened={isModalOpen} onClose={cancelHandler} lazy>
             <VStack max align='center' gap='32'>
               {modalContent}
-              <Button theme={ButtonTheme.BACKGROUND} onClick={acceptHandler} size={ButtonSize.XL}>
+              <Button
+                theme={ButtonTheme.BACKGROUND}
+                onClick={acceptHandler}
+                size={ButtonSize.XL}
+                data-testid='RatingCard.SendBtn'>
                 {t('Send')}
               </Button>
             </VStack>

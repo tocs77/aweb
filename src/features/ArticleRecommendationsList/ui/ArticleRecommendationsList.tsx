@@ -18,7 +18,7 @@ export const ArticleRecommendationsList = (props: ArticleRecommendationsListProp
   if (isLoading || error || !artcles) return null;
 
   return (
-    <VStack className={classNames('', {}, [className])} gap='8' max>
+    <VStack className={classNames('', {}, [className])} gap='8' max data-testid='ArticleRecommendationsList'>
       <Text title={t('See also')} size={TextSize.L} />
       <ArticleList articles={artcles} target={'_blank'} isLoading={isLoading} virtualized={false} view={ArticleView.GRID} />
     </VStack>

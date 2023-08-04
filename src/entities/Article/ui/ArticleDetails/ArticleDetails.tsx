@@ -74,7 +74,7 @@ const ArticleDetailsEl = (props: ArticleDetailsProps) => {
     content = (
       <>
         {article?.img && <Avatar size={200} src={article?.img} className={classes.avatar} />}
-        <Text title={article?.title} text={article?.subtitle} size={TextSize.L} />
+        <Text title={article?.title} text={article?.subtitle} size={TextSize.L} data-testid='article-detils-title' />
         <HStack gap='8'>
           <Icon Svg={EyeIcon} /> <Text text={String(article?.views)} />
         </HStack>
@@ -89,7 +89,9 @@ const ArticleDetailsEl = (props: ArticleDetailsProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={true}>
-      <div className={classNames(classes.ArticleDetails, {}, [className])}>{content}</div>
+      <div className={classNames(classes.ArticleDetails, {}, [className])} data-testid='article-details'>
+        {content}
+      </div>
     </DynamicModuleLoader>
   );
 };

@@ -67,7 +67,7 @@ const ArticleListItemEl = (props: ArticleListItemProps) => {
       target={target}
       to={getRouteArticleDetails(article.id)}
       className={classNames(classes.ArticleListItem, {}, [className, classes[view]])}>
-      <Card className={classes.card}>
+      <Card className={classes.card} data-testid='articles-card'>
         <div className={classes.imageWrapper}>
           <AppImage src={article.img} className={classes.img} alt='article logo' fallback={<Skeleton width={50} height={50} />} />
           <Text text={article.createdAt} className={classes.date} />

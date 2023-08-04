@@ -41,10 +41,16 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={true}>
-      <div className={classNames(classes.AddCommentForm, {}, [className])}>
+      <div className={classNames(classes.AddCommentForm, {}, [className])} data-testid='AddCommentForm'>
         {error && <Text text={error} theme={TextTheme.ERROR} />}
-        <Input placeholder={t('Enter comment')} value={text || ''} onChange={onUpdateText} className={classes.input} />
-        <Button theme={ButtonTheme.OUTLINE} onClick={sendCommentHandler}>
+        <Input
+          placeholder={t('Enter comment')}
+          value={text || ''}
+          onChange={onUpdateText}
+          className={classes.input}
+          data-testid='AddCommentForm.Input'
+        />
+        <Button theme={ButtonTheme.OUTLINE} onClick={sendCommentHandler} data-testid='AddCommentForm.AddBtn'>
           {t('Add comment')}
         </Button>
       </div>
