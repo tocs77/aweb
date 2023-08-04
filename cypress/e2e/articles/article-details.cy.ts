@@ -17,10 +17,12 @@ describe('Article details', () => {
   });
 
   it('Shows recommendations', () => {
+    cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
     cy.getByTestId('ArticleRecommendationsList').should('exist');
   });
 
   it('Sends comment', () => {
+    cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
     cy.getByTestId('article-detils-title');
     cy.getByTestId('AddCommentForm').scrollIntoView();
     cy.addComment('New comment');
@@ -28,8 +30,8 @@ describe('Article details', () => {
   });
 
   it('Rates article ', () => {
+    cy.intercept('GET', '**/articles/*', { fixture: 'article-details.json' });
     cy.getByTestId('RatingCard').scrollIntoView();
-
     const stars = cy.getByTestId('RatingStar');
     stars.should('have.length', 5);
     stars.eq(3).click();

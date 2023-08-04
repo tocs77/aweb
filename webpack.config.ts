@@ -13,10 +13,10 @@ export default (env: BuildEnv) => {
     buildLocales: path.resolve(__dirname, 'dist', 'locales'),
   };
 
-  const mode = env.mode || 'development';
+  const mode = env?.mode || 'development';
   const isDev = mode === 'development';
-  const PORT = env.port || 3005;
-  const apiUrl = env.apiUrl || 'http://localhost:3006';
+  const PORT = env?.port || 3005;
+  const apiUrl = env?.apiUrl || 'http://localhost:3006';
 
   const config: webpack.Configuration = buildWebpackConfig({
     mode,
