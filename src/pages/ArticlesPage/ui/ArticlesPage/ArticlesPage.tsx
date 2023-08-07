@@ -20,7 +20,6 @@ const reducers: ReducersList = { [ARTICLES_PAGE_SLICE_NAME]: articlesPageReducer
 
 const ArticlesPage = () => {
   const dispatch = useAppDispatch();
-
   const error = useSelector(getArticlesError);
 
   const [searchParams] = useSearchParams();

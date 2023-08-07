@@ -5,4 +5,6 @@ import { StoreWithCounter } from '../../types/counterSchema';
 
 //export const getCounterValue = createSelector(getCounter, (counter) => counter.value);
 
-export const [useGetCounterValue, getCounterValue] = buildSelector<StoreWithCounter, number>((state) => state.counter.value);
+export const [useGetCounterValue, getCounterValue] = buildSelector<StoreWithCounter, number, [void]>(
+  (state) => state.counter.value,
+);

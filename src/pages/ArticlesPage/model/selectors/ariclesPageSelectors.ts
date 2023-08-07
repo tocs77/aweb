@@ -1,6 +1,7 @@
-import { ArticleView } from '@/entities/Article';
+import { Article, ArticleView } from '@/entities/Article';
 import { ARTICLES_PAGE_SLICE_NAME, StoreWithArticlesPage } from '../types/articlesPageSchema';
 import { ArticleType } from '@/entities/Article/model/consts/consts';
+import { buildSelector } from '@/shared/lib/store';
 
 export const getArticlesIsLoading = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.isLoading;
 export const getArticlesError = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.error;
@@ -13,3 +14,7 @@ export const getArticlesPageSortOrder = (state: StoreWithArticlesPage) => state[
 export const getArticlesPageSortField = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.sort;
 export const getArticlesPageSearch = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.search ?? '';
 export const getArticlesPageType = (state: StoreWithArticlesPage) => state[ARTICLES_PAGE_SLICE_NAME]?.type ?? ArticleType.ALL;
+
+export const [getArticleItemById] = buildSelector<StoreWithArticlesPage, Article | undefined, [id: string]>(
+  (state, id: string) => state[ARTICLES_PAGE_SLICE_NAME]?.entities[id],
+);
