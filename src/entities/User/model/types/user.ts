@@ -1,3 +1,5 @@
+import { FeatureFlags } from '@/shared/types';
+
 export const USER_SLICE_NAME = 'user' as const;
 
 export type UserRole = 'USER' | 'ADMIN' | 'MANAGER';
@@ -7,6 +9,7 @@ export interface User {
   username: string;
   avatar?: string;
   roles: UserRole[];
+  features: FeatureFlags;
 }
 
 export interface UserSchema {
