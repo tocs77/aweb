@@ -6,7 +6,13 @@ describe('LognByUserNAme async action', () => {
   it('should dispatch user data', async () => {
     const roles: UserRole[] = ['ADMIN'];
     const thunk = new TestAsyncThunk(loginByUsername);
-    const userValue = { username: 'user', id: '1', password: '123', roles };
+    const userValue = {
+      username: 'user',
+      id: '1',
+      password: '123',
+      roles,
+      features: { isArticleRatingEnabled: true, isCounterEnabled: true },
+    };
     thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
     const result = await thunk.callThunk(userValue);
 

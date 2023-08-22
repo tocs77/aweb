@@ -24,7 +24,8 @@
     "test:e2e": "cypress open",
     "server": "node ./json-server/index.js",
     "prepare": "husky install",
-    "imports": "ts-node scripts/updateimports.ts"
+    "imports": "ts-node scripts/updateimports.ts",
+    "removeFeature": "ts-node  scripts/remove-features"
   },
   "keywords": [],
   "author": "",

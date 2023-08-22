@@ -7,7 +7,7 @@ const article: Article = {
   id: '1',
   title: '3333',
   subtitle: 'eee',
-  user: { id: '1', username: 'admin', roles: ['ADMIN'] },
+  user: { id: '1', username: 'admin', roles: ['ADMIN'], features: { isArticleRatingEnabled: true, isCounterEnabled: true } },
   img: 'ddd',
   views: 4,
   createdAt: 'ddd',

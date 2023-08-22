@@ -15,7 +15,7 @@ import { ArtilceDetailPageHeader } from '../ArticleDetailsPageHeader/ArticleDeta
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
-import { getFeatureFlag } from '@/shared/lib/features';
+import { toggleFeatures } from '@/shared/lib/features';
 
 const initialReducers: ReducersList = {
   [ARTICLE_DETAILS_PAGE_SLICE_NAME]: articleDetailsPageReducer,
@@ -24,16 +24,17 @@ const initialReducers: ReducersList = {
 const ArticleDetailsPage = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
-  const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
 
   if (!id) return <div>{t('Article not found')}</div>;
+
+  const rating = toggleFeatures({ name: 'isArticleRatingEnabled', on: () => <ArticleRating articleId={id} />, off: () => null });
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <Page>
         <ArtilceDetailPageHeader />
         <ArticleDetails id={id} />
-        {isArticleRatingEnabled && <ArticleRating articleId={id} />}
+        {rating}
         <ArticleRecommendationsList />
         <ArticleDetailsComments id={id} />
       </Page>
