@@ -54,7 +54,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 142,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -124,7 +126,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 22,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -194,7 +198,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 1542,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -264,7 +270,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 17822,
       "createdAt": "16.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -334,7 +342,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 5422,
       "createdAt": "26.02.2021",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -404,7 +414,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 55,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -474,7 +486,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 347,
       "createdAt": "26.07.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -544,7 +558,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 1122,
       "createdAt": "20.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -614,7 +630,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 1522,
       "createdAt": "17.04.2020",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -684,7 +702,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 162,
       "createdAt": "26.02.2022",
-      "type": ["BUSINESS"],
+      "type": [
+        "BUSINESS"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -754,7 +774,10 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 1662,
       "createdAt": "26.02.2022",
-      "type": ["IT", "CULTURE"],
+      "type": [
+        "IT",
+        "CULTURE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -823,7 +846,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 1122,
       "createdAt": "20.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -893,7 +918,9 @@
       "img": "http://localhost:3006/images/plan2.jpg",
       "views": 1122,
       "createdAt": "20.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1036,18 +1063,27 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "roles": ["ADMIN"],
+      "roles": [
+        "ADMIN"
+      ],
       "avatar": "http://localhost:3006/images/avatar2.png",
       "features": {
         "isArticleRatingEnabled": true,
         "isCounterEnabled": true
+      },
+      "jsonSettings": {
+        "theme": "app_orange_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpened": false
       }
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "roles": ["USER"],
+      "roles": [
+        "USER"
+      ],
       "avatar": "http://localhost:3006/images/avatar3.png",
       "features": {
         "isArticleRatingEnabled": false,
@@ -1058,7 +1094,9 @@
       "id": "3",
       "username": "testuser",
       "password": "123",
-      "roles": ["USER"],
+      "roles": [
+        "USER"
+      ],
       "avatar": "http://localhost:3006/images/avatar3.png",
       "features": {
         "isArticleRatingEnabled": true,
@@ -1072,7 +1110,7 @@
       "first": "Admin",
       "lastname": "Smith",
       "age": 33,
-      "currency": "USD",
+      "currency": "RUB",
       "country": "Sweden",
       "city": "",
       "username": "admin",

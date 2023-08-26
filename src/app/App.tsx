@@ -7,6 +7,7 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserInited, userActions } from '@/entities/User';
 import { useSelector } from 'react-redux';
+import { PageLoader } from '@/widgets/PageLoader';
 
 export const App = () => {
   const { theme } = useTheme();
@@ -17,6 +18,7 @@ export const App = () => {
     dispatch(userActions.initAuthData());
   }, [dispatch]);
 
+  if (!inited) return <PageLoader />;
   return (
     <div className={classNames('app', {}, [theme])} id='app'>
       <Suspense fallback=''>

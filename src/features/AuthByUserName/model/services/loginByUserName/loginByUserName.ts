@@ -18,7 +18,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
       if (!response.data) {
         throw new Error('Wrong username or password');
       }
-      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
+      localStorage.setItem(USER_LOCALSTORAGE_KEY, response.data.id);
       dispatch(userActions.setAuthData(response.data));
       return response.data;
     } catch (error) {

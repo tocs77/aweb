@@ -1,4 +1,5 @@
 import { FeatureFlags } from '@/shared/types';
+import { JsonSettings } from './jsonSettings';
 
 export const USER_SLICE_NAME = 'user' as const;
 
@@ -10,6 +11,7 @@ export interface User {
   avatar?: string;
   roles: UserRole[];
   features: FeatureFlags;
+  jsonSettings?: JsonSettings;
 }
 
 export interface UserSchema {
