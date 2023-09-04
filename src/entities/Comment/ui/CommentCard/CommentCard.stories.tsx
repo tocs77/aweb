@@ -15,6 +15,7 @@ const comment: Comment = {
     username: 'Admin',
     avatar: src,
     roles: ['USER'],
+    features: { isArticleRatingEnabled: true, isCounterEnabled: true },
   },
 };
 

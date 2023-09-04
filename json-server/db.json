@@ -1074,7 +1074,8 @@
       "jsonSettings": {
         "theme": "app_orange_theme",
         "isFirstVisit": true,
-        "settingsPageHasBeenOpened": false
+        "settingsPageHasBeenOpened": false,
+        "isArticlesPageWasOpened": true
       }
     },
     {

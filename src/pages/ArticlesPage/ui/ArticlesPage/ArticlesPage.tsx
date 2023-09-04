@@ -15,6 +15,7 @@ import { getArticlesError } from '../../model/selectors/ariclesPageSelectors';
 import { initArticlesPage } from '../../model/sevices/initArticlesPage/initArticlesPage';
 import { ArticlePageFiler } from '../ArticlePageFilters/ArticlePageFilters';
 import { ArticleInfiniteList } from '../ArticleInfiniteList/ArticleInfiniteList';
+import { ArticlePageGreeting } from '@/features/articlePageGreeting';
 
 const reducers: ReducersList = { [ARTICLES_PAGE_SLICE_NAME]: articlesPageReducer };
 
@@ -35,6 +36,7 @@ const ArticlesPage = () => {
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page onScrollEnd={onLoadNextPart} name='articles-page' data-testid='articles-page'>
         {error && <Text title='Error in artilces' text={error} theme={TextTheme.ERROR} align={TextAlign.CENTER} />}
+        <ArticlePageGreeting />
         <ArticlePageFiler />
         <ArticleInfiniteList />
       </Page>

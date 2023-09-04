@@ -10,7 +10,7 @@ const article: Article = {
   img: '',
   createdAt: '',
   views: 123,
-  user: { id: '1', username: '123', roles: ['ADMIN'] },
+  user: { id: '1', username: '123', roles: ['ADMIN'], features: { isArticleRatingEnabled: true, isCounterEnabled: true } },
   blocks: [],
   type: [],
   title: '123',

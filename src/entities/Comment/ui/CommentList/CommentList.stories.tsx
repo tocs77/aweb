@@ -17,6 +17,7 @@ const comments: Comment[] = [
       username: 'Admin',
       avatar: src,
       roles: ['ADMIN'],
+      features: { isArticleRatingEnabled: true, isCounterEnabled: true },
     },
   },
   {
@@ -27,6 +28,7 @@ const comments: Comment[] = [
       username: 'User',
       avatar: src2,
       roles: ['ADMIN'],
+      features: { isArticleRatingEnabled: true, isCounterEnabled: true },
     },
   },
 ];
