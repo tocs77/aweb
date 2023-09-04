@@ -15,7 +15,8 @@ import { ArtilceDetailPageHeader } from '../ArticleDetailsPageHeader/ArticleDeta
 import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
-import { toggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
 
 const initialReducers: ReducersList = {
   [ARTICLE_DETAILS_PAGE_SLICE_NAME]: articleDetailsPageReducer,
@@ -27,14 +28,16 @@ const ArticleDetailsPage = () => {
 
   if (!id) return <div>{t('Article not found')}</div>;
 
-  const rating = toggleFeatures({ name: 'isArticleRatingEnabled', on: () => <ArticleRating articleId={id} />, off: () => null });
-
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <Page>
         <ArtilceDetailPageHeader />
         <ArticleDetails id={id} />
-        {rating}
+        <ToggleFeatures
+          feature='isArticleRatingEnabled'
+          on={<ArticleRating articleId={id} />}
+          off={<Card>{t('Rating coming soon')}</Card>}
+        />
         <ArticleRecommendationsList />
         <ArticleDetailsComments id={id} />
       </Page>
