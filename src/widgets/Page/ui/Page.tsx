@@ -10,6 +10,7 @@ import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { TestProps } from '@/shared/types';
 
 import classes from './Page.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface PageProps extends TestProps {
   className?: string;
@@ -37,13 +38,28 @@ export const Page = (props: PropsWithChildren<PageProps>) => {
   }, 500);
 
   return (
-    <section
-      className={classNames(classes.Page, {}, [className])}
-      ref={wrapperRef}
-      onScroll={name ? onScroll : undefined}
-      data-testid={props['data-testid'] || 'Page'}>
-      {children}
-      <div ref={triggerRef} id='anchor' style={{ height: '20px' }} />
-    </section>
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={
+        <section
+          className={classNames(classes.PageRedesigned, {}, [className])}
+          ref={wrapperRef}
+          onScroll={name ? onScroll : undefined}
+          data-testid={props['data-testid'] || 'Page'}>
+          {children}
+          <div ref={triggerRef} id='anchor' style={{ height: '20px' }} />
+        </section>
+      }
+      off={
+        <section
+          className={classNames(classes.Page, {}, [className])}
+          ref={wrapperRef}
+          onScroll={name ? onScroll : undefined}
+          data-testid={props['data-testid'] || 'Page'}>
+          {children}
+          <div ref={triggerRef} id='anchor' style={{ height: '20px' }} />
+        </section>
+      }
+    />
   );
 };

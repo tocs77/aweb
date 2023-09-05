@@ -10,6 +10,26 @@
     url('../../shared/assets/fonts/OverpassMono-VariableFont_wght.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: nunito;
+  src: local('Nunito-VariableFont_wght.ttf'), url('../../shared/assets/fonts/Nunito-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: roboto-regular;
+  src: local('Roboto-Regular.ttf'), url('../../shared/assets/fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: roboto-medium;
+  src: local('Roboto-Medium.ttf'), url('../../shared/assets/fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: roboto-bold;
+  src: local('Roboto-Bold.ttf'), url('../../shared/assets/fonts/Roboto-Bold.ttf') format('truetype');
+}
+
 .app,
 .app_modal,
 .app_drawer {
@@ -20,6 +40,13 @@
 .app {
   background: var(--bg-color);
   min-height: 100vh;
+}
+
+.app_redesigned {
+  background: var(--bg-redesigned);
+  min-height: 100vh;
+  font: var(--font-m-redesigned);
+  color: var(--text-redesigned);
 }
 
 .content-page {

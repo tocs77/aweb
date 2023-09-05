@@ -20,8 +20,11 @@ const isToggleFunction = (node: Node) => {
   return false;
 };
 const isToggleComponent = (node: Node) => {
-  const identifier = node.getFirstDescendantByKind(SyntaxKind.Identifier);
-  return identifier?.getText() === toggleComponentName;
+  for (const child of node.getChildren()) {
+    console.log(child.getText());
+    if (child.isKind(SyntaxKind.Identifier) && child.getText() === toggleComponentName) return true;
+  }
+  return false;
 };
 
 const replaceToggleFucntion = (node: Node) => {
@@ -85,7 +88,7 @@ const replaceToggleComponent = (node: Node) => {
 files.forEach((sourceFile) => {
   sourceFile.forEachDescendant((node) => {
     if (node.isKind(SyntaxKind.CallExpression)) replaceToggleFucntion(node);
-    if (node.isKind(SyntaxKind.JsxClosingElement)) replaceToggleComponent(node);
+    if (node.isKind(SyntaxKind.JsxSelfClosingElement)) replaceToggleComponent(node);
   });
 });
 

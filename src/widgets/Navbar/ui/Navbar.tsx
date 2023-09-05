@@ -14,6 +14,7 @@ import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropDown } from '@/features/AvatarDropDown';
 
 import classes from './Navbar.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface NavbarProps {
   className?: string;
@@ -26,16 +27,29 @@ const NavbarEl = ({ className }: NavbarProps) => {
 
   if (authData) {
     return (
-      <nav className={classNames(classes.navbar, {}, [className])}>
-        <Text className={classes.appName} title={t('Zeitung')} theme={TextTheme.INVERTED} />
-        <AppLink to={getRouteArticleCreate()} theme={AppLinkTheme.SECONDARY} className={classes.createBtn}>
-          {t('Create article')}
-        </AppLink>
-        <HStack gap='16' className={classes.actions}>
-          <NotificationButton />
-          <AvatarDropDown />
-        </HStack>
-      </nav>
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <nav className={classNames(classes.navbarRedesigned, {}, [className])}>
+            <HStack gap='16' className={classes.actions}>
+              <NotificationButton />
+              <AvatarDropDown />
+            </HStack>
+          </nav>
+        }
+        off={
+          <nav className={classNames(classes.navbar, {}, [className])}>
+            <Text className={classes.appName} title={t('Zeitung')} theme={TextTheme.INVERTED} />
+            <AppLink to={getRouteArticleCreate()} theme={AppLinkTheme.SECONDARY} className={classes.createBtn}>
+              {t('Create article')}
+            </AppLink>
+            <HStack gap='16' className={classes.actions}>
+              <NotificationButton />
+              <AvatarDropDown />
+            </HStack>
+          </nav>
+        }
+      />
     );
   }
 

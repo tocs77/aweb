@@ -1069,10 +1069,11 @@
       "avatar": "http://localhost:3006/images/avatar2.png",
       "features": {
         "isArticleRatingEnabled": true,
-        "isCounterEnabled": true
+        "isCounterEnabled": true,
+        "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_orange_theme",
+        "theme": "app_dark_theme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpened": false,
         "isArticlesPageWasOpened": true

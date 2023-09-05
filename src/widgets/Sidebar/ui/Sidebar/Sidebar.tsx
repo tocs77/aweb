@@ -8,6 +8,8 @@ import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from './SidebarItem/SidebarItem';
 import { useSelector } from 'react-redux';
 import { VStack } from '@/shared/ui/Stack';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { AppLogo } from '@/shared/ui/AppLogo';
 
 interface SidebarProps {
   className?: string;
@@ -22,26 +24,38 @@ const SidebarEl = ({ className }: SidebarProps) => {
   const sidebarItemsList = useSelector(getSidebarItems);
 
   return (
-    <menu className={classNames(classes.Sidebar, { [classes.collapsed]: collapsed }, [className])} data-testid='sidebar'>
-      <Button
-        theme={ButtonTheme.BACKGROUND_INVERTED}
-        onClick={onToggle}
-        data-testid='sidebar-toggle'
-        className={classes.collapseBtn}
-        square={true}
-        size={ButtonSize.L}>
-        {collapsed ? '>' : '<'}
-      </Button>
-      <VStack className={classes.items} gap='8'>
-        {sidebarItemsList.map((item) => (
-          <SidebarItem key={item.path} item={item} collapsed={collapsed} data-testid={item.path} />
-        ))}
-      </VStack>
-      <div className={classes.switchers}>
-        <ThemeSwitcher />
-        <LangSwitcher className={classes.lang} short={collapsed} />
-      </div>
-    </menu>
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={
+        <menu
+          className={classNames(classes.SidebarRedesigned, { [classes.collapsed]: collapsed }, [className])}
+          data-testid='sidebar'>
+          <AppLogo className={classes.appLogo} />
+        </menu>
+      }
+      off={
+        <menu className={classNames(classes.Sidebar, { [classes.collapsed]: collapsed }, [className])} data-testid='sidebar'>
+          <Button
+            theme={ButtonTheme.BACKGROUND_INVERTED}
+            onClick={onToggle}
+            data-testid='sidebar-toggle'
+            className={classes.collapseBtn}
+            square={true}
+            size={ButtonSize.L}>
+            {collapsed ? '>' : '<'}
+          </Button>
+          <VStack className={classes.items} gap='8'>
+            {sidebarItemsList.map((item) => (
+              <SidebarItem key={item.path} item={item} collapsed={collapsed} data-testid={item.path} />
+            ))}
+          </VStack>
+          <div className={classes.switchers}>
+            <ThemeSwitcher />
+            <LangSwitcher className={classes.lang} short={collapsed} />
+          </div>
+        </menu>
+      }
+    />
   );
 };
 
