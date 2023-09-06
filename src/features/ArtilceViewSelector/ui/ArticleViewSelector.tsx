@@ -30,7 +30,7 @@ const ArticleViewSelectorEl = (props: ArticleViewSelectorProps) => {
           theme={ButtonTheme.CLEAR}
           onClick={() => onViewClick(viewType.view)}
           disabled={view === viewType.view}>
-          <Icon Svg={viewType.icon} />
+          <Icon Svg={viewType.icon} width={24} height={24} />
         </Button>
       ))}
     </div>

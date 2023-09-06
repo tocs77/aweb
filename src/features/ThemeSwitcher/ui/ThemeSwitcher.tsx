@@ -2,19 +2,19 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { Theme } from '@/shared/consts/theme';
 
-import LightIcon from '@/shared/assets/icons/theme-light.svg';
-import DarkIcon from '@/shared/assets/icons/theme-dark.svg';
+import ThemeIcon from '@/shared/assets/icons/theme-light.svg';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { memo, useCallback } from 'react';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions } from '@/entities/User';
+import { Icon } from '@/shared/ui/Icon';
 
 interface ThemeSwitcherProps {
   className?: string;
 }
 
 const ThemeSwitcherEl = ({ className }: ThemeSwitcherProps) => {
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
   const dispath = useAppDispatch();
 
   const onToggleHandler = useCallback(() => {
@@ -25,7 +25,7 @@ const ThemeSwitcherEl = ({ className }: ThemeSwitcherProps) => {
 
   return (
     <Button className={classNames('', {}, [className])} theme={ButtonTheme.CLEAR} onClick={onToggleHandler}>
-      {theme === Theme.DARK ? <DarkIcon /> : <LightIcon />}
+      <Icon Svg={ThemeIcon} width={40} height={40} inverted={true} />
     </Button>
   );
 };
