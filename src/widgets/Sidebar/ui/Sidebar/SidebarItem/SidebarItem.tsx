@@ -1,4 +1,4 @@
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
+import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import classes from './SidebarItem.module.scss';

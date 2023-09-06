@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { ProfileCard } from '@/entities/Profile';
 import { getAuthData } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextTheme } from '@/shared/ui/Text';
+import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -20,7 +20,7 @@ import { getProfileValidateErrors } from '../../models/selectors/getProfileValid
 import { PROFILE_CARD_SLICE_NAME } from '../../models/types/editableProfileCardSchema';
 import { profileCardReducer } from '../../models/slice/profileCardSlice';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 const reducers: ReducersList = { [PROFILE_CARD_SLICE_NAME]: profileCardReducer };
 
 interface EditableProfileCardProps {

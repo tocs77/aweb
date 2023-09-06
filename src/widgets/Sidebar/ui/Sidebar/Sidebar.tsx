@@ -3,13 +3,13 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import classes from './Sidebar.module.scss';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher/ui/LangSwitcher';
-import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/Button';
+import { Button, ButtonTheme, ButtonSize } from '@/shared/ui/deprecated/Button';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from './SidebarItem/SidebarItem';
 import { useSelector } from 'react-redux';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { AppLogo } from '@/shared/ui/AppLogo';
+import { AppLogo } from '@/shared/ui/deprecated/AppLogo';
 
 interface SidebarProps {
   className?: string;

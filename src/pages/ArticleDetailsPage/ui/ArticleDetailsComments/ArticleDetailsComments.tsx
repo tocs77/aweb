@@ -7,13 +7,13 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { AddCommentForm } from '@/features/AddCommentForm';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextSize, TextTheme } from '@/shared/ui/Text';
+import { Text, TextSize, TextTheme } from '@/shared/ui/deprecated/Text';
 
 import { getArticleCommentsIsLoading, getArticleCommentsError } from '../../model/selectors/comments';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
-import { Loader } from '@/shared/ui/Loader';
+import { Loader } from '@/shared/ui/deprecated/Loader';
 
 interface ArticleDetailsCommentsProps {
   className?: string;

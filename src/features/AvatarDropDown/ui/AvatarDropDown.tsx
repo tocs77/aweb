@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-import { Dropdown } from '@/shared/ui/Popups';
-import { Avatar } from '@/shared/ui/Avatar';
+import { Dropdown } from '@/shared/ui/deprecated/Popups';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { userActions, isUserAdmin, isUserManager, getAuthData } from '@/entities/User';
 

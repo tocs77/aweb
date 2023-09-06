@@ -1,4 +1,4 @@
-import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
 import { useCounterActions } from '../model/slice/counterSlice';
 import { useGetCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 

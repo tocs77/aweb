@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { Text, TextTheme, TextAlign } from '@/shared/ui/Text';
+import { Text, TextTheme, TextAlign } from '@/shared/ui/deprecated/Text';
 import { Page } from '@/widgets/Page';
 
 import { ARTICLES_PAGE_SLICE_NAME } from '../../model/types/articlesPageSchema';

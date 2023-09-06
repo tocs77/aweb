@@ -8,21 +8,21 @@ import { ARTICLE_DETAILS_SLICE_NAME } from '../../model/types/articleDetailsSche
 import classes from './ArticleDetails.module.scss';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
+import { Text, TextAlign, TextTheme } from '@/shared/ui/deprecated/Text';
 import { getArticleDetailsData, getError, getIsLoading } from '../../model/selectors/articleDetails';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { Avatar } from '@/shared/ui/Avatar';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
-import { TextSize } from '@/shared/ui/Text/ui/Text';
-import { Icon } from '@/shared/ui/Icon';
+import { TextSize } from '@/shared/ui/deprecated/Text/ui/Text';
+import { Icon } from '@/shared/ui/deprecated/Icon';
 import { ArticleBlockType } from '../../model/consts/consts';
 import { ArticleBlock } from '../../model/types/Article';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 
 interface ArticleDetailsProps {
   className?: string;

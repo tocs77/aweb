@@ -5,7 +5,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-import { Text, TextSize } from '@/shared/ui/Text';
+import { Text, TextSize } from '@/shared/ui/deprecated/Text';
 
 import { Article } from '../../model/types/Article';
 import { ArticleView } from '../../model/consts/consts';
