@@ -1,6 +1,5 @@
 .AppLogo {
   position: relative;
-  overflow: hidden;
 }
 
 .gradientBig {
@@ -14,6 +13,7 @@
     rgb(94 211 243 / 2.19%) 77.6%,
     rgb(94 211 243 / 0%) 100%
   );
+  pointer-events: none;
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -32,6 +32,7 @@
     rgb(94 211 243 / 3.8%) 69.66%,
     rgb(94 211 243 / 0%) 100%
   );
+  pointer-events: none;
   border-radius: 50%;
   opacity: 0.6;
 }
