@@ -20,7 +20,7 @@ import { getProfileValidateErrors } from '../../models/selectors/getProfileValid
 import { PROFILE_CARD_SLICE_NAME } from '../../models/types/editableProfileCardSchema';
 import { profileCardReducer } from '../../models/slice/profileCardSlice';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 const reducers: ReducersList = { [PROFILE_CARD_SLICE_NAME]: profileCardReducer };
 
 interface EditableProfileCardProps {

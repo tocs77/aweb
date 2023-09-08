@@ -1,8 +1,8 @@
 import { PropsWithChildren, memo, useCallback, useEffect } from 'react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Overlay } from '@/shared/ui/deprecated/Overlay';
-import { Portal } from '@/shared/ui/deprecated/Portal';
+import { Overlay } from '@/shared/ui/redesigned/Overlay';
+import { Portal } from '@/shared/ui/redesigned/Portal';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 import classes from './Drawer.module.scss';

@@ -1,0 +1,19 @@
+.Card {
+  border-radius: 32px;
+}
+
+.normal {
+  background-color: var(--dark-bg-redesigned);
+}
+
+.outlined {
+  border: 1px solid var(--accent-redesigned);
+}
+
+.light {
+  background-color: var(--light-bg-redesigned);
+}
+
+.max {
+  width: 100%;
+}

@@ -87,8 +87,8 @@ const replaceToggleComponent = (node: Node) => {
 
 files.forEach((sourceFile) => {
   sourceFile.forEachDescendant((node) => {
-    if (node.isKind(SyntaxKind.CallExpression)) replaceToggleFucntion(node);
-    if (node.isKind(SyntaxKind.JsxSelfClosingElement)) replaceToggleComponent(node);
+    if (node.isKind(SyntaxKind.CallExpression)) return replaceToggleFucntion(node);
+    if (node.isKind(SyntaxKind.JsxSelfClosingElement)) return replaceToggleComponent(node);
   });
 });
 

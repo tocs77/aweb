@@ -2,9 +2,9 @@ import { PropsWithChildren } from 'react';
 
 import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import classes from './Modal.module.scss';
-import { Portal } from '@/shared/ui/deprecated/Portal';
+import { Portal } from '@/shared/ui/redesigned/Portal';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { Overlay } from '@/shared/ui/deprecated/Overlay';
+import { Overlay } from '@/shared/ui/redesigned/Overlay';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 
 interface ModalProps {

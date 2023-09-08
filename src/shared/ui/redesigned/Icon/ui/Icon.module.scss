@@ -1,7 +1,6 @@
 .Icon {
   fill: var(--icon-redesigned);
   color: var(--icon-redesigned);
-  stroke: var(--icon-redesigned);
 }
 
 .icon_wrapper {
@@ -16,5 +15,4 @@
 .icon_wrapper:hover .Icon {
   fill: var(--accent-redesigned);
   color: var(--accent-redesigned);
-  stroke: var(--accent-redesigned);
 }

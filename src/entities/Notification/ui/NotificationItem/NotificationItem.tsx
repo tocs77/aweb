@@ -1,11 +1,14 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-import { Card, CardTheme } from '@/shared/ui/deprecated/Card';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Card as CardDeprecated, CardTheme } from '@/shared/ui/deprecated/Card';
+import { Text as TextDeprecated } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 import classes from './NotificationItem.module.scss';
 import { Notification } from '../../model/types/notification';
-import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { AppLink as AppLinkDeprecated } from '@/shared/ui/deprecated/AppLink';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/redesigned/Card';
 
 interface NotificationItemProps {
   className?: string;
@@ -16,16 +19,26 @@ export const NotificationItem = (props: NotificationItemProps) => {
   const { className, notification } = props;
 
   let content = (
-    <Card theme={CardTheme.OUTLINED} className={classNames(classes.NotificationItem, {}, [className])}>
-      <Text title={notification.title} text={notification.description} />
-    </Card>
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={
+        <Card variant='normal' className={classNames(classes.NotificationItem, {}, [className])} padding='8'>
+          <Text title={notification.title} text={notification.description} />
+        </Card>
+      }
+      off={
+        <CardDeprecated theme={CardTheme.OUTLINED} className={classNames(classes.NotificationItem, {}, [className])}>
+          <TextDeprecated title={notification.title} text={notification.description} />
+        </CardDeprecated>
+      }
+    />
   );
 
   if (notification.href)
     content = (
-      <AppLink to={notification.href} target='_blank' className={classes.link}>
+      <AppLinkDeprecated to={notification.href} target='_blank' className={classes.link}>
         {content}
-      </AppLink>
+      </AppLinkDeprecated>
     );
   return content;
 };

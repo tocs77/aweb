@@ -10,7 +10,7 @@ import { getProfile } from '../../models/selectors/getProfile/getProfile';
 import { getProfileReadOnly } from '../../models/selectors/getProfileReadonly/getProfileReadOnly';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getAuthData } from '@/entities/User';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface EditableProfileCardHeaderProps {
   className?: string;

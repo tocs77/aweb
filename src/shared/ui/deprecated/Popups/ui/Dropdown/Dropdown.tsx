@@ -24,9 +24,9 @@ interface DropdownProps {
 }
 
 /**
- * @deprecated component deprecated
+ *
+ * @deprecated
  */
-
 export const Dropdown = (props: DropdownProps) => {
   const { className, items, title, direction = 'bottom-left' } = props;
 

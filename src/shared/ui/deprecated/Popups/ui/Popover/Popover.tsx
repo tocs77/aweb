@@ -13,11 +13,10 @@ interface PopoverProps {
   direction?: DropDownDirection;
   label: JSX.Element | string;
 }
-
 /**
- * @deprecated component deprecated
+ *
+ * @deprecated
  */
-
 export const Popover = (props: PropsWithChildren<PopoverProps>) => {
   const { className, children, direction = 'bottom-left', label } = props;
 

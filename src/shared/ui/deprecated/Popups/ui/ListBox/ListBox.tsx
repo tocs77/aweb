@@ -3,7 +3,7 @@ import { Listbox as HListBox } from '@headlessui/react';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/deprecated/Button';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import { DropDownDirection } from '@/shared/types';
 
 import classes from './ListBox.module.scss';
@@ -25,11 +25,10 @@ interface ListBoxProps<T = string> {
   direction?: DropDownDirection;
   label?: string;
 }
-
 /**
- * @deprecated component deprecated
+ *
+ * @deprecated
  */
-
 export const ListBoxEl = <T,>(props: ListBoxProps<T>) => {
   const { className, items, value, defaultValue, onChange, readonly, direction = 'bottom-right', label } = props;
 
@@ -69,5 +68,8 @@ export const ListBoxEl = <T,>(props: ListBoxProps<T>) => {
     </HStack>
   );
 };
-
+/**
+ *
+ * @deprecated
+ */
 export const ListBox = memo(ListBoxEl) as typeof ListBoxEl;

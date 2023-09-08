@@ -11,7 +11,7 @@ import { CountrySelect } from '@/entities/Country';
 
 import classes from './ProfileCard.module.scss';
 import { Profile } from '../../model/types/profile';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 interface ProfileCardProps {
   className?: string;
