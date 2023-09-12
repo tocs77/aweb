@@ -5,10 +5,12 @@ import { ArticleSortSelector } from '@/features/ArticleSortSelector';
 import { ArticleTypeTabs } from '@/features/ArticleTypeTabs';
 import { ArticleSortField, ArticleType } from '@/entities/Article';
 import { SortOrder } from '@/shared/types';
-import { Input } from '@/shared/ui/deprecated/Input';
+import { Input } from '@/shared/ui/redesigned/Input';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import SearchIcon from '@/shared/assets/icons/search.svg';
 
 import classes from './ArticleFilters.module.scss';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ArticleFiltersProps {
   className?: string;
@@ -28,9 +30,9 @@ export const ArticleFilters = (props: ArticleFiltersProps) => {
   return (
     <Card className={classNames(classes.ArticleFilters, {}, [className])} padding='24'>
       <VStack gap='32'>
-        <Input placeholder={t('Search')} value={search} onChange={onChangeSearch} />
-        <ArticleSortSelector order={order} sort={sort} onChangeOrder={onChangeOrder} onChangeSort={onChangeSort} />
+        <Input placeholder={t('Search')} value={search} onChange={onChangeSearch} addonLeft={<Icon Svg={SearchIcon} />} />
         <ArticleTypeTabs articleType={articleType} onChangeArticleType={onChangeArticleType} className={classes.tabs} />
+        <ArticleSortSelector order={order} sort={sort} onChangeOrder={onChangeOrder} onChangeSort={onChangeSort} />
       </VStack>
     </Card>
   );

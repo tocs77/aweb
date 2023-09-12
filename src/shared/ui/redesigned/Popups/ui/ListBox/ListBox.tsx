@@ -5,6 +5,8 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import { DropDownDirection } from '@/shared/types';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 
 import classes from './ListBox.module.scss';
 import popupCls from '../../styles/popup.module.scss';
@@ -54,7 +56,7 @@ export const ListBoxEl = <T,>(props: ListBoxProps<T>) => {
 
   return (
     <HStack gap='4'>
-      {label && <span className={classes.label}>{label}</span>}{' '}
+      {label && <span className={classes.label}>{label}</span>}
       <HListBox
         as='div'
         className={classNames(popupCls.popup, {}, [className])}
@@ -62,7 +64,7 @@ export const ListBoxEl = <T,>(props: ListBoxProps<T>) => {
         value={value}
         disabled={readonly}>
         <HListBox.Button as='div' className={popupCls.trigger}>
-          <Button disabled={readonly} variant='background'>
+          <Button disabled={readonly} variant='background' addonRight={<Icon Svg={ArrowIcon} />}>
             {currentTextValue ?? defaultValue}
           </Button>
         </HListBox.Button>
