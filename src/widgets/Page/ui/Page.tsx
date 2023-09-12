@@ -10,7 +10,7 @@ import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { TestProps } from '@/shared/types';
 
 import classes from './Page.module.scss';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 
 interface PageProps extends TestProps {
   className?: string;
@@ -25,7 +25,11 @@ export const Page = (props: PropsWithChildren<PageProps>) => {
   const dispatch = useAppDispatch();
   const scrollPos = useSelector((state: StoreWithScrollKeep) => getScrollByPath(state, name || ''));
 
-  useInfiniteScroll({ triggerRef, wrapperRef, callback: onScrollEnd });
+  useInfiniteScroll({
+    triggerRef,
+    wrapperRef: toggleFeatures({ name: 'isAppRedesigned', on: () => undefined, off: () => wrapperRef }),
+    callback: onScrollEnd,
+  });
 
   useInitialEffect(() => {
     if (!name) return;

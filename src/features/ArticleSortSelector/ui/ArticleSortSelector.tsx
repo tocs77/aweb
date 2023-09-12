@@ -2,11 +2,14 @@ import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-
-import { Select, SelectOption } from '@/shared/ui/deprecated/Select';
+import { Select as SelectDeprecated, SelectOption } from '@/shared/ui/deprecated/Select';
 import { SortOrder } from '@/shared/types';
-
 import { ArticleSortField } from '@/entities/Article';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
+
 import classes from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorProps {
@@ -39,10 +42,27 @@ const ArticleSortSelectorEl = (props: ArticleSortSelectorProps) => {
   );
 
   return (
-    <div className={classNames(classes.ArticleSortSelector, {}, [className])}>
-      <Select<ArticleSortField> label={t('Sort by')} options={sortFieldOptions} onChange={onChangeSort} value={sort} />
-      <Select<SortOrder> label={t('By')} options={orderOptions} onChange={onChangeOrder} value={order} />
-    </div>
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={
+        <VStack className={classNames(classes.ArticleSortSelector, {}, [className])} gap='8'>
+          <Text text={`${t('Sort by')}:`} size='l' />
+          <ListBox<ArticleSortField> items={sortFieldOptions} onChange={onChangeSort} value={sort} />
+          <ListBox<SortOrder> items={orderOptions} onChange={onChangeOrder} value={order} />
+        </VStack>
+      }
+      off={
+        <div className={classNames(classes.ArticleSortSelector, {}, [className])}>
+          <SelectDeprecated<ArticleSortField>
+            label={t('Sort by')}
+            options={sortFieldOptions}
+            onChange={onChangeSort}
+            value={sort}
+          />
+          <SelectDeprecated<SortOrder> label={t('By')} options={orderOptions} onChange={onChangeOrder} value={order} />
+        </div>
+      }
+    />
   );
 };
 
