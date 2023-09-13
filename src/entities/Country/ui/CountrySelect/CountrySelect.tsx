@@ -2,7 +2,9 @@ import { useMemo, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { ListBox, ListBoxItem } from '@/shared/ui/redesigned/Popups';
+import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
 import { Country } from '../../model/types/country';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface CountrySelectProps {
   className?: string;
@@ -24,15 +26,32 @@ const CountrySelectEl = (props: CountrySelectProps) => {
   }, []);
 
   return (
-    <ListBox<Country>
-      className={classNames('', {}, [className])}
-      onChange={onChange}
-      defaultValue={t('Select country')}
-      label={t('Select country')}
-      items={options}
-      value={value}
-      readonly={readOnly}
-      direction='top-right'
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={
+        <ListBox<Country>
+          className={classNames('', {}, [className])}
+          onChange={onChange}
+          defaultValue={t('Select country')}
+          label={t('Select country')}
+          items={options}
+          value={value}
+          readonly={readOnly}
+          direction='top-right'
+        />
+      }
+      off={
+        <ListBoxDeprecated<Country>
+          className={classNames('', {}, [className])}
+          onChange={onChange}
+          defaultValue={t('Select country')}
+          label={t('Select country')}
+          items={options}
+          value={value}
+          readonly={readOnly}
+          direction='top-right'
+        />
+      }
     />
   );
 };
