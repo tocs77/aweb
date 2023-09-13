@@ -21,7 +21,6 @@ const isToggleFunction = (node: Node) => {
 };
 const isToggleComponent = (node: Node) => {
   for (const child of node.getChildren()) {
-    console.log(child.getText());
     if (child.isKind(SyntaxKind.Identifier) && child.getText() === toggleComponentName) return true;
   }
   return false;
