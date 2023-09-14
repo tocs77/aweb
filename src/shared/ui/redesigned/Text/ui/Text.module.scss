@@ -69,3 +69,10 @@ $title-scale: 1.5;
     font-size: calc(var(--font-size-xl) * $title-scale);
   }
 }
+
+.bold {
+  .title,
+  .text {
+    font-weight: 700;
+  }
+}

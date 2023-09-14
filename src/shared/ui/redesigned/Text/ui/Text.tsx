@@ -15,6 +15,7 @@ interface TextProps {
   variant?: TextVariant;
   align?: TextAlign;
   size?: TextSize;
+  bold?: boolean;
   'data-testid'?: string;
 }
 
@@ -25,12 +26,21 @@ const mapSizeToHeaderTag: Record<TextSize, 'h1' | 'h2' | 'h3'> = {
 };
 
 const TextEl = (props: TextProps) => {
-  const { className, text, title, variant = 'primary', align = 'left', size = 'm', 'data-testid': dataTestId = 'text' } = props;
+  const {
+    className,
+    text,
+    title,
+    variant = 'primary',
+    bold,
+    align = 'left',
+    size = 'm',
+    'data-testid': dataTestId = 'text',
+  } = props;
   const HeaderTag = mapSizeToHeaderTag[size];
 
   return (
     <div
-      className={classNames(classes.Text, {}, [className, classes[variant], classes[size], classes[align]])}
+      className={classNames(classes.Text, { [classes.bold]: bold }, [className, classes[variant], classes[size], classes[align]])}
       data-testid={dataTestId}>
       {title && (
         <HeaderTag className={classes.title} data-testid={`${dataTestId}-title`}>
