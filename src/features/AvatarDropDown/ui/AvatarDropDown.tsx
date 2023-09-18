@@ -10,7 +10,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { userActions, isUserAdmin, isUserManager, getAuthData } from '@/entities/User';
 
 import { useSelector } from 'react-redux';
-import { getRouteAdminPanel, getRouteProfile } from '@/shared/consts/router';
+import { getRouteAdminPanel, getRouteProfile, getRouteSettings } from '@/shared/consts/router';
 import { ToggleFeatures } from '@/shared/lib/features';
 
 interface AvatarDropDownProps {
@@ -35,6 +35,7 @@ export const AvatarDropDown = (props: AvatarDropDownProps) => {
   const dropdownItems = [
     { content: t('Admin Panel'), href: getRouteAdminPanel(), hidden: !isAdminPanelAvailable },
     { content: t('User profile'), href: getRouteProfile(authData.id) },
+    { content: t('Settings'), href: getRouteSettings() },
     { content: t('Logout'), onClick: onLogout },
   ];
 

@@ -20,7 +20,7 @@ export const ArticleRecommendationsList = (props: ArticleRecommendationsListProp
   return (
     <VStack className={classNames('', {}, [className])} gap='8' max data-testid='ArticleRecommendationsList'>
       <Text title={t('See also')} size={TextSize.L} />
-      <ArticleList articles={artcles} target={'_blank'} isLoading={isLoading} virtualized={false} view={ArticleView.GRID} />
+      <ArticleList articles={artcles} target={'_blank'} isLoading={isLoading} view={ArticleView.GRID} />
     </VStack>
   );
 };

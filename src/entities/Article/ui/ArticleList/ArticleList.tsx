@@ -1,102 +1,59 @@
-import { memo, HTMLAttributeAnchorTarget } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FixedSizeList as List, FixedSizeGrid as Grid } from 'react-window';
-import AutoSizer from 'react-virtualized-auto-sizer';
-
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-
 import { Text, TextSize } from '@/shared/ui/deprecated/Text';
-
-import { Article } from '../../model/types/Article';
 import { ArticleView } from '../../model/consts/consts';
-import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItem.Skeleton';
+import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import classes from './ArticleList.module.scss';
+import { Article } from '../../model/types/Article';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListProps {
   className?: string;
   articles: Article[];
   isLoading?: boolean;
-  view?: ArticleView;
   target?: HTMLAttributeAnchorTarget;
-  virtualized?: boolean;
+  view?: ArticleView;
 }
 
-const ArticleListEl = (props: ArticleListProps) => {
-  const { className, articles, isLoading = false, view = ArticleView.GRID, target, virtualized = true } = props;
+const getSkeletons = (view: ArticleView) =>
+  new Array(view === ArticleView.GRID ? 9 : 3)
+    .fill(0)
+    .map((item, index) => <ArticleListItemSkeleton className={classes.card} key={index} view={view} />);
+
+export const ArticleList = memo((props: ArticleListProps) => {
+  const { className, articles, view = ArticleView.GRID, isLoading, target } = props;
   const { t } = useTranslation();
-
-  const renderArticleRow = ({ index, style }: { index: number; style: React.CSSProperties }) => {
-    const article = articles[index];
-    return (
-      <div key={article.id} style={style}>
-        <ArticleListItem article={article} view={view} target={target} />
-      </div>
-    );
-  };
-  const renderArticleCell = ({
-    columnIndex,
-    rowIndex,
-    style,
-  }: {
-    columnIndex: number;
-    rowIndex: number;
-    style: React.CSSProperties;
-  }) => {
-    const article = articles[columnIndex + rowIndex * 3];
-    if (!article) return <div key={`${columnIndex}${rowIndex}`} style={style}></div>;
-    return (
-      <div key={article.id} style={style}>
-        <ArticleListItem article={article} view={view} target={target} />
-      </div>
-    );
-  };
-
-  const loadingSkeleton = isLoading
-    ? new Array(view === ArticleView.GRID ? 9 : 3).fill(0).map((_, index) => <ArticleListItemSkeleton view={view} key={index} />)
-    : null;
 
   if (!isLoading && !articles.length) {
     return (
-      <div className={classNames(classes.ArticleList, {}, [className])}>
-        <Text size={TextSize.L} title={t('No artilces')} />
+      <div className={classNames(classes.ArticleList, {}, [className, classes[view]])}>
+        <Text size={TextSize.L} title={t('Статьи не найдены')} />
       </div>
     );
   }
 
-  let list: JSX.Element | JSX.Element[] | null = null;
-  if (virtualized && articles.length) {
-    list = (
-      <AutoSizer defaultHeight={100} defaultWidth={300} className={classes.autosizer}>
-        {({ height, width }: { height: number; width: number }) => {
-          return view === ArticleView.GRID ? (
-            <Grid
-              columnCount={3}
-              columnWidth={230}
-              height={height}
-              rowCount={Math.floor(articles.length / 3)}
-              rowHeight={230}
-              width={700}>
-              {renderArticleCell}
-            </Grid>
-          ) : (
-            <List height={height} itemCount={articles.length} itemSize={500} width={width}>
-              {renderArticleRow}
-            </List>
-          );
-        }}
-      </AutoSizer>
-    );
-  } else {
-    list = articles.map((article) => <ArticleListItem article={article} view={view} target={target} key={article.id} />);
-  }
-
   return (
-    <div className={classNames(classes.ArticleList, {}, [className])} data-testid='articles-list'>
-      {list}
-      {loadingSkeleton}
-    </div>
+    <ToggleFeatures
+      feature='isAppRedesigned'
+      on={
+        <HStack wrap='wrap' gap='16' className={classNames(classes.ArticleListRedesigned, {}, [])} data-testid='ArticleList'>
+          {articles.map((item) => (
+            <ArticleListItem article={item} view={view} target={target} key={item.id} className={classes.card} />
+          ))}
+          {isLoading && getSkeletons(view)}
+        </HStack>
+      }
+      off={
+        <div className={classNames(classes.ArticleList, {}, [className, classes[view]])} data-testid='ArticleList'>
+          {articles.map((item) => (
+            <ArticleListItem article={item} view={view} target={target} key={item.id} className={classes.card} />
+          ))}
+          {isLoading && getSkeletons(view)}
+        </div>
+      }
+    />
   );
-};
-
-export const ArticleList = memo(ArticleListEl);
+});

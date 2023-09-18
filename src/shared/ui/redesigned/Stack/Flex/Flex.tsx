@@ -6,6 +6,7 @@ type FlexJustify = 'start' | 'center' | 'end' | 'between' | 'around';
 type FlexAlign = 'start' | 'center' | 'end';
 export type FlexDirection = 'row' | 'column';
 type FlexGap = '4' | '8' | '16' | '24' | '32';
+type FlexWrap = 'nowrap' | 'wrap';
 
 type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
@@ -43,11 +44,22 @@ export type FlexProps = PropsWithChildren<{
   direction?: FlexDirection;
   gap?: FlexGap;
   max?: boolean;
+  wrap?: FlexWrap;
 }> &
   DivProps;
 
 export const Flex = (props: FlexProps) => {
-  const { className, children, justify = 'start', align = 'center', direction = 'row', gap, max, ...other } = props;
+  const {
+    className,
+    children,
+    justify = 'start',
+    align = 'center',
+    wrap = 'nowrap',
+    direction = 'row',
+    gap,
+    max,
+    ...other
+  } = props;
 
   return (
     <div
@@ -57,6 +69,7 @@ export const Flex = (props: FlexProps) => {
         alignClasses[align],
         directionClasses[direction],
         gap && gapClasses[gap],
+        classes[wrap],
       ])}
       {...other}>
       {children}
