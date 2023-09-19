@@ -6,7 +6,7 @@ import { Popover as PopoverDeprecated } from '@/shared/ui/deprecated/Popups';
 import { NotificationList } from '@/entities/Notification';
 import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
 import { Icon } from '@/shared/ui/redesigned/Icon';
-import { Drawer } from '@/shared/ui/deprecated/Drower';
+import { Drawer } from '@/shared/ui/redesigned/Drower';
 import NotificationIconDepecated from '@/shared/assets/icons/notification-20-20.svg';
 import NotificationIcon from '@/shared/assets/icons/notification.svg';
 

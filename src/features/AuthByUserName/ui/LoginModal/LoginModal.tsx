@@ -2,7 +2,7 @@ import { useEffect, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import classes from './LoginModal.module.scss';
-import { Modal } from '@/shared/ui/deprecated/Modal';
+import { Modal } from '@/shared/ui/redesigned/Modal';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 import { getAuthData } from '@/entities/User';
 import { Loader } from '@/shared/ui/deprecated/Loader';

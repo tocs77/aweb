@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Modal } from '@/shared/ui/deprecated/Modal';
-import { Text } from '@/shared/ui/deprecated/Text';
+import { Modal } from '@/shared/ui/redesigned/Modal';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { useGetJsonSettings } from '@/entities/User';
 import { saveJsonSettings } from '@/entities/User/model/services/saveJsonSettings/saveJsonSettings';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';

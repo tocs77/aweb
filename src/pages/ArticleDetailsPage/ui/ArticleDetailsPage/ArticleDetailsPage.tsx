@@ -16,7 +16,11 @@ import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsLis
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/ArticleRating';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { Card } from '@/shared/ui/deprecated/Card';
+import { Card as CardDeprecated } from '@/shared/ui/deprecated/Card';
+import { StickyConentLayout } from '@/shared/layout';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { DetailsContainer } from '../DetailsContainer/DetailsContainer';
+import { AdditionalInfoContainer } from '../AdditionalInfoContainer/AdditionalInfoContainer';
 
 const initialReducers: ReducersList = {
   [ARTICLE_DETAILS_PAGE_SLICE_NAME]: articleDetailsPageReducer,
@@ -30,17 +34,38 @@ const ArticleDetailsPage = () => {
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
-      <Page>
-        <ArtilceDetailPageHeader />
-        <ArticleDetails id={id} />
-        <ToggleFeatures
-          feature='isArticleRatingEnabled'
-          on={<ArticleRating articleId={id} />}
-          off={<Card>{t('Rating coming soon')}</Card>}
-        />
-        <ArticleRecommendationsList />
-        <ArticleDetailsComments id={id} />
-      </Page>
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <StickyConentLayout
+            content={
+              <Page>
+                <VStack gap='16'>
+                  <DetailsContainer />
+                  <ArticleDetails id={id} />
+                  <ArticleRating articleId={id} />
+                  <ArticleRecommendationsList />
+                  <ArticleDetailsComments id={id} />
+                </VStack>
+              </Page>
+            }
+            right={<AdditionalInfoContainer />}
+          />
+        }
+        off={
+          <Page>
+            <ArtilceDetailPageHeader />
+            <ArticleDetails id={id} />
+            <ToggleFeatures
+              feature='isArticleRatingEnabled'
+              on={<ArticleRating articleId={id} />}
+              off={<CardDeprecated>{t('Rating coming soon')}</CardDeprecated>}
+            />
+            <ArticleRecommendationsList />
+            <ArticleDetailsComments id={id} />
+          </Page>
+        }
+      />
     </DynamicModuleLoader>
   );
 };

@@ -12,11 +12,22 @@
 .content {
   padding: 20px;
   border-radius: 12px;
-  background-color: var(--bg-color);
   transition: transform 0.3s;
   transform: scale(0.5);
   width: fit-content;
   z-index: var(--modal-z-index);
+}
+
+.old {
+  .content {
+    background-color: var(--bg-color);
+  }
+}
+
+.new {
+  .content {
+    background-color: var(--light-bg-redesigned);
+  }
 }
 
 .opened {

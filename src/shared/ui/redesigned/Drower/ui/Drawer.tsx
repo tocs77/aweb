@@ -7,6 +7,7 @@ import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 import classes from './Drawer.module.scss';
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationsProvider';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface DrawerProps {
   className?: string;
@@ -15,10 +16,6 @@ interface DrawerProps {
   lazy?: boolean;
 }
 const height = window.innerHeight - 100;
-
-/**
- * @deprecated component deprecated
- */
 
 export const DrawerContent = memo((props: PropsWithChildren<DrawerProps>) => {
   const { Spring, Gesture } = useAnimationLibs();
@@ -75,7 +72,13 @@ export const DrawerContent = memo((props: PropsWithChildren<DrawerProps>) => {
 
   return (
     <Portal>
-      <div className={classNames(classes.Drawer, {}, [className, theme, 'app_drawer'])}>
+      <div
+        className={classNames(classes.Drawer, {}, [
+          className,
+          theme,
+          'app_drawer',
+          toggleFeatures({ name: 'isAppRedesigned', on: () => classes.new, off: () => classes.old }),
+        ])}>
         <Overlay onClick={close} />
         <Spring.a.div className={classes.sheet} style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }} {...bind()}>
           {children}
@@ -90,10 +93,6 @@ const DrawerAsync = (props: PropsWithChildren<DrawerProps>) => {
   if (!isLoaded) return null;
   return <DrawerContent {...props} />;
 };
-
-/**
- * @deprecated component deprecated
- */
 
 export const Drawer = (props: PropsWithChildren<DrawerProps>) => {
   return (
