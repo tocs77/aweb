@@ -7,13 +7,15 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { AddCommentForm } from '@/features/AddCommentForm';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextSize, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TextSize, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
+import { Loader } from '@/shared/ui/redesigned/Loader';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 import { getArticleCommentsIsLoading, getArticleCommentsError } from '../../model/selectors/comments';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
-import { Loader } from '@/shared/ui/deprecated/Loader';
 
 interface ArticleDetailsCommentsProps {
   className?: string;
@@ -41,8 +43,22 @@ export const ArticleDetailsComments = (props: ArticleDetailsCommentsProps) => {
   );
   return (
     <div className={classNames('', {}, [className])}>
-      {error && <Text title={'Error'} text={error} theme={TextTheme.ERROR} />}
-      <Text title={t('Comments')} size={TextSize.L} />
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <>
+            {error && <Text title={'Error'} text={error} variant='error' />}
+            <Text title={t('Comments')} size='l' />
+          </>
+        }
+        off={
+          <>
+            {error && <TextDeprecated title={'Error'} text={error} theme={TextTheme.ERROR} />}
+            <TextDeprecated title={t('Comments')} size={TextSize.L} />
+          </>
+        }
+      />
+
       <Suspense fallback={<Loader />}>
         <AddCommentForm onSendComment={onSendComment} />
       </Suspense>

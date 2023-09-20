@@ -5,10 +5,6 @@ interface LoaderProps {
   className?: string;
 }
 
-/**
- * @deprecated component deprecated
- */
-
 export const Loader = ({ className }: LoaderProps) => (
   <div className={classNames('lds-ellipsis', {}, [className])}>
     <div />

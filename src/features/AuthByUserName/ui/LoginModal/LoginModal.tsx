@@ -5,7 +5,7 @@ import classes from './LoginModal.module.scss';
 import { Modal } from '@/shared/ui/redesigned/Modal';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 import { getAuthData } from '@/entities/User';
-import { Loader } from '@/shared/ui/deprecated/Loader';
+import { Loader } from '@/shared/ui/redesigned/Loader';
 
 interface LoginModalProps {
   className?: string;

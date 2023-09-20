@@ -15,10 +15,12 @@
 }
 
 .border-normal {
+  overflow: hidden;
   border-radius: 5px;
 }
 
 .border-round {
+  overflow: hidden;
   border-radius: 42px;
 }
 

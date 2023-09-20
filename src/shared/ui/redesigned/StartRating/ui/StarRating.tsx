@@ -1,10 +1,12 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 import StarIcon from '@/shared/assets/icons/star.svg';
 
 import classes from './StarRating.module.scss';
 import { useEffect, useState } from 'react';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface StarRatingProps {
   className?: string;
@@ -14,10 +16,6 @@ interface StarRatingProps {
 }
 
 const stars = [1, 2, 3, 4, 5];
-
-/**
- * @deprecated component deprecated
- */
 
 export const StarRating = (props: StarRatingProps) => {
   const { className, onSelect, selectedStars = 0, size = 30 } = props;
@@ -45,10 +43,12 @@ export const StarRating = (props: StarRatingProps) => {
     setIsSelected(true);
   };
 
-  return (
-    <div className={classNames(classes.StarRating, {}, [className])}>
-      {stars.map((starNumber) => (
+  const makeIcon = (starNumber: number) =>
+    toggleFeatures({
+      name: 'isAppRedesigned',
+      on: () => (
         <Icon
+          clickable={!isSelected}
           onMouseEnter={onHover(starNumber)}
           onMouseLeave={onLeave}
           onClick={onClick(starNumber)}
@@ -64,7 +64,35 @@ export const StarRating = (props: StarRatingProps) => {
           data-testid='RatingStar'
           data-rating={currentRating >= starNumber ? 'rating-selected' : ''}
         />
-      ))}
+      ),
+      off: () => (
+        <IconDeprecated
+          onMouseEnter={onHover(starNumber)}
+          onMouseLeave={onLeave}
+          onClick={onClick(starNumber)}
+          key={starNumber}
+          Svg={StarIcon}
+          className={classNames(
+            classes.star,
+            { [classes.hovered]: currentRating >= starNumber, [classes.selected]: isSelected },
+            [],
+          )}
+          width={size}
+          height={size}
+          data-testid='RatingStar'
+          data-rating={currentRating >= starNumber ? 'rating-selected' : ''}
+        />
+      ),
+    });
+
+  return (
+    <div
+      className={classNames(
+        toggleFeatures({ name: 'isAppRedesigned', on: () => classes.StarRatingRedesigned, off: () => classes.StarRating }),
+        {},
+        [className],
+      )}>
+      {stars.map((starNumber) => makeIcon(starNumber))}
     </div>
   );
 };

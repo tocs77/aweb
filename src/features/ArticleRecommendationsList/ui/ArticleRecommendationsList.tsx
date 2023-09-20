@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next';
 
-import { Text, TextSize } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { ArticleList, ArticleView } from '@/entities/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { useRecommendationsApi } from '../api/articleRecommendationsApi';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface ArticleRecommendationsListProps {
   className?: string;
@@ -19,7 +21,12 @@ export const ArticleRecommendationsList = (props: ArticleRecommendationsListProp
 
   return (
     <VStack className={classNames('', {}, [className])} gap='8' max data-testid='ArticleRecommendationsList'>
-      <Text title={t('See also')} size={TextSize.L} />
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={<Text text={t('See also')} size='xl' />}
+        off={<TextDeprecated title={t('See also')} size={TextSize.L} />}
+      />
+
       <ArticleList articles={artcles} target={'_blank'} isLoading={isLoading} view={ArticleView.GRID} />
     </VStack>
   );

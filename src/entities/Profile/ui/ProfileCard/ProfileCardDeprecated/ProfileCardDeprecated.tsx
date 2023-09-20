@@ -9,7 +9,7 @@ import classes from '../ProfileCard.module.scss';
 import { Profile } from '../../../model/types/profile';
 import { VStack } from '@/shared/ui/redesigned/Stack';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Loader } from '@/shared/ui/deprecated/Loader';
+import { Loader } from '@/shared/ui/redesigned/Loader';
 
 interface ProfileCardProps {
   className?: string;
