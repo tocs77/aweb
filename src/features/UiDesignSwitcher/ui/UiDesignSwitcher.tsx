@@ -6,6 +6,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { updateFeatureFlag } from '@/shared/lib/features';
 import { getAuthData } from '@/entities/User';
 import { useAppSelector } from '@/app/providers/StoreProvider/config/store';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 
 interface UiDesignSwitcherProps {
   className?: string;
@@ -16,14 +17,16 @@ export const UiDesignSwitcher = (props: UiDesignSwitcherProps) => {
   const isAppRedesigned = getFeatureFlag('isAppRedesigned');
   const dispatch = useAppDispatch();
   const authData = useAppSelector(getAuthData);
+  const forceUpdate = useForceUpdate();
 
   const items = [
     { content: t('New'), value: 'new' },
     { content: t('Old'), value: 'old' },
   ];
-  const onChange = (value: string) => {
+  const onChange = async (value: string) => {
     if (!authData) return;
-    dispatch(updateFeatureFlag({ newFeatures: { isAppRedesigned: value === 'new' ? true : false }, userId: authData.id }));
+    await dispatch(updateFeatureFlag({ newFeatures: { isAppRedesigned: value === 'new' ? true : false }, userId: authData.id }));
+    forceUpdate();
   };
   return (
     <ListBox

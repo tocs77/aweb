@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { LoginModal } from '@/features/AuthByUserName';
 import { getAuthData } from '@/entities/User';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
@@ -57,9 +58,19 @@ const NavbarEl = ({ className }: NavbarProps) => {
     <>
       <LoginModal isOpen={isAuthModal} onClose={() => setIsAuthModal(false)} />
       <nav className={classNames(classes.navbar, {}, [className])}>
-        <Button theme={ButtonTheme.CLEAR_INVERTED} className={classes.links} onClick={() => setIsAuthModal(true)}>
-          {t('Login')}
-        </Button>
+        <ToggleFeatures
+          feature='isAppRedesigned'
+          on={
+            <Button variant='clear' className={classes.links} onClick={() => setIsAuthModal(true)}>
+              {t('Login')}
+            </Button>
+          }
+          off={
+            <ButtonDeprecated theme={ButtonTheme.CLEAR_INVERTED} className={classes.links} onClick={() => setIsAuthModal(true)}>
+              {t('Login')}
+            </ButtonDeprecated>
+          }
+        />
       </nav>
     </>
   );

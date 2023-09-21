@@ -43,7 +43,12 @@ export const ProfileCardRedesigned = (props: ProfileCardProps) => {
   } = props;
   const { t } = useTranslation();
   return (
-    <Card className={classNames(classes.ProfileCardRedesigned, {}, [className])} max variant='outlined' padding='24'>
+    <Card
+      className={classNames(classes.ProfileCardRedesigned, {}, [className])}
+      max
+      variant='outlined'
+      padding='24'
+      border='faceted'>
       {profile.avatar && (
         <div className={classes.avatar}>
           <Avatar src={profile.avatar} size={120} />

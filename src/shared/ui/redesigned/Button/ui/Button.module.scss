@@ -1,10 +1,11 @@
 .Button {
   cursor: pointer;
-  color: var(--text-redesigned);
   padding: 8px 15px;
   transition: opacity 0.3s ease-in;
   display: flex;
   align-items: center;
+  outline: none;
+  border: none;
 
   .addonLeft,
   .addonRight {
@@ -12,17 +13,6 @@
 
     svg {
       color: var(--hint-redesigned);
-    }
-  }
-
-  &:hover {
-    color: var(--accent-redesigned);
-
-    .addonLeft,
-    .addonRight {
-      svg {
-        color: var(--accent-redesigned);
-      }
     }
   }
 }
@@ -47,8 +37,6 @@
 .clearInverted {
   padding: 0;
   background: none;
-  outline: none;
-  border: none;
 }
 
 .clearInverted {
@@ -57,11 +45,7 @@
 
 .outline {
   background: none;
-  border: 1px solid var(--icon-redesigned);
-
-  &:hover {
-    border-color: var(--accent-redesigned);
-  }
+  border: 1px solid;
 }
 
 .outline_warning {
@@ -112,5 +96,54 @@
     height: var(--font-line-xl);
     align-items: center;
     justify-content: center;
+  }
+}
+
+.normal {
+  color: var(--text-redesigned);
+  border-color: var(--icon-redesigned);
+
+  &:hover {
+    color: var(--accent-redesigned);
+    border-color: var(--accent-redesigned);
+
+    .addonLeft,
+    .addonRight {
+      svg {
+        color: var(--accent-redesigned);
+      }
+    }
+  }
+}
+
+.success {
+  color: var(--save-redesigned);
+
+  &:hover {
+    color: var(--accent-redesigned);
+    border-color: var(--accent-redesigned);
+
+    .addonLeft,
+    .addonRight {
+      svg {
+        color: var(--accent-redesigned);
+      }
+    }
+  }
+}
+
+.error {
+  color: var(--cancel-redesigned);
+
+  &:hover {
+    color: var(--accent-redesigned);
+    border-color: var(--accent-redesigned);
+
+    .addonLeft,
+    .addonRight {
+      svg {
+        color: var(--accent-redesigned);
+      }
+    }
   }
 }
