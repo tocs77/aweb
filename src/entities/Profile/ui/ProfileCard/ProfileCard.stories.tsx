@@ -5,6 +5,7 @@ import { Theme } from '@/shared/consts/theme';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import src from '@/shared/assets/test/avatar.png';
+import { NewDesignDecorator } from '@/shared/config/storybook/NewDesignDecorator/NewDesignDecorator';
 
 const meta = {
   title: 'entities/ProfileCard',
@@ -69,4 +70,14 @@ export const Loading: Story = {
 
 export const Error: Story = {
   args: { error: 'Some error' },
+};
+
+export const Redesigned: Story = {
+  args: {},
+  decorators: [NewDesignDecorator],
+};
+
+export const RedesignedRed: Story = {
+  args: {},
+  decorators: [ThemeDecorator(Theme.ORANGE), NewDesignDecorator],
 };

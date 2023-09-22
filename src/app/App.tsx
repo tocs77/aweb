@@ -9,7 +9,8 @@ import { getUserInited, userActions } from '@/entities/User';
 import { useSelector } from 'react-redux';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { MainLayout } from '@/shared/layout';
+import { AppLoaderLayout, MainLayout } from '@/shared/layout';
+import { useAppToolbar } from './lib/useAppToolbar';
 
 export const App = () => {
   const { theme } = useTheme();
@@ -20,7 +21,20 @@ export const App = () => {
     if (!inited) dispatch(userActions.initAuthData());
   }, [dispatch, inited]);
 
-  if (!inited) return <PageLoader />;
+  const toolbar = useAppToolbar();
+
+  if (!inited)
+    return (
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <div className={classNames('app', {}, [theme])} id='app'>
+            <AppLoaderLayout />
+          </div>
+        }
+        off={<PageLoader />}
+      />
+    );
 
   return (
     <ToggleFeatures
@@ -28,7 +42,7 @@ export const App = () => {
       on={
         <div className={classNames('app_redesigned', {}, [theme])} id='app'>
           <Suspense fallback=''>
-            <MainLayout content={<AppRouter />} sidebar={<Sidebar />} header={<Navbar />} toolbar={<div>{'Toolbar'}</div>} />
+            <MainLayout content={<AppRouter />} sidebar={<Sidebar />} header={<Navbar />} toolbar={toolbar} />
           </Suspense>
         </div>
       }

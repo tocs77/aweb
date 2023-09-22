@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { CommentCard } from './CommentCard';
 import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { FeatureFlagsDecorator } from '@/shared/config/storybook/FeatureFlagsDecorator/FeatureFlagsDecorator';
 import { Theme } from '@/shared/consts/theme';
 import { Comment } from '@/entities/Comment';
 
@@ -40,4 +41,14 @@ Dark.decorators = [ThemeDecorator(Theme.DARK)];
 
 export const Loading: Story = {
   args: { isLoading: true },
+};
+
+export const Redesigned: Story = {
+  args: {},
+  decorators: [FeatureFlagsDecorator({ isAppRedesigned: true })],
+};
+
+export const RedesignedLoading: Story = {
+  args: { isLoading: true },
+  decorators: [FeatureFlagsDecorator({ isAppRedesigned: true })],
 };
